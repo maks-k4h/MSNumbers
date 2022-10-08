@@ -6,9 +6,9 @@
     <ContentPage.MenuBarItems>
         <MenuBarItem Text="File">
             <MenuFlyoutItem Text="Save"
-                            Command="{Binding ExitCommand}" />
+                            Clicked="SaveClicked" />
             <MenuFlyoutItem Text="Save As"
-                            Command="{Binding ExitCommand}" />
+                            Clicked="SaveAsClicked" />
         </MenuBarItem>
         <MenuBarItem Text="Help">
             <MenuFlyoutItem Text="Як це працює?"

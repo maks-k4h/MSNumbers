@@ -1,4 +1,5 @@
-﻿using MSNumbers.Utils;
+﻿using MSNumbers.Models;
+using MSNumbers.Utils;
 
 namespace MSNumbers.Views;
 
@@ -99,22 +100,26 @@ public partial class MainPage : ContentPage
         _messageLabel.Text = message;
     }
 
-    private void _openFromFile(string path)
+    private async void _openFromFile(string path)
     {
         try
         {
-            Utils.Deserializer.Deserialize(path);
-            Shell.Current.GoToAsync(nameof(TablePage));
+            Deserializer.FromFile(path);
+            await Shell.Current.GoToAsync(nameof(TablePage));
         }
         catch (FileNotFoundException)
         {
-            _showMessage($"Шлях до таблиці невірний!");
+            _showMessage("Шлях до таблиці невірний!");
         }
         catch (WrongFileFormatException)
         {
-            _showMessage($"Формат файлу не підтримується!");
+            _showMessage("Формат файлу не підтримується!");
         }
-        catch (Exception)
+        catch (DamagedFileException)
+        {
+            _showMessage("Файл пошкодженно!");
+        }
+        catch (Exception e)
         {
             _showMessage($"Невідома помилка!");
         }

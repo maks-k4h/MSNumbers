@@ -1,10 +1,12 @@
+using MSNumbers.Utils;
+
 namespace MSNumbers.Views;
 
 using Models;
 public partial class TablePage : ContentPage
 {
     private const int RowHeight                             = 50;
-    private const int ColumnWidth                           = 120;
+    private const int ColumnWidth                           = 180;
     private const int CellFontSize                          = 18;
     private static readonly Color LeadingCellColor          = Colors.LightGray;
     private static readonly Color CellColor                 = Colors.White;
@@ -31,6 +33,7 @@ public partial class TablePage : ContentPage
 
         _formulaEntry = new Entry
         {
+            Placeholder = "Введіть формулу",
             HorizontalOptions = LayoutOptions.Center,
             HeightRequest = 40,
             WidthRequest = 300,
@@ -43,7 +46,7 @@ public partial class TablePage : ContentPage
             Text = "Застосувати",
             HeightRequest = 40,
         };
-        applyFormulaButton.Clicked += (sender, args) => { FormulaEdited(_formulaEntry.Text); };
+        applyFormulaButton.Clicked += (sender, args) => { FormulaEdited(_formulaEntry.Text ?? ""); };
 
         _grid = new Grid
         {
@@ -69,7 +72,7 @@ public partial class TablePage : ContentPage
             HorizontalTextAlignment = TextAlignment.End,
             VerticalTextAlignment   = TextAlignment.Center
         };
-        ShowSuccessStatus();
+        ShowDefaultStatus();
 
         var contentGrid = new Grid
         {
@@ -99,7 +102,7 @@ public partial class TablePage : ContentPage
         
         for (var r = 0; r < Table.Rows; ++r)
         { AddRow(); }
-
+        
         for (var c = 0; c < Table.Columns; ++c)
         { AddColumn(); }
     }
@@ -107,6 +110,22 @@ public partial class TablePage : ContentPage
     private void GetHelpClicked(object sender, EventArgs e)
     {
         Shell.Current.GoToAsync(nameof(HelpPage));
+    }
+
+    private void SaveClicked(object sender, EventArgs e)
+    {
+        if (!Table.HasPath())
+            Shell.Current.GoToAsync(nameof(Views.SaveAsPage));
+        else
+        {
+            Table.Save();
+            ShowSuccessStatus("Зміни збережено","💾");
+        }
+    }
+
+    private void SaveAsClicked(object sender, EventArgs e)
+    {
+        Shell.Current.GoToAsync(nameof(Views.SaveAsPage));
     }
 
     private void AddRow()
@@ -230,11 +249,27 @@ public partial class TablePage : ContentPage
     {
         if (_selectedCell is null)
             return;
-        _selectedCell.Text = Table.SetCellFormula(_selectedRow, _selectedCol, formula);
-        ShowSuccessStatus();
+        try
+        {
+            _selectedCell.Text = Table.SetCellFormula(_selectedRow, _selectedCol, formula);
+            ShowDefaultStatus();
+        }
+        catch (Exception e)
+        {
+            _selectedCell.Text = Table.GetCellResult(_selectedRow, _selectedCol);
+
+            ShowFailureStatus(e.Message);
+        }
+        
     }
 
-    private void ShowSuccessStatus(string message = "Усе впорядку", string statusSymbol = "😎")
+    private void ShowSuccessStatus(string message = "Чудово!", string statusSymbol = "🌈")
+    {
+        _statusLabel.Text = $"{message} {statusSymbol}";
+        _statusLabel.BackgroundColor = Colors.Green;
+    }
+    
+    private void ShowDefaultStatus(string message = "Усе впорядку", string statusSymbol = "😎")
     {
         _statusLabel.Text = $"{message} {statusSymbol}";
         _statusLabel.BackgroundColor = Colors.Gray;
