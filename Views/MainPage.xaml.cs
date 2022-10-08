@@ -78,7 +78,15 @@ public partial class MainPage : ContentPage
 
     private async void _createButtonClicked(object sender, EventArgs args)
     {
-        await Shell.Current.GoToAsync(nameof(TablePage));
+        try
+        {
+            Models.Table.CreateBlank();
+            await Shell.Current.GoToAsync(nameof(TablePage));
+        }
+        catch (Exception e)
+        {
+            _showMessage($"{e.Message}");
+        }
     }
     
     private void _openButtonClicked(object sender, EventArgs args)

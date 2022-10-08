@@ -12,7 +12,7 @@
         </MenuBarItem>
         <MenuBarItem Text="Help">
             <MenuFlyoutItem Text="Як це працює?"
-                            Clicked="getHelpClicked" />
+                            Clicked="GetHelpClicked" />
         </MenuBarItem>
     </ContentPage.MenuBarItems>
 
