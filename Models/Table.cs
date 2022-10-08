@@ -17,8 +17,10 @@ public static class Table
         Path    = string.Empty;
         Rows    = 0;
         Columns = 0;
-        _cells  = new Dictionary<(int, int), Cell>();
         
+        _cells?.Clear();
+        _cells = new Dictionary<(int, int), Cell>();
+
         for (int i = 0; i < 15; ++i)
         {
             AddColumn();
@@ -44,9 +46,20 @@ public static class Table
         ++Rows;
     }
 
-    public static string GetCell(int row, int column)
+    public static string GetCellResult(int row, int column)
     {
-        return _cells[(row, column)].GetValue();
+        return _cells[(row, column)].GetResult();
+    }
+    
+    public static string GetCellFormula(int row, int column)
+    {
+        return _cells[(row, column)].GetFormula();
+    }
+
+    // Returns the result of the formula applied
+    public static string SetCellFormula(int row, int column, string formula)
+    {
+        return _cells[(row, column)].SetFormula(formula);
     }
 
     public static (int, int) CellNameToNumbers(string name)

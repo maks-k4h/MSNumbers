@@ -6,12 +6,13 @@ public class Cell
 
     public string SetFormula(string formula)
     {
-        return GetValue();
+        _formula = formula;
+        return GetResult();
     }
 
-    public string GetValue()
+    public string GetResult()
     {
-        return "Value...";
+        return _formula;
     }
 
     public string GetFormula()

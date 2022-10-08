@@ -3,15 +3,21 @@ namespace MSNumbers.Views;
 using Models;
 public partial class TablePage : ContentPage
 {
-    private const int RowHeight                         = 50;
-    private const int ColumnWidth                       = 120;
-    private const int CellFontSize                      = 18;
-    private static readonly Color LeadingCellColor      = Colors.LightGray;
-    private static readonly Color CellColor             = Colors.White;
+    private const int RowHeight                             = 50;
+    private const int ColumnWidth                           = 120;
+    private const int CellFontSize                          = 18;
+    private static readonly Color LeadingCellColor          = Colors.LightGray;
+    private static readonly Color CellColor                 = Colors.White;
+    private static readonly Color CellBorderColor           = Colors.LightGray;
+    private static readonly Color SelectedCellBorderColor   = Colors.Black;
 
     // Available data cells
     private int _rows                                   = 0;
     private int _columns                                = 0;
+
+    private int _selectedRow                            = 0;
+    private int _selectedCol                            = 0;
+    private Button _selectedCell                        = null;
     
     private Grid _grid;
     private Entry _formulaEntry;
@@ -25,11 +31,19 @@ public partial class TablePage : ContentPage
 
         _formulaEntry = new Entry
         {
-            HorizontalOptions       = LayoutOptions.Center,
-            WidthRequest            = 300,
-            Margin                  = 10,
-            FontSize                = 18,
+            HorizontalOptions = LayoutOptions.Center,
+            HeightRequest = 40,
+            WidthRequest = 300,
+            Margin = 10,
+            FontSize = 18,
         };
+
+        var applyFormulaButton = new Button
+        {
+            Text = "Застосувати",
+            HeightRequest = 40,
+        };
+        applyFormulaButton.Clicked += (sender, args) => { FormulaEdited(_formulaEntry.Text); };
 
         _grid = new Grid
         {
@@ -68,7 +82,8 @@ public partial class TablePage : ContentPage
         };
         contentGrid.Add(new HorizontalStackLayout
         {
-            _formulaEntry
+            _formulaEntry,
+            applyFormulaButton
         },0, 0);
         contentGrid.Add(new ScrollView{Content = _grid}, 0, 1);
         contentGrid.Add(_statusLabel, 0, 2);
@@ -80,17 +95,13 @@ public partial class TablePage : ContentPage
 
     private void LoadGrid()
     {
-        Title = Table.Name.Length > 0 ? Table.Name : "Нова таблиця";
+        Title = Table.Name;
         
         for (var r = 0; r < Table.Rows; ++r)
-        {
-            AddRow();
-        }
+        { AddRow(); }
 
         for (var c = 0; c < Table.Columns; ++c)
-        {
-            AddColumn();
-        }
+        { AddColumn(); }
     }
     
     private void GetHelpClicked(object sender, EventArgs e)
@@ -104,29 +115,11 @@ public partial class TablePage : ContentPage
             _grid.RowDefinitions.Add(new RowDefinition(RowHeight));
             
             // Adding leading cell
-            _grid.Add(new Label
-            {
-                BackgroundColor = LeadingCellColor,
-                Text = $"{_rows + 1}",
-                HorizontalTextAlignment = TextAlignment.Center,
-                VerticalTextAlignment = TextAlignment.Center,
-                FontSize = CellFontSize
-            }, 0, _rows + 1);
+            RenderCell(0, _rows + 1);
 
             // Adding remaining cells
             for (int c = 0; c < _columns; ++c)
-            {
-                _grid.Add(new Button
-                {
-                    Background = CellColor,
-                    Text = Table.NumbersToCellName(_rows, c),
-                    TextColor = Colors.Black,
-                    BorderWidth = 2,
-                    BorderColor = Colors.LightGray,
-                    CornerRadius = 0,
-                    FontSize = CellFontSize
-                }, c + 1, _rows + 1);
-            }
+            { RenderCell(c + 1, _rows + 1); }
             
             ++_rows;
         }
@@ -142,29 +135,11 @@ public partial class TablePage : ContentPage
             _grid.ColumnDefinitions.Add(new ColumnDefinition(ColumnWidth));
             
             // Adding leading cell
-            _grid.Add(new Label
-            {
-                BackgroundColor = LeadingCellColor,
-                Text = $"{(char)('A' + _columns)}",
-                HorizontalTextAlignment = TextAlignment.Center,
-                VerticalTextAlignment = TextAlignment.Center,
-                FontSize = CellFontSize
-            }, _columns + 1, 0);
+            RenderCell( _columns + 1, 0);
             
             // Adding remaining cells
             for (int r = 0; r < _rows; ++r)
-            {
-                _grid.Add(new Button
-                {
-                    Background = CellColor,
-                    Text = Table.NumbersToCellName(r, _columns),
-                    TextColor = Colors.Black,
-                    BorderWidth = 2,
-                    BorderColor = Colors.LightGray,
-                    CornerRadius = 0,
-                    FontSize = CellFontSize
-                }, _columns + 1, r + 1);
-            }
+            { RenderCell(_columns + 1, r + 1); }
             
             ++_columns;
         }
@@ -174,12 +149,97 @@ public partial class TablePage : ContentPage
         }
     }
 
+    // render either leading or data cell
+    // 0 row/col are leading, 1 row/col correspond to
+    // first data row/col, i.e. have 0 row/col id
+    // in the data table
+    private void RenderCell(int row, int col)
+    {
+        if (row == 0 && col == 0)
+        {
+            _grid.Add(new Label
+            {
+                BackgroundColor = LeadingCellColor
+            }, 0, 0);
+        }
+        else if (row == 0)
+        {
+            _grid.Add(new Label
+            {
+                BackgroundColor = LeadingCellColor,
+                Text = $"{(char)('A' + col - 1)}",
+                HorizontalTextAlignment = TextAlignment.Center,
+                VerticalTextAlignment = TextAlignment.Center,
+                FontSize = CellFontSize
+            }, col, row);
+        }
+        else if (col == 0)
+        {
+            _grid.Add(new Label
+            {
+                BackgroundColor = LeadingCellColor,
+                Text = $"{row}",
+                HorizontalTextAlignment = TextAlignment.Center,
+                VerticalTextAlignment = TextAlignment.Center,
+                FontSize = CellFontSize
+            }, col, row);
+        }
+        else
+        {
+            var button = new Button
+            {
+                Background = CellColor,
+                Text = Table.GetCellResult(row - 1, col - 1),
+                TextColor = Colors.Black,
+                BorderWidth = 2,
+                BorderColor = CellBorderColor,
+                CornerRadius = 0,
+                FontSize = CellFontSize
+            };
+            button.Clicked += (sender, args) =>
+            {
+                CellSelected((Button)sender, row - 1, col - 1);
+            };
+            _grid.Add(button, col, row);
+        }
+    }
+
+    private void CellSelected(Button sender, int row, int col)
+    {
+        // changing properties of the previously active cell
+        if (_selectedCell is not null)
+            _selectedCell.BorderColor = CellBorderColor;
+        
+        // updating info about current cell
+        _selectedCell = sender;
+        _selectedRow = row;
+        _selectedCol = col;
+        
+        // setting current cell color
+        _selectedCell.BorderColor = SelectedCellBorderColor;
+
+        SetFormulaEntryText(Table.GetCellFormula(row, col));
+    }
+
+    private void SetFormulaEntryText(string text)
+    {
+        _formulaEntry.Text = text;
+    }
+
+    private void FormulaEdited(string formula)
+    {
+        if (_selectedCell is null)
+            return;
+        _selectedCell.Text = Table.SetCellFormula(_selectedRow, _selectedCol, formula);
+        ShowSuccessStatus();
+    }
+
     private void ShowSuccessStatus(string message = "Усе впорядку", string statusSymbol = "😎")
     {
         _statusLabel.Text = $"{message} {statusSymbol}";
         _statusLabel.BackgroundColor = Colors.Gray;
     }
-    
+
     private void ShowFailureStatus(string message = "Щось пішло не так", string statusSymbol = "🤔")
     {
         _statusLabel.Text = $"{message} {statusSymbol}";
