@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:MSNumbers.Models"
+             x:Class="MSNumbers.Views.HelpPage"
+             Title="Допомога">
+    
+    <ContentPage.BindingContext>
+        <models:Help></models:Help>
+    </ContentPage.BindingContext>
+    
+    
+        
+    <VerticalStackLayout Grid.Row="1" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center">
+        <VerticalStackLayout Margin="10">
+            <Label Text="{Binding Title}" FontSize="50" FontAttributes="Bold"></Label>
+            <HorizontalStackLayout Margin="3">
+                <Label Text="Версія " FontAttributes="Italic"></Label>
+                <Label Text="{Binding Version}" FontAttributes="Italic"></Label>
+            </HorizontalStackLayout>
+        </VerticalStackLayout> 
+        <Label Text="{Binding Message}" Margin="10" FontSize="20" WidthRequest="700"></Label>
+    </VerticalStackLayout>
+        
+    
+
+</ContentPage>
