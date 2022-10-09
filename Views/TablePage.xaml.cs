@@ -33,18 +33,18 @@ public partial class TablePage : ContentPage
 
         _formulaEntry = new Entry
         {
-            Placeholder = "Введіть формулу",
-            HorizontalOptions = LayoutOptions.Center,
-            HeightRequest = 40,
-            WidthRequest = 300,
-            Margin = 10,
-            FontSize = 18,
+            Placeholder         = "Введіть формулу",
+            HorizontalOptions   = LayoutOptions.Center,
+            HeightRequest       = 40,
+            WidthRequest        = 300,
+            Margin              = 10,
+            FontSize            = 18,
         };
 
         var applyFormulaButton = new Button
         {
-            Text = "Застосувати",
-            HeightRequest = 40,
+            Text                = "Застосувати",
+            HeightRequest       = 40,
         };
         applyFormulaButton.Clicked += (sender, args) => { FormulaEdited(_formulaEntry.Text ?? ""); };
 
@@ -134,11 +134,11 @@ public partial class TablePage : ContentPage
             _grid.RowDefinitions.Add(new RowDefinition(RowHeight));
             
             // Adding leading cell
-            RenderCell(0, _rows + 1);
+            RenderCell(_rows + 1, 0);
 
             // Adding remaining cells
             for (int c = 0; c < _columns; ++c)
-            { RenderCell(c + 1, _rows + 1); }
+            { RenderCell(_rows + 1, c + 1); }
             
             ++_rows;
         }
@@ -154,11 +154,13 @@ public partial class TablePage : ContentPage
             _grid.ColumnDefinitions.Add(new ColumnDefinition(ColumnWidth));
             
             // Adding leading cell
-            RenderCell( _columns + 1, 0);
+            RenderCell( 0, _columns + 1);
             
             // Adding remaining cells
             for (int r = 0; r < _rows; ++r)
-            { RenderCell(_columns + 1, r + 1); }
+            {
+                RenderCell(r + 1, _columns + 1);
+            }
             
             ++_columns;
         }
@@ -179,7 +181,7 @@ public partial class TablePage : ContentPage
             _grid.Add(new Label
             {
                 BackgroundColor = LeadingCellColor
-            }, 0, 0);
+            }, col, row);
         }
         else if (row == 0)
         {
