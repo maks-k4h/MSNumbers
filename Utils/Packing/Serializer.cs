@@ -1,6 +1,6 @@
 using MSNumbers.Models;
 
-namespace MSNumbers.Utils;
+namespace MSNumbers.Utils.Packing;
 
 public static class Serializer
 {

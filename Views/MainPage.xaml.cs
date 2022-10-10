@@ -1,5 +1,6 @@
 ﻿using MSNumbers.Models;
 using MSNumbers.Utils;
+using MSNumbers.Utils.Packing;
 
 namespace MSNumbers.Views;
 
@@ -119,7 +120,7 @@ public partial class MainPage : ContentPage
         {
             _showMessage("Файл пошкодженно!");
         }
-        catch (Exception e)
+        catch (Exception)
         {
             _showMessage($"Невідома помилка!");
         }

@@ -24,8 +24,6 @@ public partial class TablePage : ContentPage
     private Grid _grid;
     private Entry _formulaEntry;
     private Label _statusLabel;
-
-    private int _debuggingConstatant;
     
     public TablePage()
     {
@@ -164,7 +162,7 @@ public partial class TablePage : ContentPage
             
             ++_columns;
         }
-        catch (Exception e)
+        catch (Exception)
         {
             throw new Exception("Exception while adding a column.");
         }
@@ -253,8 +251,10 @@ public partial class TablePage : ContentPage
             return;
         try
         {
-            _selectedCell.Text = Table.SetCellFormula(_selectedRow, _selectedCol, formula);
-            ShowDefaultStatus();
+            var res = Table.SetCellFormula(_selectedRow, _selectedCol, formula);
+            _selectedCell.Text = res;
+            // TODO remove this message
+            ShowDefaultStatus($"Формулу {formula} встановлено! Результат {res}");
         }
         catch (Exception e)
         {

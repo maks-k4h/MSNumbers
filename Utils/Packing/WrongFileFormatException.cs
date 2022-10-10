@@ -1,4 +1,4 @@
-namespace MSNumbers.Utils;
+namespace MSNumbers.Utils.Packing;
 
 public class WrongFileFormatException : Exception
 {
