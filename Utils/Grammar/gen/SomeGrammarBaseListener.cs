@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from /Users/makskonevych/Documents/C#/test/ConsoleApp1/ConsoleApp1/SomeGrammar.g4 by ANTLR 4.10.1
+// Generated from /Users/makskonevych/Documents/C#/Labs/MSNumbers/Utils/Grammar/SomeGrammar.g4 by ANTLR 4.10.1
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -95,6 +95,78 @@ public partial class SomeGrammarBaseListener : ISomeGrammarListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitAtomic([NotNull] SomeGrammarParser.AtomicContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SomeGrammarParser.enclosed_sum"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterEnclosed_sum([NotNull] SomeGrammarParser.Enclosed_sumContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SomeGrammarParser.enclosed_sum"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitEnclosed_sum([NotNull] SomeGrammarParser.Enclosed_sumContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SomeGrammarParser.inc"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterInc([NotNull] SomeGrammarParser.IncContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SomeGrammarParser.inc"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitInc([NotNull] SomeGrammarParser.IncContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SomeGrammarParser.dec"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterDec([NotNull] SomeGrammarParser.DecContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SomeGrammarParser.dec"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitDec([NotNull] SomeGrammarParser.DecContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SomeGrammarParser.max"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterMax([NotNull] SomeGrammarParser.MaxContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SomeGrammarParser.max"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitMax([NotNull] SomeGrammarParser.MaxContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SomeGrammarParser.min"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterMin([NotNull] SomeGrammarParser.MinContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SomeGrammarParser.min"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitMin([NotNull] SomeGrammarParser.MinContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SomeGrammarParser.cell"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterCell([NotNull] SomeGrammarParser.CellContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SomeGrammarParser.cell"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitCell([NotNull] SomeGrammarParser.CellContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="SomeGrammarParser.float"/>.
 	/// <para>The default implementation does nothing.</para>

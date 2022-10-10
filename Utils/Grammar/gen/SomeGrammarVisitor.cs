@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from /Users/makskonevych/Documents/C#/test/ConsoleApp1/ConsoleApp1/SomeGrammar.g4 by ANTLR 4.10.1
+// Generated from /Users/makskonevych/Documents/C#/Labs/MSNumbers/Utils/Grammar/SomeGrammar.g4 by ANTLR 4.10.1
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -61,6 +61,42 @@ public interface ISomeGrammarVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitAtomic([NotNull] SomeGrammarParser.AtomicContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="SomeGrammarParser.enclosed_sum"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitEnclosed_sum([NotNull] SomeGrammarParser.Enclosed_sumContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="SomeGrammarParser.inc"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitInc([NotNull] SomeGrammarParser.IncContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="SomeGrammarParser.dec"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitDec([NotNull] SomeGrammarParser.DecContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="SomeGrammarParser.max"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitMax([NotNull] SomeGrammarParser.MaxContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="SomeGrammarParser.min"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitMin([NotNull] SomeGrammarParser.MinContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="SomeGrammarParser.cell"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitCell([NotNull] SomeGrammarParser.CellContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="SomeGrammarParser.float"/>.
 	/// </summary>

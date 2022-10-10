@@ -50,6 +50,7 @@
 
     <ItemGroup>
       <Folder Include="Resources\Images" />
+      <Folder Include="Utils\Grammar\gen" />
     </ItemGroup>
 
     <ItemGroup>

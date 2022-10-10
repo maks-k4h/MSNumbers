@@ -44,6 +44,7 @@ public static class Deserializer
         catch (Exception e)
         {
             // TODO Change the error message
+            // TODO don't forget to test opening damaged files before
             throw e;
         }
     }

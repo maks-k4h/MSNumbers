@@ -13,10 +13,9 @@ public class GrammarVisitor : SomeGrammarBaseVisitor<double>
     public override double VisitSum(SomeGrammarParser.SumContext context)
     {
         if (context.ChildCount == 1)
-        {
             return VisitAddend(context.addend());
-        }
-        else if (context.ChildCount == 3)
+        
+        if (context.ChildCount == 3)
         {
             if (context.children[1].ToString() == "+")
             {
@@ -34,19 +33,15 @@ public class GrammarVisitor : SomeGrammarBaseVisitor<double>
     public override double VisitAddend(SomeGrammarParser.AddendContext context)
     {
         if (context.ChildCount == 1)
-        {
             return VisitMultiplier(context.multiplier());
-        }
-        else if (context.ChildCount == 3)
+
+        if (context.ChildCount == 3)
         {
             if (context.children[1].ToString() == "*")
-            {
                 return VisitMultiplier(context.multiplier()) * VisitAddend(context.addend());
-            }
-            else if (context.children[1].ToString() == "/")
-            {
+            
+            if (context.children[1].ToString() == "/")
                 return VisitMultiplier(context.multiplier()) / VisitAddend(context.addend());
-            }
         }
 
         throw new SyntaxErrorException();
@@ -55,42 +50,49 @@ public class GrammarVisitor : SomeGrammarBaseVisitor<double>
     public override double VisitMultiplier(SomeGrammarParser.MultiplierContext context)
     {
         if (context.ChildCount == 1)
-        {
             return VisitAtomic(context.atomic()[0]);
-        }
-        else if (context.ChildCount == 3)
-        {
+
+        if (context.ChildCount == 3)
             return Math.Pow(VisitAtomic(context.atomic()[0]), VisitAtomic(context.atomic()[1]));
-        }
 
         throw new SyntaxErrorException();
     }
 
     public override double VisitAtomic(SomeGrammarParser.AtomicContext context)
     {
-        if (context.ChildCount == 1)
-        {
-            return VisitFloat(context.@float());
-        }
-        else
-        {
-            var v1 = VisitSum(context.sum()[0]);
-            switch (context.children[0].GetText())
-            {
-                case "(":
-                    return v1;
-                case "inc":
-                    return v1 + 1;
-                case "dec":
-                    return v1 - 1;
-                case "max":
-                    return Math.Max(v1, VisitSum(context.sum()[1]));
-                case "min":
-                    return Math.Min(v1, VisitSum(context.sum()[1]));
-            }
-        }
+        return VisitChildren(context);
+    }
 
-        throw new SyntaxErrorException();
+    public override double VisitEnclosed_sum(SomeGrammarParser.Enclosed_sumContext context)
+    {
+        return Visit(context.sum());
+    }
+
+    public override double VisitInc(SomeGrammarParser.IncContext context)
+    {
+        return Visit(context.sum()) + 1;
+    }
+
+    public override double VisitDec(SomeGrammarParser.DecContext context)
+    {
+        return Visit(context.sum()) - 1;
+    }
+
+    public override double VisitMax(SomeGrammarParser.MaxContext context)
+    {
+        return Math.Max(Visit(context.sum()[0]), Visit(context.sum()[1]));
+    }
+
+    public override double VisitMin(SomeGrammarParser.MinContext context)
+    {
+        return Math.Min(Visit(context.sum()[0]), Visit(context.sum()[1]));
+    }
+
+    public override double VisitCell(SomeGrammarParser.CellContext context)
+    {
+        throw new NotImplementedException("Cell linking is not implemented yet.");
+        var cell = Models.Table.CellNameToNumbers(context.GetText());
+        return double.Parse(Models.Table.GetCellResult(cell.Item1, cell.Item2));
     }
 
     public override double VisitFloat(SomeGrammarParser.FloatContext context)

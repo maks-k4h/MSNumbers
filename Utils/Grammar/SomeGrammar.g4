@@ -7,13 +7,23 @@ line:           sum EOF;
 sum:            addend (('+'|'-') sum)?;
 addend:         multiplier (('*'|'/') addend)?;
 multiplier:     atomic ('^' atomic)?;
-atomic:         float                   | 
-                '(' sum ')'             | 
-                'inc''(' sum ')'        |
-                'dec''(' sum ')'        |
-                'max''(' sum ',' sum ')'|
-                'min''(' sum ',' sum ')'|
+atomic:         float           | 
+                cell            |
+                enclosed_sum    | 
+                inc             |
+                dec             |
+                max             |
+                min             |
                 ;
 
+enclosed_sum:   '(' sum ')';
+
+inc:            'inc(' sum ')';
+dec:            'dec(' sum ')';
+max:            'max(' sum ',' sum ')';
+min:            'min(' sum ',' sum ')';
+
+cell:           LETTER INT;
 float:          INT | '.' INT | INT '.' INT;
+LETTER:         [A-Z] | [a-z];
 INT:            [0-9]+;

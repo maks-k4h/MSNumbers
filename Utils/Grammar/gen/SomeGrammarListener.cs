@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from /Users/makskonevych/Documents/C#/test/ConsoleApp1/ConsoleApp1/SomeGrammar.g4 by ANTLR 4.10.1
+// Generated from /Users/makskonevych/Documents/C#/Labs/MSNumbers/Utils/Grammar/SomeGrammar.g4 by ANTLR 4.10.1
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -80,6 +80,66 @@ public interface ISomeGrammarListener : IParseTreeListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void ExitAtomic([NotNull] SomeGrammarParser.AtomicContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SomeGrammarParser.enclosed_sum"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterEnclosed_sum([NotNull] SomeGrammarParser.Enclosed_sumContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SomeGrammarParser.enclosed_sum"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitEnclosed_sum([NotNull] SomeGrammarParser.Enclosed_sumContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SomeGrammarParser.inc"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterInc([NotNull] SomeGrammarParser.IncContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SomeGrammarParser.inc"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitInc([NotNull] SomeGrammarParser.IncContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SomeGrammarParser.dec"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterDec([NotNull] SomeGrammarParser.DecContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SomeGrammarParser.dec"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitDec([NotNull] SomeGrammarParser.DecContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SomeGrammarParser.max"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterMax([NotNull] SomeGrammarParser.MaxContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SomeGrammarParser.max"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitMax([NotNull] SomeGrammarParser.MaxContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SomeGrammarParser.min"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterMin([NotNull] SomeGrammarParser.MinContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SomeGrammarParser.min"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitMin([NotNull] SomeGrammarParser.MinContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SomeGrammarParser.cell"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterCell([NotNull] SomeGrammarParser.CellContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SomeGrammarParser.cell"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitCell([NotNull] SomeGrammarParser.CellContext context);
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="SomeGrammarParser.float"/>.
 	/// </summary>

@@ -46,7 +46,7 @@ public class Cell
             }
             catch (Exception)
             {
-                throw new Exception("Не вдається застосувати формулу, перевірте її правильність.");
+                throw;//new Exception("Не вдається застосувати формулу, перевірте її правильність.");
             }
         }
 

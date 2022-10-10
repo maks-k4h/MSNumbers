@@ -104,10 +104,10 @@ public static class Table
 
     public static (int, int) CellNameToNumbers(string name)
     {
-        if (!Regex.IsMatch(name, "[A-Z][0-9]+"))
+        if (!Regex.IsMatch(name, "[a-z][0-9]+", RegexOptions.IgnoreCase))
             throw new Exception("Wrong Cell Name");
-        var col = name[0] - 'A';
-        var row = int.Parse(name[1..]); 
+        var col = name[0] >= 'a' ? name[0] - 'a' : name[0] - 'A';
+        var row = int.Parse(name[1..]) - 1; 
         return (row, col);
     }
 
