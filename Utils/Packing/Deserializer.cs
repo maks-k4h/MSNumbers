@@ -18,10 +18,15 @@ public static class Deserializer
         try
         {
             var splitContent = content.Split('\n');
+            
+            // extending the table
+            while (Table.Rows < splitContent.Length)
+                Table.AddRow();
+            
             for (var row = 0; row < splitContent.Length; ++row)
             {
-                if (splitContent[row].Trim().Length == 0)
-                    break;
+                // if (splitContent[row].Trim().Length == 0)
+                //     break;
                 
                 var cellsContent = splitContent[row].Split(';');
                 
@@ -29,7 +34,6 @@ public static class Deserializer
                     break;
                 
                 // extending the table
-                Table.AddRow();
                 while (Table.Columns < cellsContent.Length)
                     Table.AddColumn();
 

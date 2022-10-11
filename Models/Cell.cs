@@ -1,5 +1,4 @@
 using System.ComponentModel;
-using System.Data;
 using System.Runtime.CompilerServices;
 using Antlr4.Runtime;
 using MSNumbers.Models.Exceptions;
@@ -19,7 +18,10 @@ public class Cell : INotifyPropertyChanged
     private string _stringValue;
     
     // List of dependent cells (after current cell is updated, those must be visited too)
-    private List<Cell> _children = new List<Cell>();
+    private readonly List<Cell> _children = new();
+    
+    // Anti-looping variable
+    private bool _involved;
 
     public FormulaResultPackage Value
     {
@@ -69,6 +71,7 @@ public class Cell : INotifyPropertyChanged
             // calculating result
             CalculateResult();
 
+            // updating dependent cells
             UpdateChildren();
         }
         catch (Exception)
@@ -76,6 +79,7 @@ public class Cell : INotifyPropertyChanged
             // Rolling back to previous formula
             _formula = temp;
             CalculateResult(); // TODO: check if it's always correct
+            UpdateChildren();
             throw;
         }
     }
@@ -135,11 +139,24 @@ public class Cell : INotifyPropertyChanged
     
     private void UpdateChildren()
     {
-        // do not use foreach since the collection is modified
-        for (var i = 0; i < _children.Count; ++i)
+        // Checking anti-looping variable
+        if (_involved)
+            throw new CellLoopException("Виявлено рекурсивне задання формули.");
+        // Setting anti-looping variable
+        _involved = true;
+        try
         {
-            _children[i].CalculateResult(); 
-            _children[i].UpdateChildren();
+            // do not use foreach since the collection is modified
+            for (var i = 0; i < _children.Count; ++i)
+            {
+                _children[i].CalculateResult();
+                _children[i].UpdateChildren();
+            }
+        }
+        finally
+        {
+            // Returning normal anti-looping state
+            _involved = false;
         }
     }
 

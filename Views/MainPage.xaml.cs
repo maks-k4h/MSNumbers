@@ -78,6 +78,12 @@ public partial class MainPage : ContentPage
         Content = grid;
     }
 
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        _showMessage("");
+    }
+
     private async void _createButtonClicked(object sender, EventArgs args)
     {
         try
@@ -120,9 +126,10 @@ public partial class MainPage : ContentPage
         {
             _showMessage("Файл пошкодженно!");
         }
-        catch (Exception)
+        catch (Exception e)
         {
-            _showMessage($"Невідома помилка!");
+            // TODO remove debug message
+            _showMessage($"Файл пошкодженно! {e}");
         }
     }
 
