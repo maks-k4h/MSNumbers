@@ -28,50 +28,17 @@ public partial class TablePage : ContentPage
     public TablePage()
     {
         InitializeComponent();
-
-        _formulaEntry = new Entry
-        {
-            Placeholder         = "Введіть формулу",
-            HorizontalOptions   = LayoutOptions.Center,
-            HeightRequest       = 40,
-            WidthRequest        = 300,
-            Margin              = 10,
-            FontSize            = 18,
-        };
-
+        InitializeFormulaEntry();
+        InitializeDataGrid();
+        InitializeMessageLabel();
+        
         var applyFormulaButton = new Button
         {
             Text                = "Застосувати",
             HeightRequest       = 40,
         };
         applyFormulaButton.Clicked += (sender, args) => { FormulaEdited(_formulaEntry.Text ?? ""); };
-
-        _grid = new Grid
-        {
-            BackgroundColor =       Colors.White,
-            ColumnSpacing           = 5,
-            RowSpacing              = 5,
-            RowDefinitions          =
-            {
-                new RowDefinition(RowHeight)
-            },
-            ColumnDefinitions =
-            {
-                new ColumnDefinition(ColumnWidth)
-            }
-        };
-        _grid.Add(new Label{BackgroundColor = LeadingCellColor});
-
-        _statusLabel = new Label()
-        {
-            Padding                 = new Thickness(20, 0),
-            FontSize                = 18,
-            TextColor               = Colors.White,
-            HorizontalTextAlignment = TextAlignment.End,
-            VerticalTextAlignment   = TextAlignment.Center
-        };
-        ShowDefaultStatus();
-
+        
         var contentGrid = new Grid
         {
             RowDefinitions =
@@ -90,19 +57,64 @@ public partial class TablePage : ContentPage
         contentGrid.Add(_statusLabel, 0, 2);
 
         Content = contentGrid;
-
-        LoadGrid();
     }
 
-    private void LoadGrid()
+    protected override void OnAppearing()
     {
-        Title = Table.Name;
+        base.OnAppearing();
+        UpdateTitle();
+    }
+
+    private void InitializeFormulaEntry()
+    {
+        _formulaEntry = new Entry
+        {
+            Placeholder         = "Введіть формулу",
+            HorizontalOptions   = LayoutOptions.Center,
+            HeightRequest       = 40,
+            WidthRequest        = 300,
+            Margin              = 10,
+            FontSize            = 18,
+        };
+    }
+
+    private void InitializeDataGrid()
+    {
+        _grid = new Grid
+        {
+            BackgroundColor =       Colors.White,
+            ColumnSpacing           = 5,
+            RowSpacing              = 5,
+            RowDefinitions          =
+            {
+                new RowDefinition(RowHeight)
+            },
+            ColumnDefinitions =
+            {
+                new ColumnDefinition(ColumnWidth)
+            }
+        };
+        _grid.Add(new Label{BackgroundColor = LeadingCellColor});
         
         for (var r = 0; r < Table.Rows; ++r)
         { AddRow(); }
         
         for (var c = 0; c < Table.Columns; ++c)
         { AddColumn(); }
+    }
+
+    private void InitializeMessageLabel()
+    {
+        _statusLabel = new Label()
+        {
+            Padding                 = new Thickness(20, 0),
+            FontSize                = 18,
+            TextColor               = Colors.White,
+            HorizontalTextAlignment = TextAlignment.End,
+            VerticalTextAlignment   = TextAlignment.Center
+        };
+        
+        ShowDefaultStatus();
     }
     
     private void GetHelpClicked(object sender, EventArgs e)
@@ -123,7 +135,7 @@ public partial class TablePage : ContentPage
 
     private void SaveAsClicked(object sender, EventArgs e)
     {
-        Shell.Current.GoToAsync(nameof(Views.SaveAsPage));
+        Shell.Current.GoToAsync(nameof(SaveAsPage));
     }
 
     private void AddRow()
@@ -186,7 +198,7 @@ public partial class TablePage : ContentPage
             _grid.Add(new Label
             {
                 BackgroundColor = LeadingCellColor,
-                Text = $"{(char)('A' + col - 1)}",
+                Text = $"{Table.NumberToAlphabeticSystem(col - 1)}",
                 HorizontalTextAlignment = TextAlignment.Center,
                 VerticalTextAlignment = TextAlignment.Center,
                 FontSize = CellFontSize
@@ -205,20 +217,28 @@ public partial class TablePage : ContentPage
         }
         else
         {
+            // creating frontend
             var button = new Button
             {
                 Background = CellColor,
-                Text = Table.GetCellResult(row - 1, col - 1),
                 TextColor = Colors.Black,
                 BorderWidth = 2,
                 BorderColor = CellBorderColor,
                 CornerRadius = 0,
                 FontSize = CellFontSize
             };
+            
+            // setting data binding
+            button.BindingContext = Table.GetCell(row - 1, col - 1);
+            button.SetBinding(Button.TextProperty, nameof(Cell.StringValue));
+            
+            // adding on-clicked action
             button.Clicked += (sender, args) =>
             {
                 CellSelected((Button)sender, row - 1, col - 1);
             };
+            
+            // "rendering" the button
             _grid.Add(button, col, row);
         }
     }
@@ -251,15 +271,11 @@ public partial class TablePage : ContentPage
             return;
         try
         {
-            var res = Table.SetCellFormula(_selectedRow, _selectedCol, formula);
-            _selectedCell.Text = res;
-            // TODO remove this message
-            ShowDefaultStatus($"Формулу {formula} встановлено! Результат {res}");
+            Table.SetCellFormula(_selectedRow, _selectedCol, formula);
+            ShowDefaultStatus();
         }
         catch (Exception e)
         {
-            _selectedCell.Text = Table.GetCellResult(_selectedRow, _selectedCol);
-
             ShowFailureStatus(e.Message);
         }
         
@@ -281,5 +297,10 @@ public partial class TablePage : ContentPage
     {
         _statusLabel.Text = $"{message} {statusSymbol}";
         _statusLabel.BackgroundColor = Colors.Red;
+    }
+
+    private void UpdateTitle()
+    {
+        Title = Table.Name;
     }
 }

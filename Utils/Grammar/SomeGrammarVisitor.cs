@@ -3,101 +3,142 @@ using Math = System.Math;
 
 namespace MSNumbers.Utils.Grammar;
 
-public class GrammarVisitor : SomeGrammarBaseVisitor<double>
+public class GrammarVisitor : SomeGrammarBaseVisitor<FormulaResultPackage>
 {
-    public override double VisitLine(SomeGrammarParser.LineContext context)
+    public override FormulaResultPackage VisitLine(SomeGrammarParser.LineContext context)
     {
         return VisitSum(context.sum());
     }
 
-    public override double VisitSum(SomeGrammarParser.SumContext context)
+    public override FormulaResultPackage VisitSum(SomeGrammarParser.SumContext context)
     {
         if (context.ChildCount == 1)
             return VisitAddend(context.addend());
         
         if (context.ChildCount == 3)
         {
+            var a = Visit(context.addend());
+            var b = Visit(context.sum());
+            var res = new FormulaResultPackage();
+            res.Dependencies.AddRange(a.Dependencies);
+            res.Dependencies.AddRange(b.Dependencies);
+            
             if (context.children[1].ToString() == "+")
             {
-                return VisitAddend(context.addend()) + VisitSum(context.sum());
+                res.Result = a.Result + b.Result;
             }
             else if (context.children[1].ToString() == "-")
             {
-                return VisitAddend(context.addend()) - VisitSum(context.sum());
+                res.Result = a.Result - b.Result;
             }
+
+            return res;
         }
 
         throw new SyntaxErrorException();
     }
 
-    public override double VisitAddend(SomeGrammarParser.AddendContext context)
+    public override FormulaResultPackage VisitAddend(SomeGrammarParser.AddendContext context)
     {
         if (context.ChildCount == 1)
             return VisitMultiplier(context.multiplier());
 
         if (context.ChildCount == 3)
         {
+            var a = Visit(context.multiplier());
+            var b = Visit(context.addend());
+            var res = new FormulaResultPackage();
+            res.Dependencies.AddRange(a.Dependencies);
+            res.Dependencies.AddRange(b.Dependencies);
+            
             if (context.children[1].ToString() == "*")
-                return VisitMultiplier(context.multiplier()) * VisitAddend(context.addend());
+                res.Result = a.Result * b.Result;
             
             if (context.children[1].ToString() == "/")
-                return VisitMultiplier(context.multiplier()) / VisitAddend(context.addend());
+                res.Result = a.Result / b.Result;
+            
+            return res;
         }
 
         throw new SyntaxErrorException();
     }
 
-    public override double VisitMultiplier(SomeGrammarParser.MultiplierContext context)
+    public override FormulaResultPackage VisitMultiplier(SomeGrammarParser.MultiplierContext context)
     {
         if (context.ChildCount == 1)
             return VisitAtomic(context.atomic()[0]);
 
         if (context.ChildCount == 3)
-            return Math.Pow(VisitAtomic(context.atomic()[0]), VisitAtomic(context.atomic()[1]));
+        {
+            var a = Visit(context.atomic()[0]);
+            var b = Visit(context.atomic()[1]);
+            var res = new FormulaResultPackage { Result = Math.Pow(a.Result, b.Result) };
+            res.Dependencies.AddRange(a.Dependencies);
+            res.Dependencies.AddRange(b.Dependencies);
+            return res;
+        }
 
         throw new SyntaxErrorException();
     }
 
-    public override double VisitAtomic(SomeGrammarParser.AtomicContext context)
+    public override FormulaResultPackage VisitAtomic(SomeGrammarParser.AtomicContext context)
     {
         return VisitChildren(context);
     }
 
-    public override double VisitEnclosed_sum(SomeGrammarParser.Enclosed_sumContext context)
+    public override FormulaResultPackage VisitEnclosed_sum(SomeGrammarParser.Enclosed_sumContext context)
     {
         return Visit(context.sum());
     }
 
-    public override double VisitInc(SomeGrammarParser.IncContext context)
+    public override FormulaResultPackage VisitInc(SomeGrammarParser.IncContext context)
     {
-        return Visit(context.sum()) + 1;
+        var res = Visit(context.sum());
+        ++res.Result;
+        return res;
     }
 
-    public override double VisitDec(SomeGrammarParser.DecContext context)
+    public override FormulaResultPackage VisitDec(SomeGrammarParser.DecContext context)
     {
-        return Visit(context.sum()) - 1;
+        var res = Visit(context.sum());
+        --res.Result;
+        return res;
     }
 
-    public override double VisitMax(SomeGrammarParser.MaxContext context)
+    public override FormulaResultPackage VisitMax(SomeGrammarParser.MaxContext context)
     {
-        return Math.Max(Visit(context.sum()[0]), Visit(context.sum()[1]));
+        var a = Visit(context.sum()[0]);
+        var b = Visit(context.sum()[1]);
+        var res = new FormulaResultPackage { Result = Math.Max(a.Result, b.Result) };
+        res.Dependencies.AddRange(a.Dependencies);
+        res.Dependencies.AddRange(b.Dependencies);
+        return res;
     }
 
-    public override double VisitMin(SomeGrammarParser.MinContext context)
+    public override FormulaResultPackage VisitMin(SomeGrammarParser.MinContext context)
     {
-        return Math.Min(Visit(context.sum()[0]), Visit(context.sum()[1]));
+        var a = Visit(context.sum()[0]);
+        var b = Visit(context.sum()[1]);
+        var res = new FormulaResultPackage { Result = Math.Min(a.Result, b.Result) };
+        res.Dependencies.AddRange(a.Dependencies);
+        res.Dependencies.AddRange(b.Dependencies);
+        return res;
     }
 
-    public override double VisitCell(SomeGrammarParser.CellContext context)
+    public override FormulaResultPackage VisitCell(SomeGrammarParser.CellContext context)
     {
-        throw new NotImplementedException("Cell linking is not implemented yet.");
         var cell = Models.Table.CellNameToNumbers(context.GetText());
-        return double.Parse(Models.Table.GetCellResult(cell.Item1, cell.Item2));
+        var res = new FormulaResultPackage
+        {
+            Result = Models.Table.GetCellNumericalResult(cell.Item1, cell.Item2)
+        };
+        res.Dependencies.Add(cell);
+        return res;
     }
 
-    public override double VisitFloat(SomeGrammarParser.FloatContext context)
+    public override FormulaResultPackage VisitFloat(SomeGrammarParser.FloatContext context)
     {
         var s = context.GetText();
-        return double.Parse(s);
+        return new FormulaResultPackage { Result = double.Parse(s) };
     }
 }

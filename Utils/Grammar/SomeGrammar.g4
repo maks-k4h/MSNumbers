@@ -23,7 +23,7 @@ dec:            'dec(' sum ')';
 max:            'max(' sum ',' sum ')';
 min:            'min(' sum ',' sum ')';
 
-cell:           LETTER INT;
+cell:           LETTER+ INT;
 float:          INT | '.' INT | INT '.' INT;
 LETTER:         [A-Z] | [a-z];
 INT:            [0-9]+;

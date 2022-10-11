@@ -1,12 +1,13 @@
 using System.Text.RegularExpressions;
-using MSNumbers.Utils;
+using MSNumbers.Models.Exceptions;
 using MSNumbers.Utils.Packing;
 
 namespace MSNumbers.Models;
 
 public static class Table
 {
-    public const int MaxColumns = 25;
+    private const int MaxColumns = 1024;
+    private const int MaxRows    = 1024;
     public static string Name { get; private set; }
     public static int Rows { get; private set; }
     public static int Columns { get; private set;  }
@@ -35,11 +36,10 @@ public static class Table
         _cells?.Clear();
         _cells = new Dictionary<(int, int), Cell>();
 
-        for (int i = 0; i < 20; ++i)
-        {
+        for (var i = 0; i < 10; ++i)
             AddColumn();
+        for (var i = 0; i < 10; ++i)
             AddRow();
-        }
     }
     
     public static void Save()
@@ -77,6 +77,8 @@ public static class Table
 
     public static void AddRow()
     {
+        if (Rows == MaxRows)
+            throw new Exception("Max number of rows reached!");
         for (int c = 0; c < Columns; ++c)
         {
             _cells.Add((Rows, c), new Cell());
@@ -84,9 +86,22 @@ public static class Table
         ++Rows;
     }
 
-    public static string GetCellResult(int row, int column)
+    public static string GetCellStringResult(int row, int column)
     {
-        return _cells[(row, column)].GetResult();
+        return _cells[(row, column)].StringValue;
+    }
+    
+    public static double GetCellNumericalResult(int row, int column)
+    {
+        try
+        {
+            return _cells[(row, column)].Value.Result;
+        }
+        catch (Exception)
+        {
+            // TODO remove debug message
+            throw new CellAccessException($"Бажана клітина ({NumbersToCellName(row, column)}) не може бути досягненою.");
+        }
     }
     
     public static string GetCellFormula(int row, int column)
@@ -94,25 +109,77 @@ public static class Table
         return _cells[(row, column)].GetFormula();
     }
 
+    public static Cell GetCell(int row, int column)
+    {
+        return _cells[(row, column)];
+    }
+
     // Returns the result of the formula applied.
     // If the formula is incorrect, proper exception is thrown
     // and the previous value is left.
-    public static string SetCellFormula(int row, int column, string formula)
+    public static void SetCellFormula(int row, int column, string formula)
     {
-        return _cells[(row, column)].SetFormula(formula);
+        _cells[(row, column)].SetFormula(formula);
     }
 
     public static (int, int) CellNameToNumbers(string name)
     {
-        if (!Regex.IsMatch(name, "[a-z][0-9]+", RegexOptions.IgnoreCase))
-            throw new Exception("Wrong Cell Name");
-        var col = name[0] >= 'a' ? name[0] - 'a' : name[0] - 'A';
-        var row = int.Parse(name[1..]) - 1; 
+        if (!Regex.IsMatch(name, "[a-z]+[0-9]+", RegexOptions.IgnoreCase))
+            throw new CellAccessException("Некоректно вказаний адрес клітини.");
+        name = name.ToUpper();
+        
+        var col = 0;
+        const int bs = 'Z' - 'A' + 1;
+        var accumulator = 0;
+        var p = 0;
+        while (name[0] >= 'A')
+        {
+            col += accumulator;
+            accumulator = accumulator == 0 ? bs : accumulator * bs;
+            p = p * bs + name[0] - 'A';
+            name = name[1..];
+        }
+
+        col += p;
+        
+        var row = int.Parse(name) - 1; 
         return (row, col);
     }
 
     public static string NumbersToCellName(int row, int col)
     {
-        return $"{(char)('A' + col)}{row + 1}";
+        if (col < 0)
+            throw new Exception("Incorrect cell address");
+        return NumberToAlphabeticSystem(col) + (row + 1).ToString();
+    }
+
+    public static string NumberToAlphabeticSystem(int n)
+    {
+        if (n < 0)
+            throw new Exception("Incorrect cell address");
+        const int bs = 'Z' - 'A' + 1;
+
+        string res = "";
+        int k = 1;
+        int accumulator = bs;
+        while (n - accumulator >= 0)
+        {
+            n -= accumulator;
+            accumulator *= bs;
+            ++k;
+        }
+
+        for (int i = 0; i < k; ++i)
+        {
+            res = (char)('A' + n % bs) + res;
+            n /= bs;
+        }
+
+        return res;
+    }
+    
+    public static string NumbersToCellName((int, int) address)
+    {
+        return NumbersToCellName(address.Item1, address.Item2);
     }
 }
