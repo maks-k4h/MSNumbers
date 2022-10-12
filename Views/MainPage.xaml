@@ -4,6 +4,10 @@
              x:Class="MSNumbers.Views.MainPage">
 
     <ContentPage.MenuBarItems>
+        <MenuBarItem Text="File">
+            <MenuFlyoutItem Text="Нова таблиця"
+                            Clicked="CreateButtonClicked" />
+        </MenuBarItem>
         <MenuBarItem Text="Help">
             <MenuFlyoutItem Text="Як це працює?"
                             Clicked="GetHelpClicked" />

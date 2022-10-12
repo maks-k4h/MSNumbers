@@ -5,9 +5,9 @@
 
     <ContentPage.MenuBarItems>
         <MenuBarItem Text="File">
-            <MenuFlyoutItem Text="Save"
+            <MenuFlyoutItem Text="Зберегти"
                             Clicked="SaveClicked" />
-            <MenuFlyoutItem Text="Save As"
+            <MenuFlyoutItem Text="Зберегти як"
                             Clicked="SaveAsClicked" />
         </MenuBarItem>
         <MenuBarItem Text="Help">

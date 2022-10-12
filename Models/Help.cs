@@ -4,6 +4,9 @@ public class Help
 {
     public string Title => AppInfo.Name;
     public string Version => AppInfo.VersionString;
-    public string Description => "Ця програма була написана мною. Якщо у вас виникли запитання, це ваші проблеми. " +
-                                 "C'est la vie.";
+    public string Description => "Довідка користувача знаходиться нижче. " +
+                                 "При виникненні запитань зверніться до постачальника ПЗ.";
+
+    public int DocumentationTitleFontSize => 26;
+    public int DocumentationFontSize => 19;
 }

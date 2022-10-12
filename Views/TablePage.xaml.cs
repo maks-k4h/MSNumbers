@@ -63,8 +63,9 @@ public partial class TablePage : ContentPage
 
     protected override void OnAppearing()
     {
-        base.OnAppearing();
+        UnselectCell();
         UpdateTitle();
+        base.OnAppearing();
     }
 
     private void InitializeFormulaEntry()
@@ -245,9 +246,7 @@ public partial class TablePage : ContentPage
 
     private void CellSelected(Button sender, int row, int col)
     {
-        // changing properties of the previously active cell
-        if (_selectedCell is not null)
-            _selectedCell.BorderColor = CellBorderColor;
+        UnselectCell();
         
         // updating info about current cell
         _selectedCell   = sender;
@@ -258,6 +257,18 @@ public partial class TablePage : ContentPage
         _selectedCell.BorderColor = SelectedCellBorderColor;
         
         SetFormulaEntryText(Table.GetCellFormula(row, col));
+    }
+
+    private void UnselectCell()
+    {
+        if (_selectedCell is not null)
+            _selectedCell.BorderColor = CellBorderColor;
+
+        _selectedCell   = null;
+        _selectedRow    = 0;
+        _selectedCol    = 0;
+        
+        SetFormulaEntryText("");
     }
 
     private void SetFormulaEntryText(string text)
