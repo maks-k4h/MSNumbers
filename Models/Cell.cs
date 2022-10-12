@@ -1,8 +1,10 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Antlr4.Runtime;
+using Antlr4.Runtime.Tree;
 using MSNumbers.Models.Exceptions;
 using MSNumbers.Utils.Grammar;
+using MSNumbers.Utils.Packing;
 
 namespace MSNumbers.Models;
 
@@ -10,7 +12,7 @@ public class Cell : INotifyPropertyChanged
 {
     public event PropertyChangedEventHandler PropertyChanged;
 
-    private const int Precision = 5;
+    private const int FloatingPointDisplayPrecision = 5;
     
     private string _formula = "";
     // Extra field for data binding
@@ -23,10 +25,27 @@ public class Cell : INotifyPropertyChanged
     // Anti-looping variable
     private bool _involved;
 
-    public FormulaResultPackage Value
+    ~Cell()
+    {
+        RemoveParents();
+    }
+    
+    public string StringValue
+    {
+        get => _stringValue;
+        set
+        {
+            _stringValue = value;
+            RaisePropertyChanged();
+        }
+    }
+
+    public double NumericalValue => _value.Result;
+
+    private FormulaResultPackage Value
     {
         get => _value;
-        private set
+        set
         {
             // remove old parents.
             // Explanation:
@@ -38,16 +57,6 @@ public class Cell : INotifyPropertyChanged
             
             _value = value;
             SetParents();
-        }
-    }
-
-    public string StringValue
-    {
-        get => _stringValue;
-        set
-        {
-            _stringValue = value;
-            RaisePropertyChanged();
         }
     }
 
@@ -87,33 +96,54 @@ public class Cell : INotifyPropertyChanged
     private void RemoveParents()
     {
         if (Value == null) return;
-        foreach (var parent in Value.Dependencies)
+        try
         {
-            Table.GetCell(parent.Item1, parent.Item2).RemoveChild(this);
+            foreach (var parent in Value.Dependencies)
+            {
+                Table.GetCell(parent.Item1, parent.Item2).RemoveChild(this);
+            }
+        }
+        catch (Exception) // Parent might already be deleted
+        {
+            // ignored
         }
     }
 
     private void CalculateResult()
     {
+        if (_formula.Contains(Serializer.ColumnDeliminator) || _formula.Contains(Serializer.RowDeliminator))
+            throw new Exception($"Формула не може містити '{Serializer.ColumnDeliminator}' !");
+        
         if (_formula.Length > 0 && _formula[0] == '=')
         {
             try
             {
-                var inputStream = new AntlrInputStream(_formula[1..]);
-                var lexer = new SomeGrammarLexer(inputStream);
+                // basic ANTLR tools initialization
+                var lexer = new SomeGrammarLexer(new AntlrInputStream(_formula[1..]));
                 var commonTokenStream = new CommonTokenStream(lexer);
                 var parser = new SomeGrammarParser(commonTokenStream);
-                var context = parser.line();
-                var visitor = new GrammarVisitor();
+                var visitor = new SomeGrammarVisitor();
 
+                // removing default listeners and setting custom ones
+                lexer.RemoveErrorListeners();
+                lexer.AddErrorListener(new ThrowExceptionErrorListener());
+                parser.RemoveErrorListeners();
+                parser.AddErrorListener(new ThrowExceptionErrorListener());
+
+                IParseTree context = parser.line();
                 Value = visitor.Visit(context);
-                
+
                 // setting string value needed for data binding
-                StringValue = Math.Round(Value.Result, Precision).ToString();
+                StringValue = Math.Round(Value.Result, FloatingPointDisplayPrecision).ToString();
             }
-            catch (CellAccessException)
+            catch (FormulaSyntaxException e)
             {
-                throw;
+                throw new Exception($"Синтаксична помилка на позиції {e.Position} " +
+                                    $"(після '{_formula[e.Position]}')");
+            }
+            catch (CellAccessException e)
+            {
+                throw new Exception(e.Message);
             }
             catch (Exception)
             {
@@ -122,8 +152,8 @@ public class Cell : INotifyPropertyChanged
         }
         else
         {
-            // DANGER: do not set empty string: maui doesn't get on with it:
-            // ghost values were observed.
+            // DANGER: do not set to an empty string: maui doesn't get on with it:
+            // ghost values appeared in cells that were previously emptied.
             StringValue = _formula.Length > 0? _formula : " ";
             Value = new FormulaResultPackage();
         }
@@ -142,11 +172,13 @@ public class Cell : INotifyPropertyChanged
         // Checking anti-looping variable
         if (_involved)
             throw new CellLoopException("Виявлено рекурсивне задання формули.");
+        
         // Setting anti-looping variable
         _involved = true;
+        
         try
         {
-            // do not use foreach since the collection is modified
+            // DO NOT use foreach since the collection IS modified
             for (var i = 0; i < _children.Count; ++i)
             {
                 _children[i].CalculateResult();
@@ -155,7 +187,7 @@ public class Cell : INotifyPropertyChanged
         }
         finally
         {
-            // Returning normal anti-looping state
+            // Returning anti-looping variable back to normal
             _involved = false;
         }
     }

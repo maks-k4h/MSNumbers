@@ -5,52 +5,47 @@ namespace MSNumbers.Views;
 
 public partial class SaveAsPage : ContentPage
 {
-    private Entry _filePathEntry;
-    private Label _messagLabel;
+    private readonly Label _messageLabel;
     
     public SaveAsPage()
     {
         InitializeComponent();
         
-        _filePathEntry = new Entry
+        var filePathEntry = new Entry
         {
-            Placeholder = "Введіть шлях",
-            FontSize = 18,
-            WidthRequest = 300
+            Placeholder     = "Введіть шлях",
+            FontSize        = 18,
+            WidthRequest    = 300
         };
 
         var button = new Button
         {
-            Text = "Зберегти",
-            FontSize = 18,
+            Text        = "Зберегти",
+            FontSize    = 18,
         };
-        button.Clicked += (sender, args) => Save(_filePathEntry.Text ?? "");
+        button.Clicked += (sender, args) => Save(filePathEntry.Text ?? "");
 
-        _messagLabel = new Label
+        _messageLabel = new Label
         {
-            FontSize = 16,
-            TextColor = Colors.Red,
-            Text = " ",
-            Padding = new Thickness(10, 5)
+            FontSize    = 16,
+            TextColor   = Colors.Red,
+            Text        = " ",
+            Padding     = new Thickness(10, 5)
         };
 
         Content = new VerticalStackLayout
         {
-            HorizontalOptions = LayoutOptions.Center,
-            VerticalOptions = LayoutOptions.Center,
+            HorizontalOptions   = LayoutOptions.Center,
+            VerticalOptions     = LayoutOptions.Center,
             Children =
             {
                 new HorizontalStackLayout
                 {
                     HorizontalOptions = LayoutOptions.Center,
                     VerticalOptions = LayoutOptions.Center,
-                    Children =
-                    {
-                        _filePathEntry,
-                        button
-                    }
+                    Children = { filePathEntry, button }
                 },
-                _messagLabel
+                _messageLabel
             }
         };
     }
@@ -71,6 +66,6 @@ public partial class SaveAsPage : ContentPage
 
     private void ShowMessage(string message)
     {
-        _messagLabel.Text = message;
+        _messageLabel.Text = message;
     }
 }

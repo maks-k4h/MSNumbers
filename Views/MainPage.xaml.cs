@@ -1,13 +1,12 @@
 ﻿using MSNumbers.Models;
-using MSNumbers.Utils;
 using MSNumbers.Utils.Packing;
 
 namespace MSNumbers.Views;
 
 public partial class MainPage : ContentPage
 {
-    private Entry _filePathEntry;
-    private Label _messageLabel;
+    private readonly Entry _filePathEntry;
+    private readonly Label _messageLabel;
 
     public MainPage()
     {
@@ -28,41 +27,41 @@ public partial class MainPage : ContentPage
 
         var createButton = new Button
         {
-            Text = "Створити",
-            FontSize = 22,
-            HeightRequest = 80,
-            Margin = 0,
+            Text            = "Створити",
+            FontSize        = 22,
+            HeightRequest   = 80,
+            Margin          = 0,
         };
 
         var openButton = new Button
         {
-            Text = "Відкрити",
-            FontSize = 22,
-            HeightRequest = 80,
-            Margin = 0,
+            Text            = "Відкрити",
+            FontSize        = 22,
+            HeightRequest   = 80,
+            Margin          = 0,
         };
 
         _filePathEntry = new Entry
         {
-            Placeholder = "Шлях до файлу",
+            Placeholder     = "Шлях до файлу",
             BackgroundColor = Colors.White,
-            FontSize = 20,
-            HeightRequest = 60
+            FontSize        = 20,
+            HeightRequest   = 60
         };
 
         var verticalStack = new VerticalStackLayout()
         {
             BackgroundColor = Colors.LightGray,
-            Spacing = 10,
-            Padding = 10
+            Spacing         = 10,
+            Padding         = 10
         };
 
         _messageLabel = new Label
         {
-            FontSize = 18,
-            TextColor = Colors.Red,
+            FontSize                = 18,
+            TextColor               = Colors.Red,
             HorizontalTextAlignment = TextAlignment.Center,
-            Text = ""
+            Text                    = ""
         };
 
         verticalStack.Add(createButton);
@@ -71,38 +70,44 @@ public partial class MainPage : ContentPage
         
         verticalStack.Add(_messageLabel);
 
-        createButton.Clicked += _createButtonClicked;
-        openButton.Clicked += _openButtonClicked;
+        createButton.Clicked += CreateButtonClicked;
+        openButton.Clicked += OpenButtonClicked;
+        
+        grid.Add(verticalStack, 0);
+        grid.Add(new Image
+        {
+            Source = "main_texture.jpg", 
+            Aspect = Aspect.AspectFill
+        },1);
 
-        grid.Add(verticalStack, 0, 0);
         Content = grid;
     }
 
     protected override void OnAppearing()
     {
         base.OnAppearing();
-        _showMessage("");
+        ShowMessage("");
     }
 
-    private async void _createButtonClicked(object sender, EventArgs args)
+    private async void CreateButtonClicked(object sender, EventArgs args)
     {
         try
         {
-            Models.Table.CreateBlank();
+            Table.CreateBlank();
             await Shell.Current.GoToAsync(nameof(TablePage));
         }
         catch (Exception e)
         {
-            _showMessage($"{e.Message}");
+            ShowMessage($"{e.Message}");
         }
     }
     
-    private void _openButtonClicked(object sender, EventArgs args)
+    private void OpenButtonClicked(object sender, EventArgs args)
     {
-         _openFromFile((string)_filePathEntry.Text);
+         _openFromFile(_filePathEntry.Text);
     }
 
-    private void _showMessage(string message)
+    private void ShowMessage(string message)
     {
         _messageLabel.Text = message;
     }
@@ -116,24 +121,15 @@ public partial class MainPage : ContentPage
         }
         catch (FileNotFoundException)
         {
-            _showMessage("Шлях до таблиці невірний!");
-        }
-        catch (WrongFileFormatException)
-        {
-            _showMessage("Формат файлу не підтримується!");
-        }
-        catch (DamagedFileException)
-        {
-            _showMessage("Файл пошкодженно!");
+            ShowMessage("Шлях до таблиці невірний!");
         }
         catch (Exception e)
         {
-            // TODO remove debug message
-            _showMessage($"Файл пошкодженно! {e}");
+            ShowMessage($"Файл пошкодженно!");
         }
     }
 
-    private void getHelpClicked(object sender, EventArgs e)
+    private void GetHelpClicked(object sender, EventArgs e)
     {
         Shell.Current.GoToAsync(nameof(HelpPage));
     }

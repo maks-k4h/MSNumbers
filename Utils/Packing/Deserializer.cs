@@ -8,11 +8,12 @@ public static class Deserializer
     {
         if (!File.Exists(path))
             throw new FileNotFoundException();
+        
         Deserialize(File.ReadAllText(path));
         Table.SetPath(path);
     }
 
-    public static void Deserialize(string content)
+    private static void Deserialize(string content)
     {
         Table.Clean();
         try
@@ -25,9 +26,6 @@ public static class Deserializer
             
             for (var row = 0; row < splitContent.Length; ++row)
             {
-                // if (splitContent[row].Trim().Length == 0)
-                //     break;
-                
                 var cellsContent = splitContent[row].Split(';');
                 
                 if (cellsContent.Length < Table.Columns)
@@ -45,11 +43,9 @@ public static class Deserializer
                 }
             }
         }
-        catch (Exception e)
+        catch (Exception)
         {
-            // TODO Change the error message
-            // TODO don't forget to test opening damaged files before
-            throw e;
+            throw new DamagedFileException("Файл пошкодженно!");
         }
     }
 }

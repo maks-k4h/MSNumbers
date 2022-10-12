@@ -11,16 +11,18 @@ public partial class TablePage : ContentPage
     private static readonly Color LeadingCellColor          = Colors.LightGray;
     private static readonly Color CellColor                 = Colors.White;
     private static readonly Color CellBorderColor           = Colors.LightGray;
-    private static readonly Color SelectedCellBorderColor   = Colors.Black;
+    private static readonly Color SelectedCellBorderColor   = Colors.MediumSlateBlue;
 
     // Available data cells
-    private int _rows                                   = 0;
-    private int _columns                                = 0;
+    private int _rows;
+    private int _columns;
 
-    private int _selectedRow                            = 0;
-    private int _selectedCol                            = 0;
-    private Button _selectedCell                        = null;
+    // selected cell information
+    private int _selectedRow;
+    private int _selectedCol;
+    private Button _selectedCell;
     
+    // ui elements
     private Grid _grid;
     private Entry _formulaEntry;
     private Label _statusLabel;
@@ -76,6 +78,7 @@ public partial class TablePage : ContentPage
             Margin              = 10,
             FontSize            = 18,
         };
+        _formulaEntry.Completed += (sender, args) =>  FormulaEdited(_formulaEntry.Text ?? "");
     }
 
     private void InitializeDataGrid()
@@ -147,7 +150,7 @@ public partial class TablePage : ContentPage
             RenderCell(_rows + 1, 0);
 
             // Adding remaining cells
-            for (int c = 0; c < _columns; ++c)
+            for (var c = 0; c < _columns; ++c)
             { RenderCell(_rows + 1, c + 1); }
             
             ++_rows;
@@ -167,7 +170,7 @@ public partial class TablePage : ContentPage
             RenderCell( 0, _columns + 1);
             
             // Adding remaining cells
-            for (int r = 0; r < _rows; ++r)
+            for (var r = 0; r < _rows; ++r)
             {
                 RenderCell(r + 1, _columns + 1);
             }
@@ -180,9 +183,9 @@ public partial class TablePage : ContentPage
         }
     }
 
-    // render either leading or data cell
-    // 0 row/col are leading, 1 row/col correspond to
-    // first data row/col, i.e. have 0 row/col id
+    // render either leading or data cell;
+    // 0 row/col are leading, 1 row/col corresponds to
+    // the first data row/col, i.e. having 0 row/col id
     // in the data table
     private void RenderCell(int row, int col)
     {
@@ -197,22 +200,22 @@ public partial class TablePage : ContentPage
         {
             _grid.Add(new Label
             {
-                BackgroundColor = LeadingCellColor,
-                Text = $"{Table.NumberToAlphabeticSystem(col - 1)}",
+                BackgroundColor         = LeadingCellColor,
+                Text                    = $"{Table.NumberToAlphabeticSystem(col - 1)}",
                 HorizontalTextAlignment = TextAlignment.Center,
-                VerticalTextAlignment = TextAlignment.Center,
-                FontSize = CellFontSize
+                VerticalTextAlignment   = TextAlignment.Center,
+                FontSize                = CellFontSize
             }, col, row);
         }
         else if (col == 0)
         {
             _grid.Add(new Label
             {
-                BackgroundColor = LeadingCellColor,
-                Text = $"{row}",
+                BackgroundColor         = LeadingCellColor,
+                Text                    = $"{row}",
                 HorizontalTextAlignment = TextAlignment.Center,
-                VerticalTextAlignment = TextAlignment.Center,
-                FontSize = CellFontSize
+                VerticalTextAlignment   = TextAlignment.Center,
+                FontSize                = CellFontSize
             }, col, row);
         }
         else
@@ -220,12 +223,12 @@ public partial class TablePage : ContentPage
             // creating frontend
             var button = new Button
             {
-                Background = CellColor,
-                TextColor = Colors.Black,
-                BorderWidth = 2,
-                BorderColor = CellBorderColor,
-                CornerRadius = 0,
-                FontSize = CellFontSize
+                Background              = CellColor,
+                TextColor               = Colors.Black,
+                BorderWidth             = 2,
+                BorderColor             = CellBorderColor,
+                CornerRadius            = 0,
+                FontSize                = CellFontSize
             };
             
             // setting data binding
@@ -233,10 +236,7 @@ public partial class TablePage : ContentPage
             button.SetBinding(Button.TextProperty, nameof(Cell.StringValue));
             
             // adding on-clicked action
-            button.Clicked += (sender, args) =>
-            {
-                CellSelected((Button)sender, row - 1, col - 1);
-            };
+            button.Clicked += (sender, args) => CellSelected((Button)sender, row - 1, col - 1);
             
             // "rendering" the button
             _grid.Add(button, col, row);
@@ -250,13 +250,13 @@ public partial class TablePage : ContentPage
             _selectedCell.BorderColor = CellBorderColor;
         
         // updating info about current cell
-        _selectedCell = sender;
-        _selectedRow = row;
-        _selectedCol = col;
+        _selectedCell   = sender;
+        _selectedRow    = row;
+        _selectedCol    = col;
         
-        // setting current cell color
+        // updating visual properties selected cell
         _selectedCell.BorderColor = SelectedCellBorderColor;
-
+        
         SetFormulaEntryText(Table.GetCellFormula(row, col));
     }
 

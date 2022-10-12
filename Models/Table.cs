@@ -8,12 +8,15 @@ public static class Table
 {
     private const int MaxColumns = 1024;
     private const int MaxRows    = 1024;
+    
     public static string Name { get; private set; }
     public static int Rows { get; private set; }
     public static int Columns { get; private set;  }
-
-    private static Dictionary<(int, int), Cell> _cells;
+    
     private static string _path;
+
+    // cells pool
+    private static Dictionary<(int, int), Cell> _cells;
 
     public static void Clean()
     {
@@ -28,13 +31,7 @@ public static class Table
     
     public static void CreateBlank()
     {
-        Name    = "Нова Таблиця";
-        _path   = string.Empty;
-        Rows    = 0;
-        Columns = 0;
-        
-        _cells?.Clear();
-        _cells = new Dictionary<(int, int), Cell>();
+        Clean();
 
         for (var i = 0; i < 10; ++i)
             AddColumn();
@@ -65,20 +62,19 @@ public static class Table
 
     public static void AddColumn()
     {
-        if (Columns == MaxColumns)
-            throw new Exception("Max number of columns reached!");
+        if (Columns >= MaxColumns)
+            throw new Exception("Досягнено максимальну кількість стовпчиків!");
         for (int r = 0; r < Rows; ++r)
         {
             _cells.Add((r, Columns), new Cell());
-            
         }
         ++Columns;
     }
 
     public static void AddRow()
     {
-        if (Rows == MaxRows)
-            throw new Exception("Max number of rows reached!");
+        if (Rows >= MaxRows)
+            throw new Exception("Досягнено максимальну кількість рядків!");
         for (int c = 0; c < Columns; ++c)
         {
             _cells.Add((Rows, c), new Cell());
@@ -88,30 +84,29 @@ public static class Table
 
     public static string GetCellStringResult(int row, int column)
     {
-        return _cells[(row, column)].StringValue;
+        return GetCell(row, column).StringValue;
     }
     
     public static double GetCellNumericalResult(int row, int column)
     {
-        try
-        {
-            return _cells[(row, column)].Value.Result;
-        }
-        catch (Exception)
-        {
-            // TODO remove debug message
-            throw new CellAccessException($"Бажана клітина ({NumbersToCellName(row, column)}) не може бути досягненою.");
-        }
+        return GetCell(row, column).NumericalValue;
     }
     
     public static string GetCellFormula(int row, int column)
     {
-        return _cells[(row, column)].GetFormula();
+        return GetCell(row, column).GetFormula();
     }
 
     public static Cell GetCell(int row, int column)
     {
-        return _cells[(row, column)];
+        try{
+            return _cells[(row, column)];
+        }
+        catch (Exception)
+        {
+            throw new CellAccessException(
+                $"Клітина {NumbersToCellName(row, column)} не може бути досягненою.");
+        }
     }
 
     // Returns the result of the formula applied.
@@ -124,9 +119,10 @@ public static class Table
 
     public static (int, int) CellNameToNumbers(string name)
     {
-        if (!Regex.IsMatch(name, "[a-z]+[0-9]+", RegexOptions.IgnoreCase))
-            throw new CellAccessException("Некоректно вказаний адрес клітини.");
         name = name.ToUpper();
+        
+        if (!Regex.IsMatch(name, "[A-Z]+[0-9]+"))
+            throw new CellAccessException("Некоректно вказана адреса клітини.");
         
         var col = 0;
         const int bs = 'Z' - 'A' + 1;
@@ -149,14 +145,14 @@ public static class Table
     public static string NumbersToCellName(int row, int col)
     {
         if (col < 0)
-            throw new Exception("Incorrect cell address");
+            throw new CellAccessException("Некоректно вказана адреса клітини.");
         return NumberToAlphabeticSystem(col) + (row + 1).ToString();
     }
 
     public static string NumberToAlphabeticSystem(int n)
     {
         if (n < 0)
-            throw new Exception("Incorrect cell address");
+            throw new CellAccessException("Некоректно вказана адреса клітини.");
         const int bs = 'Z' - 'A' + 1;
 
         string res = "";
