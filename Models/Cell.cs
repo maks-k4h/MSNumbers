@@ -25,11 +25,6 @@ public class Cell : INotifyPropertyChanged
     // Anti-looping variable
     private bool _involved;
 
-    ~Cell()
-    {
-        RemoveParents();
-    }
-    
     public string StringValue
     {
         get => _stringValue;
@@ -64,6 +59,11 @@ public class Cell : INotifyPropertyChanged
     {
         Value = new FormulaResultPackage();
     }
+
+    ~Cell()
+    {
+        RemoveParents();
+    }
     
     private void RaisePropertyChanged([CallerMemberName] string propertyName = null)
     {
@@ -87,7 +87,7 @@ public class Cell : INotifyPropertyChanged
         {
             // Rolling back to previous formula
             _formula = temp;
-            CalculateResult(); // TODO: check if it's always correct
+            CalculateResult();
             UpdateChildren();
             throw;
         }
@@ -111,8 +111,8 @@ public class Cell : INotifyPropertyChanged
 
     private void CalculateResult()
     {
-        if (_formula.Contains(Serializer.ColumnDeliminator) || _formula.Contains(Serializer.RowDeliminator))
-            throw new Exception($"Формула не може містити '{Serializer.ColumnDeliminator}' !");
+        if (_formula.Contains(Serializer.ColumnDelimiter) || _formula.Contains(Serializer.RowDelimiter))
+            throw new Exception($"Формула не може містити '{Serializer.ColumnDelimiter}' !");
         
         if (_formula.Length > 0 && _formula[0] == '=')
         {

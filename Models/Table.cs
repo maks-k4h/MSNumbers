@@ -114,7 +114,7 @@ public static class Table
     // and the previous value is left.
     public static void SetCellFormula(int row, int column, string formula)
     {
-        _cells[(row, column)].SetFormula(formula);
+        GetCell(row, column).SetFormula(formula);
     }
 
     public static (int, int) CellNameToNumbers(string name)
@@ -149,6 +149,11 @@ public static class Table
         return NumberToAlphabeticSystem(col) + (row + 1).ToString();
     }
 
+    public static string NumbersToCellName((int, int) address)
+    {
+        return NumbersToCellName(address.Item1, address.Item2);
+    }
+
     public static string NumberToAlphabeticSystem(int n)
     {
         if (n < 0)
@@ -172,10 +177,5 @@ public static class Table
         }
 
         return res;
-    }
-    
-    public static string NumbersToCellName((int, int) address)
-    {
-        return NumbersToCellName(address.Item1, address.Item2);
     }
 }

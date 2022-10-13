@@ -50,7 +50,7 @@ public partial class SaveAsPage : ContentPage
         };
     }
 
-    private async Task Save(string path)
+    private async void Save(string path)
     {
         if (path.Length == 0)
         {

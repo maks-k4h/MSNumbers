@@ -4,8 +4,8 @@ namespace MSNumbers.Utils.Packing;
 
 public static class Serializer
 {
-    public const char ColumnDeliminator = ';';
-    public const char RowDeliminator = '\n';
+    public const char ColumnDelimiter = ';';
+    public const char RowDelimiter = '\n';
     
     public static void ToFile(string path)
     {
@@ -22,10 +22,10 @@ public static class Serializer
             {
                 res += Table.GetCellFormula(row, col);
                 if (col != Table.Columns - 1) 
-                    res += ColumnDeliminator;
+                    res += ColumnDelimiter;
             }
             if (row != Table.Rows - 1) 
-                res += RowDeliminator;
+                res += RowDelimiter;
         }
         
         return res;

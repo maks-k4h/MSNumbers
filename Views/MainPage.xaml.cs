@@ -102,9 +102,9 @@ public partial class MainPage : ContentPage
         }
     }
     
-    private void OpenButtonClicked(object sender, EventArgs args)
+    private async void OpenButtonClicked(object sender, EventArgs args)
     {
-         _openFromFile(_filePathEntry.Text);
+        OpenFromFile(_filePathEntry.Text);
     }
 
     private void ShowMessage(string message)
@@ -112,7 +112,7 @@ public partial class MainPage : ContentPage
         _messageLabel.Text = message;
     }
 
-    private async void _openFromFile(string path)
+    private async void OpenFromFile(string path)
     {
         try
         {

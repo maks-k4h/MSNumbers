@@ -18,7 +18,7 @@ public static class Deserializer
         Table.Clean();
         try
         {
-            var splitContent = content.Split('\n');
+            var splitContent = content.Split(Serializer.RowDelimiter);
             
             // extending the table
             while (Table.Rows < splitContent.Length)
@@ -26,7 +26,7 @@ public static class Deserializer
             
             for (var row = 0; row < splitContent.Length; ++row)
             {
-                var cellsContent = splitContent[row].Split(';');
+                var cellsContent = splitContent[row].Split(Serializer.ColumnDelimiter);
                 
                 if (cellsContent.Length < Table.Columns)
                     break;
