@@ -17,5 +17,3 @@ MSNumbers - це офісна комп'ютерна програма. Потрі
 <img width="1440" alt="Screenshot 2022-10-13 at 13 18 56" src="https://user-images.githubusercontent.com/54114277/195572305-f4fe14e9-9fcf-4d2c-93f3-540c5642118f.png">
 <img width="1440" alt="Screenshot 2022-10-13 at 13 18 28" src="https://user-images.githubusercontent.com/54114277/195572307-962039e7-2f4c-4743-9d1e-824acaedaa3c.png">
 <img width="1106" alt="Screenshot 2022-10-13 at 13 17 54" src="https://user-images.githubusercontent.com/54114277/195572311-df87f866-2d34-498f-a407-ee733f273f3e.png">
-
-<img width="1440" alt="image" src="https://user-images.githubusercontent.com/54114277/195572917-57e24153-4dc4-4828-b0e1-49fa0461a8f6.png">
