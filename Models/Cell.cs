@@ -16,7 +16,6 @@ public class Cell : INotifyPropertyChanged
     
     private string _formula = "";
     // Extra field for data binding
-    private FormulaResultPackage _value;
     private string _stringValue;
     
     // List of dependent cells (after current cell is updated, those must be visited too)
@@ -35,25 +34,9 @@ public class Cell : INotifyPropertyChanged
         }
     }
 
-    public double NumericalValue => _value.Result;
+    public double NumericalValue => Value.Result;
 
-    private FormulaResultPackage Value
-    {
-        get => _value;
-        set
-        {
-            // remove old parents.
-            // Explanation:
-            // We actually say "Hey you, my old parents, now I have new 
-            // value, so I don't depend on you from now on. You'd better  
-            // forget about me and don't bother me every time you are 
-            // updated or so."
-            RemoveParents();
-            
-            _value = value;
-            SetParents();
-        }
-    }
+    private FormulaResultPackage Value { get; set; }
 
     public Cell()
     {
@@ -77,19 +60,33 @@ public class Cell : INotifyPropertyChanged
         {
             _formula = formula.Trim();
 
+            // remove old parents.
+            // Explanation:
+            // We actually say "Hey you, my old parents. I no longer
+            // need your updates, so don't bother me if something is
+            // changed!"
+            RemoveParents();
+
             // calculating result
             CalculateResult();
-
-            // updating dependent cells
-            UpdateChildren();
         }
         catch (Exception)
         {
             // Rolling back to previous formula
             _formula = temp;
             CalculateResult();
-            UpdateChildren();
             throw;
+        }
+        finally
+        {
+            // after either new or old formula was set we have to
+            
+            // update our parents or, informally, subscribe for 
+            // their updates
+            SetParents();
+            // and update dependent cells or cells that are
+            // subscribed to this
+            UpdateChildren();
         }
     }
 
@@ -108,7 +105,8 @@ public class Cell : INotifyPropertyChanged
             // ignored
         }
     }
-
+    
+    
     private void CalculateResult()
     {
         if (_formula.Contains(Serializer.ColumnDelimiter) || _formula.Contains(Serializer.RowDelimiter))
@@ -179,10 +177,10 @@ public class Cell : INotifyPropertyChanged
         try
         {
             // DO NOT use foreach since the collection IS modified
-            for (var i = 0; i < _children.Count; ++i)
+            foreach (var child in _children)
             {
-                _children[i].CalculateResult();
-                _children[i].UpdateChildren();
+                child.CalculateResult();
+                child.UpdateChildren();
             }
         }
         finally
