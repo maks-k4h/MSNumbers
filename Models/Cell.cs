@@ -176,7 +176,6 @@ public class Cell : INotifyPropertyChanged
         
         try
         {
-            // DO NOT use foreach since the collection IS modified
             foreach (var child in _children)
             {
                 child.CalculateResult();
