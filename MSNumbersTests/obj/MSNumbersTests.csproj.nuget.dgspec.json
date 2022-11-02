@@ -1,0 +1,88 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/makskonevych/Documents/C#/Labs/MSNumbersTests/MSNumbersTests/MSNumbersTests.csproj": {}
+  },
+  "projects": {
+    "/Users/makskonevych/Documents/C#/Labs/MSNumbersTests/MSNumbersTests/MSNumbersTests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/makskonevych/Documents/C#/Labs/MSNumbersTests/MSNumbersTests/MSNumbersTests.csproj",
+        "projectName": "MSNumbersTests",
+        "projectPath": "/Users/makskonevych/Documents/C#/Labs/MSNumbersTests/MSNumbersTests/MSNumbersTests.csproj",
+        "packagesPath": "/Users/makskonevych/.nuget/packages/",
+        "outputPath": "/Users/makskonevych/Documents/C#/Labs/MSNumbersTests/MSNumbersTests/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/makskonevych/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "/usr/local/share/dotnet/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Antlr4.Runtime.Standard": {
+              "target": "Package",
+              "version": "[4.11.1, )"
+            },
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.2.0, )"
+            },
+            "coverlet.collector": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.2, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.4.2, )"
+            },
+            "xunit.runner.visualstudio": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.4.5, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.100-rc.2.22477.23/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
