@@ -1,0 +1,59 @@
+is_global = true
+build_property.TargetFramework = net7.0-maccatalyst
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = MSNumbers
+build_property.ProjectDir = /Users/makskonevych/Documents/C#/Labs/MSNumbers/MSNumbers/
+
+[/Users/makskonevych/Documents/C\#/Labs/MSNumbers/MSNumbers/App.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MSNumbers.App.xaml
+build_metadata.AdditionalFiles.TargetPath = App.xaml
+build_metadata.AdditionalFiles.RelativePath = App.xaml
+
+[/Users/makskonevych/Documents/C\#/Labs/MSNumbers/MSNumbers/AppShell.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MSNumbers.AppShell.xaml
+build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
+build_metadata.AdditionalFiles.RelativePath = AppShell.xaml
+
+[/Users/makskonevych/Documents/C\#/Labs/MSNumbers/MSNumbers/Resources/Styles/Colors.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MSNumbers.Resources.Styles.Colors.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources/Styles/Colors.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources/Styles/Colors.xaml
+
+[/Users/makskonevych/Documents/C\#/Labs/MSNumbers/MSNumbers/Resources/Styles/Styles.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MSNumbers.Resources.Styles.Styles.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources/Styles/Styles.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources/Styles/Styles.xaml
+
+[/Users/makskonevych/Documents/C\#/Labs/MSNumbers/MSNumbers/Views/HelpPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MSNumbers.Views.HelpPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views/HelpPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views/HelpPage.xaml
+
+[/Users/makskonevych/Documents/C\#/Labs/MSNumbers/MSNumbers/Views/MainPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MSNumbers.Views.MainPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views/MainPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views/MainPage.xaml
+
+[/Users/makskonevych/Documents/C\#/Labs/MSNumbers/MSNumbers/Views/SaveAsPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MSNumbers.Views.SaveAsPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views/SaveAsPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views/SaveAsPage.xaml
+
+[/Users/makskonevych/Documents/C\#/Labs/MSNumbers/MSNumbers/Views/TablePage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MSNumbers.Views.TablePage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views/TablePage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views/TablePage.xaml

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:MSNumbers.Models"
+             x:Class="MSNumbers.Views.HelpPage"
+             Title="Допомога">
+    
+    <ContentPage.BindingContext>
+        <models:Help></models:Help>
+    </ContentPage.BindingContext>
+    
+    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
+        <VerticalStackLayout Margin="10">
+            <Label Text="{Binding Title}" FontSize="50" FontAttributes="Bold"></Label>
+            <HorizontalStackLayout Margin="3">
+                <Label Text="Версія " FontAttributes="Italic"></Label>
+                <Label Text="{Binding Version}" FontAttributes="Italic"></Label>
+            </HorizontalStackLayout>
+        </VerticalStackLayout> 
+        <Label Text="{Binding Description}" Margin="10" FontSize="{Binding DocumentationFontSize}" WidthRequest="700"></Label>
+        <ScrollView HeightRequest="400" WidthRequest="700">
+            <VerticalStackLayout WidthRequest="700" HeightRequest="3000">
+                <Label Margin="0,10"  FontSize="{Binding DocumentationTitleFontSize}" FontAttributes="Bold">Поширені запитання</Label>
+                
+                <Label Margin="0,10,0,0"  FontSize="{Binding DocumentationTitleFontSize}">Що таке MSNumbers?</Label>
+                <Label FontSize = "{Binding DocumentationFontSize}" Text="MSNumbers - це офісна комп'ютерна програма. Потрібна вона для проведення розрахунків, аналізу даних, прогнозування, обчислення простих і складних функцій. Дане ПЗ розраховане, в першу чергу, для бухгалтерів, аналітиків, економістів і усіх, хто робить розрахунки."></Label>
+                <Label FontSize = "{Binding DocumentationFontSize}" Text="Фактично є великою таблицею, в яку можна вносити дані, тобто друкувати слова і числа. Також, використовуючи функції цієї програми, можна робити з числами різні маніпуляції: додавати, віднімати, множити, ділити, здійснювати консолідацію даних, робити складні масиви даних які автоматично оновлюватимуться при грамотному складанні."></Label>
+                
+                <Label Margin="0,10,0,0"  FontSize="{Binding DocumentationTitleFontSize}">Як створити нову таблицю?</Label>
+                <Label FontSize = "{Binding DocumentationFontSize}" Text="Для створення нової таблиці достатньо натиснути 'Створити' на головній сторінці програми, або у верхньому відкрити вкладку 'File' та обрати відповідну опцію."></Label>
+                
+                <Label Margin="0,10,0,0"  FontSize="{Binding DocumentationTitleFontSize}">Як зберегти таблицю?</Label>
+                <Label FontSize = "{Binding DocumentationFontSize}" Text="Під час редагування талблиці у меню зверху натисність 'Зберегти як'. Вас буде перенесено на нову сторінку, де ви зможете ввести потрібний шлях та імʼя файлу, у який повинна бути збереженою таблиця. Увага: якщо файл з даним імʼям уже існує по вказаному шляху, він буде перезаписаним. Після збереження вас поверне на сторінку редагування таблиці, де ви зможете продовжити роботу. Заголовок у верхній частині файлу зміниться на шлях до даної таблиці у файловому менеджері."></Label>
+                <Label FontSize = "{Binding DocumentationFontSize}" Text="Якщо ви хочете зберегти зміни в існуючій таблиці, достатньо натиснути у меню зверху 'Зберегти'. Повідомлення про успішність повинно зʼявитися у нижній частині екрана."></Label>
+                
+                <Label Margin="0,10,0,0"  FontSize="{Binding DocumentationTitleFontSize}">Як відкрити існуючу таблицю?</Label>
+                <Label FontSize = "{Binding DocumentationFontSize}" Text="Щоб відкрити існуючу таблицю достатньо ввести шлях до відповідного файлу у полі на головній сторінці програми та натиснути 'Відкрити'. Якщо файл існує, його формат підтримується та при відкритті не виникне жодних помилок, вас буде перенесено на сторінку перегляду/редагування цієї таблиці. Важливо: для збереження змін необхідно натиснути 'Зберегти' у вкладці 'File' верхнього меню (див. Як зберегти таблицю?)."></Label>
+                
+                <Label Margin="0,10,0,0"  FontSize="{Binding DocumentationTitleFontSize}">Чому при посиланні на клітину її значення 0, хоча відображається інше числове знаення?</Label>
+                <Label FontSize = "{Binding DocumentationFontSize}" Text="Ненульові значення можуть мати тільки ті клітини, значення яких задано чисельною формулою (див. Що таке чисельна формула в MSNumbers?), а не текстовою."></Label>
+                
+                <Label Margin="0,10,0,0"  FontSize="{Binding DocumentationTitleFontSize}">Що таке формула в MSNumbers?</Label>
+                <Label FontSize = "{Binding DocumentationFontSize}" Text="Формула в MSNumbers є описом значення клітини. Формули можуть бути текстовими або чисельними."></Label>
+                <Label FontSize = "{Binding DocumentationFontSize}" Text="Вміст текстових формул фактично відображається як текстове значення відповідних клітин; водночас числове значення такої клітини дорівнює 0."></Label>
+                <Label FontSize = "{Binding DocumentationFontSize}" Text="Чисельні формули починаються символом '=' та задають числове значення відповідної клітини. Чисельні формули також задають текстове значення, яке є результатом обчислення. (див. Як задавати чисельні формули?)"></Label>
+                
+                <Label Margin="0,10,0,0"  FontSize="{Binding DocumentationTitleFontSize}">Як задавати чисельні формули?</Label>
+                <Label FontSize = "{Binding DocumentationFontSize}" Text="Щоб формула стала чисельною, вона повинна починатися символом '='."></Label>
+                <Label FontSize = "{Binding DocumentationFontSize}" Text="Операції здійснюються над дійсними константами (наприклад 12.3, 0.25, 19, .125) та посиланнями на клітини (наприклад AD9, k4, L14)."></Label>
+                <Label FontSize = "{Binding DocumentationFontSize}" Text="Доступні такі операції:"></Label>
+                <Label FontSize = "{Binding DocumentationFontSize}" Text="   - Бінарні: +, -, *, / ."></Label>
+                <Label FontSize = "{Binding DocumentationFontSize}" Text="   - Піднесення у спенінь: ^ ."></Label>
+                <Label FontSize = "{Binding DocumentationFontSize}" Text="   - Збільшення значення на 1: inc( ) ."></Label>
+                <Label FontSize = "{Binding DocumentationFontSize}" Text="   - Зменшення значення на 1: dec( ) ."></Label>
+                <Label FontSize = "{Binding DocumentationFontSize}" Text="   - Визначення більшого/меншого з чисел: max( , ) , min( , ) ."></Label>
+                <Label FontSize = "{Binding DocumentationFontSize}" Text="   - Взяття в дужки ( ) ."></Label>
+                <Label FontSize = "{Binding DocumentationFontSize}" Text="Для читабельності рекомедуємо використовувати пробіли. Вони ігноруються програмним забезпеченням, але спрощують сприйняття формул."></Label>
+                
+                <Label Margin="0,10,0,0"  FontSize="{Binding DocumentationTitleFontSize}">Чому клітина не може бути досягненою?</Label>
+                <Label FontSize = "{Binding DocumentationFontSize}" Text="Оскільки клітина з відповідною адресою відсутня у вашій таблиці. Для визначення адреси бажаної клітини використовуйте маргінальні позначення рядків та стовпчиків. Якщо, наприклад, клітина знаходиться у рядку 5 та стовпчику F, то її адреса F5."></Label>
+                
+                <Label Margin="0,10,0,0" FontSize="{Binding DocumentationTitleFontSize}">Що означає "виявлено рекурсивне задання формули?"</Label>
+                <Label FontSize = "{Binding DocumentationFontSize}" Text="Це означає для обчислення чисельного результату формули поточної клітини необхідно знати значення цієї ж клітини. Такий рекурчисний звʼязок може бути як прямим (наприклад, для обчислення значення A6 необхідне значення A6), так і з посередниками (наприклад, для оючислення значення клітини A1 необхідно значення клітини B3, для обчислення B3 необхідно C5, а для C5 потрібне значення A1. Отримали замкнений звʼязок). MSNumbers попереджає про такі цикли та не дозволяє їх задання."></Label>
+            </VerticalStackLayout>
+        </ScrollView>
+    </VerticalStackLayout>
+
+</ContentPage>

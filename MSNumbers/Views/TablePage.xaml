@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MSNumbers.Views.TablePage">
+
+    <ContentPage.MenuBarItems>
+        <MenuBarItem Text="File">
+            <MenuFlyoutItem Text="Зберегти"
+                            Clicked="SaveClicked" />
+            <MenuFlyoutItem Text="Зберегти як"
+                            Clicked="SaveAsClicked" />
+        </MenuBarItem>
+        <MenuBarItem Text="Help">
+            <MenuFlyoutItem Text="Як це працює?"
+                            Clicked="GetHelpClicked" />
+        </MenuBarItem>
+    </ContentPage.MenuBarItems>
+
+</ContentPage>

@@ -1,0 +1,580 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MSNumbers</name>
+    </assembly>
+    <members>
+        <member name="T:SomeGrammarBaseListener">
+            <summary>
+            This class provides an empty implementation of <see cref="T:ISomeGrammarListener"/>,
+            which can be extended to create a listener which only needs to handle a subset
+            of the available methods.
+            </summary>
+        </member>
+        <member name="M:SomeGrammarBaseListener.EnterLine(SomeGrammarParser.LineContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:SomeGrammarParser.line"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:SomeGrammarBaseListener.ExitLine(SomeGrammarParser.LineContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:SomeGrammarParser.line"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:SomeGrammarBaseListener.EnterSum(SomeGrammarParser.SumContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:SomeGrammarParser.sum"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:SomeGrammarBaseListener.ExitSum(SomeGrammarParser.SumContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:SomeGrammarParser.sum"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:SomeGrammarBaseListener.EnterAddend(SomeGrammarParser.AddendContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:SomeGrammarParser.addend"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:SomeGrammarBaseListener.ExitAddend(SomeGrammarParser.AddendContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:SomeGrammarParser.addend"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:SomeGrammarBaseListener.EnterMultiplier(SomeGrammarParser.MultiplierContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:SomeGrammarParser.multiplier"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:SomeGrammarBaseListener.ExitMultiplier(SomeGrammarParser.MultiplierContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:SomeGrammarParser.multiplier"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:SomeGrammarBaseListener.EnterAtomic(SomeGrammarParser.AtomicContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:SomeGrammarParser.atomic"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:SomeGrammarBaseListener.ExitAtomic(SomeGrammarParser.AtomicContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:SomeGrammarParser.atomic"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:SomeGrammarBaseListener.EnterEnclosed_sum(SomeGrammarParser.Enclosed_sumContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:SomeGrammarParser.enclosed_sum"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:SomeGrammarBaseListener.ExitEnclosed_sum(SomeGrammarParser.Enclosed_sumContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:SomeGrammarParser.enclosed_sum"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:SomeGrammarBaseListener.EnterInc(SomeGrammarParser.IncContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:SomeGrammarParser.inc"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:SomeGrammarBaseListener.ExitInc(SomeGrammarParser.IncContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:SomeGrammarParser.inc"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:SomeGrammarBaseListener.EnterDec(SomeGrammarParser.DecContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:SomeGrammarParser.dec"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:SomeGrammarBaseListener.ExitDec(SomeGrammarParser.DecContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:SomeGrammarParser.dec"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:SomeGrammarBaseListener.EnterMax(SomeGrammarParser.MaxContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:SomeGrammarParser.max"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:SomeGrammarBaseListener.ExitMax(SomeGrammarParser.MaxContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:SomeGrammarParser.max"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:SomeGrammarBaseListener.EnterMin(SomeGrammarParser.MinContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:SomeGrammarParser.min"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:SomeGrammarBaseListener.ExitMin(SomeGrammarParser.MinContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:SomeGrammarParser.min"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:SomeGrammarBaseListener.EnterCell(SomeGrammarParser.CellContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:SomeGrammarParser.cell"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:SomeGrammarBaseListener.ExitCell(SomeGrammarParser.CellContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:SomeGrammarParser.cell"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:SomeGrammarBaseListener.EnterFloat(SomeGrammarParser.FloatContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="!:SomeGrammarParser.float"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:SomeGrammarBaseListener.ExitFloat(SomeGrammarParser.FloatContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="!:SomeGrammarParser.float"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:SomeGrammarBaseListener.EnterEveryRule(Antlr4.Runtime.ParserRuleContext)">
+            <inheritdoc/>
+            <remarks>The default implementation does nothing.</remarks>
+        </member>
+        <member name="M:SomeGrammarBaseListener.ExitEveryRule(Antlr4.Runtime.ParserRuleContext)">
+            <inheritdoc/>
+            <remarks>The default implementation does nothing.</remarks>
+        </member>
+        <member name="M:SomeGrammarBaseListener.VisitTerminal(Antlr4.Runtime.Tree.ITerminalNode)">
+            <inheritdoc/>
+            <remarks>The default implementation does nothing.</remarks>
+        </member>
+        <member name="M:SomeGrammarBaseListener.VisitErrorNode(Antlr4.Runtime.Tree.IErrorNode)">
+            <inheritdoc/>
+            <remarks>The default implementation does nothing.</remarks>
+        </member>
+        <member name="T:SomeGrammarBaseVisitor`1">
+            <summary>
+            This class provides an empty implementation of <see cref="T:ISomeGrammarVisitor`1"/>,
+            which can be extended to create a visitor which only needs to handle a subset
+            of the available methods.
+            </summary>
+            <typeparam name="Result">The return type of the visit operation.</typeparam>
+        </member>
+        <member name="M:SomeGrammarBaseVisitor`1.VisitLine(SomeGrammarParser.LineContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:SomeGrammarParser.line"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:SomeGrammarBaseVisitor`1.VisitSum(SomeGrammarParser.SumContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:SomeGrammarParser.sum"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:SomeGrammarBaseVisitor`1.VisitAddend(SomeGrammarParser.AddendContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:SomeGrammarParser.addend"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:SomeGrammarBaseVisitor`1.VisitMultiplier(SomeGrammarParser.MultiplierContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:SomeGrammarParser.multiplier"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:SomeGrammarBaseVisitor`1.VisitAtomic(SomeGrammarParser.AtomicContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:SomeGrammarParser.atomic"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:SomeGrammarBaseVisitor`1.VisitEnclosed_sum(SomeGrammarParser.Enclosed_sumContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:SomeGrammarParser.enclosed_sum"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:SomeGrammarBaseVisitor`1.VisitInc(SomeGrammarParser.IncContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:SomeGrammarParser.inc"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:SomeGrammarBaseVisitor`1.VisitDec(SomeGrammarParser.DecContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:SomeGrammarParser.dec"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:SomeGrammarBaseVisitor`1.VisitMax(SomeGrammarParser.MaxContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:SomeGrammarParser.max"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:SomeGrammarBaseVisitor`1.VisitMin(SomeGrammarParser.MinContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:SomeGrammarParser.min"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:SomeGrammarBaseVisitor`1.VisitCell(SomeGrammarParser.CellContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:SomeGrammarParser.cell"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:SomeGrammarBaseVisitor`1.VisitFloat(SomeGrammarParser.FloatContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="!:SomeGrammarParser.float"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="T:ISomeGrammarListener">
+            <summary>
+            This interface defines a complete listener for a parse tree produced by
+            <see cref="T:SomeGrammarParser"/>.
+            </summary>
+        </member>
+        <member name="M:ISomeGrammarListener.EnterLine(SomeGrammarParser.LineContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:SomeGrammarParser.line"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:ISomeGrammarListener.ExitLine(SomeGrammarParser.LineContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:SomeGrammarParser.line"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:ISomeGrammarListener.EnterSum(SomeGrammarParser.SumContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:SomeGrammarParser.sum"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:ISomeGrammarListener.ExitSum(SomeGrammarParser.SumContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:SomeGrammarParser.sum"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:ISomeGrammarListener.EnterAddend(SomeGrammarParser.AddendContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:SomeGrammarParser.addend"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:ISomeGrammarListener.ExitAddend(SomeGrammarParser.AddendContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:SomeGrammarParser.addend"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:ISomeGrammarListener.EnterMultiplier(SomeGrammarParser.MultiplierContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:SomeGrammarParser.multiplier"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:ISomeGrammarListener.ExitMultiplier(SomeGrammarParser.MultiplierContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:SomeGrammarParser.multiplier"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:ISomeGrammarListener.EnterAtomic(SomeGrammarParser.AtomicContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:SomeGrammarParser.atomic"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:ISomeGrammarListener.ExitAtomic(SomeGrammarParser.AtomicContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:SomeGrammarParser.atomic"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:ISomeGrammarListener.EnterEnclosed_sum(SomeGrammarParser.Enclosed_sumContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:SomeGrammarParser.enclosed_sum"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:ISomeGrammarListener.ExitEnclosed_sum(SomeGrammarParser.Enclosed_sumContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:SomeGrammarParser.enclosed_sum"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:ISomeGrammarListener.EnterInc(SomeGrammarParser.IncContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:SomeGrammarParser.inc"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:ISomeGrammarListener.ExitInc(SomeGrammarParser.IncContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:SomeGrammarParser.inc"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:ISomeGrammarListener.EnterDec(SomeGrammarParser.DecContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:SomeGrammarParser.dec"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:ISomeGrammarListener.ExitDec(SomeGrammarParser.DecContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:SomeGrammarParser.dec"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:ISomeGrammarListener.EnterMax(SomeGrammarParser.MaxContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:SomeGrammarParser.max"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:ISomeGrammarListener.ExitMax(SomeGrammarParser.MaxContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:SomeGrammarParser.max"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:ISomeGrammarListener.EnterMin(SomeGrammarParser.MinContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:SomeGrammarParser.min"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:ISomeGrammarListener.ExitMin(SomeGrammarParser.MinContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:SomeGrammarParser.min"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:ISomeGrammarListener.EnterCell(SomeGrammarParser.CellContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:SomeGrammarParser.cell"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:ISomeGrammarListener.ExitCell(SomeGrammarParser.CellContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:SomeGrammarParser.cell"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:ISomeGrammarListener.EnterFloat(SomeGrammarParser.FloatContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="!:SomeGrammarParser.float"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:ISomeGrammarListener.ExitFloat(SomeGrammarParser.FloatContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="!:SomeGrammarParser.float"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="T:ISomeGrammarVisitor`1">
+            <summary>
+            This interface defines a complete generic visitor for a parse tree produced
+            by <see cref="T:SomeGrammarParser"/>.
+            </summary>
+            <typeparam name="Result">The return type of the visit operation.</typeparam>
+        </member>
+        <member name="M:ISomeGrammarVisitor`1.VisitLine(SomeGrammarParser.LineContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:SomeGrammarParser.line"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:ISomeGrammarVisitor`1.VisitSum(SomeGrammarParser.SumContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:SomeGrammarParser.sum"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:ISomeGrammarVisitor`1.VisitAddend(SomeGrammarParser.AddendContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:SomeGrammarParser.addend"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:ISomeGrammarVisitor`1.VisitMultiplier(SomeGrammarParser.MultiplierContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:SomeGrammarParser.multiplier"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:ISomeGrammarVisitor`1.VisitAtomic(SomeGrammarParser.AtomicContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:SomeGrammarParser.atomic"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:ISomeGrammarVisitor`1.VisitEnclosed_sum(SomeGrammarParser.Enclosed_sumContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:SomeGrammarParser.enclosed_sum"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:ISomeGrammarVisitor`1.VisitInc(SomeGrammarParser.IncContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:SomeGrammarParser.inc"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:ISomeGrammarVisitor`1.VisitDec(SomeGrammarParser.DecContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:SomeGrammarParser.dec"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:ISomeGrammarVisitor`1.VisitMax(SomeGrammarParser.MaxContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:SomeGrammarParser.max"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:ISomeGrammarVisitor`1.VisitMin(SomeGrammarParser.MinContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:SomeGrammarParser.min"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:ISomeGrammarVisitor`1.VisitCell(SomeGrammarParser.CellContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:SomeGrammarParser.cell"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:ISomeGrammarVisitor`1.VisitFloat(SomeGrammarParser.FloatContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="!:SomeGrammarParser.float"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+    </members>
+</doc>
