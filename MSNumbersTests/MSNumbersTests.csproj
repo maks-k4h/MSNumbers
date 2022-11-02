@@ -26,4 +26,8 @@
       <Folder Include="lib" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Content Include="lib\Utils\.DS_Store" />
+    </ItemGroup>
+
 </Project>
