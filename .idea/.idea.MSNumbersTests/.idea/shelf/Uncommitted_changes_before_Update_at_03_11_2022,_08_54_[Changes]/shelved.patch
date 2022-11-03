@@ -1,0 +1,464 @@
+Index: MSNumbersTests/CellTest.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>namespace MSNumbersTests;\n\npublic class CellTest\n{\n    [Fact]\n    public void CellInitialization()\n    {\n        Assert.True(false);\n    }\n\n    [Fact]\n    public void DifferentiateTextAndNumericalFormulas()\n    {\n        Assert.True(false);\n    }\n\n    [Fact]\n    public void FileDeliminatorsInFormulas()\n    {\n        Assert.True(false);\n    }\n\n    [Fact]\n    public void IgnoreWhileSpaces()\n    {\n        Assert.True(false);\n    }\n\n    [Fact]\n    public void SettingAndRemovingConnections()\n    {\n        Assert.True(false);\n    }\n\n    [Fact]\n    public void UpdatingChildren()\n    {\n        Assert.True(false);\n    }\n\n    [Fact]\n    public void PreventingRecursions()\n    {\n        Assert.True(false);\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/MSNumbersTests/CellTest.cs b/MSNumbersTests/CellTest.cs
+--- a/MSNumbersTests/CellTest.cs	(revision 5d9100be89f179f941f901d97e334d65cb32b958)
++++ b/MSNumbersTests/CellTest.cs	(date 1667430431559)
+@@ -1,3 +1,7 @@
++using MSNumbers.Models;
++using MSNumbers.Models.Exceptions;
++using MSNumbers.Utils.Packing;
++
+ namespace MSNumbersTests;
+ 
+ public class CellTest
+@@ -5,42 +9,168 @@
+     [Fact]
+     public void CellInitialization()
+     {
+-        Assert.True(false);
++        var cell = new Cell();
++        Assert.Empty(cell.StringValue);
++        Assert.Empty(cell.GetFormula());
++        Assert.Equal(0, cell.NumericalValue);
+     }
+ 
+     [Fact]
+     public void DifferentiateTextAndNumericalFormulas()
+     {
+-        Assert.True(false);
++        var cell = new Cell();
++        string s;
++        
++        s = "The Four Seasons.";
++        cell.SetFormula(s);
++        Assert.Equal(s.Trim(), cell.StringValue);
++        Assert.Equal(0, cell.NumericalValue);
++        
++        s = "=3.3";
++        cell.SetFormula(s);
++        Assert.Equal(3.3, cell.NumericalValue);
+     }
+ 
+     [Fact]
+     public void FileDeliminatorsInFormulas()
+     {
+-        Assert.True(false);
++        try
++        {
++            var cell = new Cell();
++            cell.SetFormula($"some formula {Serializer.ColumnDelimiter}");
++            Assert.Fail("Formula with serializer's column delimiter added.");
++        }
++        catch (Exception)
++        {
++            // Ignore
++        }
++        
++        try
++        {
++            var cell = new Cell();
++            cell.SetFormula($"some formula {Serializer.RowDelimiter}");
++            Assert.Fail("Formula with serializer's row delimiter added.");
++        }
++        catch (Exception)
++        {
++            // Ignore
++        }
++        
++        try
++        {
++            var cell = new Cell();
++            cell.SetFormula($"={Serializer.ColumnDelimiter}");
++            Assert.Fail("Formula with serializer's column delimiter added.");
++        }
++        catch (Exception)
++        {
++            // Ignore
++        }
+     }
+ 
+     [Fact]
+     public void IgnoreWhileSpaces()
+     {
+-        Assert.True(false);
++        string s;
++        var cell = new Cell();
++        
++        s = "               Hi.";
++        cell.SetFormula(s);
++        Assert.Equal(s.Trim(), cell.StringValue);
++        Assert.Equal(0, cell.NumericalValue);
++
++        s = "   = (12 )   ";
++        cell.SetFormula(s);
++        Assert.Equal("12", cell.StringValue);
++        Assert.Equal(12, cell.NumericalValue);
+     }
+ 
+     [Fact]
+     public void SettingAndRemovingConnections()
+     {
+-        Assert.True(false);
++        Table.CreateBlank();
++        
++        Assert.Empty(Table.GetCell(0, 0)._children);
++        Assert.Empty(Table.GetCell(0, 1)._children);
++
++        Table.SetCellFormula(0,1,"=5");
++        Table.SetCellFormula(0,0, "=b1 + 12");
++        Assert.Equal(17, Table.GetCellNumericalResult(0, 0));
++        Assert.Equal(5, Table.GetCellNumericalResult(0, 1));
++        Assert.Empty(Table.GetCell(0, 0)._children);
++        Assert.NotEmpty(Table.GetCell(0, 1)._children);
++        Assert.Equal(Table.GetCell(0, 0), Table.GetCell(0, 1)._children[0]);
++        
++        Table.SetCellFormula(0,0, "=33");
++        Assert.Equal(33, Table.GetCellNumericalResult(0, 0));
++        Assert.Equal(5, Table.GetCellNumericalResult(0, 1));
++        
++        Table.SetCellFormula(0,1,"=inc(a1)");
++        Assert.Equal(33, Table.GetCellNumericalResult(0, 0));
++        Assert.Equal(34, Table.GetCellNumericalResult(0, 1));
++        Assert.NotEmpty(Table.GetCell(0, 0)._children);
++        Assert.Empty(Table.GetCell(0, 1)._children);
++        Assert.Equal(Table.GetCell(0, 1), Table.GetCell(0, 0)._children[0]);
++        
++        Table.SetCellFormula(0,0, "Hello");
++        Assert.Equal(0, Table.GetCellNumericalResult(0, 0));
++        Assert.Equal(1, Table.GetCellNumericalResult(0, 1));
++        
++        // TODO: tests on cells with multiple dependencies should be added
+     }
+ 
+     [Fact]
+     public void UpdatingChildren()
+     {
+-        Assert.True(false);
++        Table.CreateBlank();
++        
++        Table.SetCellFormula(0, 0, "=inc(b1)");
++        Assert.Equal(1, Table.GetCellNumericalResult(0,0));
++        Table.SetCellFormula(0,1, "=33");
++        Assert.Equal(34, Table.GetCellNumericalResult(0,0));
++        Assert.Equal("34", Table.GetCellStringResult(0, 0));
++        Assert.Equal("33", Table.GetCellStringResult(0, 1));
++        
++        Table.SetCellFormula(0, 2, "=    1 + b1");
++        Assert.Equal(34, Table.GetCellNumericalResult(0,2));
++        
++        Table.SetCellFormula(0, 1, "= 5");
++        Assert.Equal(6, Table.GetCellNumericalResult(0,0));
++        Assert.Equal(6, Table.GetCellNumericalResult(0,2));
++        Assert.Equal(2, Table.GetCell(0,1)._children.Count);
++        
++        // TODO: tests on cells with multiple dependencies should be added
+     }
+ 
+     [Fact]
+     public void PreventingRecursions()
+     {
+-        Assert.True(false);
++        Table.CreateBlank();
++        
++        // a1 -> b1 -> c1 -> b2
++        // a1 -> b2 -> b1
++        Table.SetCellFormula(0, 0, "= b1 - b2");
++        Assert.Equal(1, Table.GetCell(0, 1)._children.Count);
++        Assert.Equal(1, Table.GetCell(1, 1)._children.Count);
++        Table.SetCellFormula(1, 1, "= dec(b1)");
++        Assert.Equal(2, Table.GetCell(0, 1)._children.Count);
++        Table.SetCellFormula(0, 1, "= c1");
++        Assert.Equal(1, Table.GetCell(0,2)._children.Count);
++
++        try
++        {
++            Table.SetCellFormula(0, 2, "=b2");
++            Assert.Fail("Recursion has benn allowed.");
++        }
++        catch (Exception)
++        {
++            // ignore
++        }
++        
++        // no new connections
++        Assert.Equal(2, Table.GetCell(0, 1)._children.Count);
++        Assert.Equal(1, Table.GetCell(1, 1)._children.Count);
++        Assert.Equal(1, Table.GetCell(0,2)._children.Count);
++
+     }
+ }
+\ No newline at end of file
+Index: MSNumbersTests/GrammarTest.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>using Antlr4.Runtime;\nusing Antlr4.Runtime.Tree;\nusing MSNumbers.Models;\nusing MSNumbers.Utils.Grammar;\n\nnamespace MSNumbersTests;\n\npublic class GrammarTest\n{\n    [Fact]\n    public void BinaryOperations()\n    {\n        FormulaResultPackage r;\n        \n        // +\n        r = Calculate(\"1+1\");\n        Assert.Empty(r.Dependencies);\n        Assert.Equal(2, r.Result);\n        \n        r = Calculate(\"1+2+3\");\n        Assert.Equal(6, r.Result);\n        \n        r = Calculate(\"0+0+0+0\");\n        Assert.Empty(r.Dependencies);\n        Assert.Equal(0, r.Result);\n        \n        r = Calculate(\"10000000000\");\n        Assert.Equal(1e10, r.Result);\n        \n        // -\n        r = Calculate(\"1-1\");\n        Assert.Empty(r.Dependencies);\n        Assert.Equal(0, r.Result);\n        \n        r = Calculate(\"5-1-1-1-1\");\n        Assert.Empty(r.Dependencies);\n        Assert.Equal(1, r.Result);\n        \n        // *\n        r = Calculate(\"5*4\");\n        Assert.Empty(r.Dependencies);\n        Assert.Equal(20,r.Result);\n\n        r = Calculate(\"1*2*3*2*1\");\n        Assert.Empty(r.Dependencies);\n        Assert.Equal(1*2*3*2*1, r.Result);\n        \n        // /\n        r = Calculate(\"10/2\");\n        Assert.Empty(r.Dependencies);\n        Assert.Equal(5, r.Result);\n\n        r = Calculate(\"24/6/2\");\n        Assert.Empty(r.Dependencies);\n        Assert.Equal(2, r.Result);\n        \n        // ^\n        r = Calculate(\"10^2\");\n        Assert.Empty(r.Dependencies);\n        Assert.Equal(100, r.Result);\n\n        // combinations\n        r = Calculate(\"2*3+2^2-3+12/4\");\n        Assert.Empty(r.Dependencies);\n        Assert.Equal(2*3+2^2-3+12/4, r.Result);\n        \n        r = Calculate(\"1-1+1-1+1-1+1\");\n        Assert.Empty(r.Dependencies);\n        Assert.Equal(1, r.Result);\n    }\n\n    [Fact]\n    public void IncAndDecFunctions()\n    {\n        FormulaResultPackage r;\n        \n        r = Calculate(\"inc(0)\");\n        Assert.Empty(r.Dependencies);\n        Assert.Equal(1, r.Result);\n        \n        r = Calculate(\"dec(0)\");\n        Assert.Empty(r.Dependencies);\n        Assert.Equal(-1, r.Result);\n        \n        r = Calculate(\"inc(inc(inc(inc(0))))\");\n        Assert.Empty(r.Dependencies);\n        Assert.Equal(4, r.Result);\n        \n        r = Calculate(\"dec(dec(dec(dec(0))))\");\n        Assert.Empty(r.Dependencies);\n        Assert.Equal(-4, r.Result);\n        \n        r = Calculate(\"inc(dec(inc(dec(0))))\");\n        Assert.Empty(r.Dependencies);\n        Assert.Equal(0, r.Result);\n    }\n\n    [Fact]\n    public void MaxAndMinFunctions()\n    {\n        FormulaResultPackage r;\n        \n        r = Calculate(\"max(0,0)\");\n        Assert.Empty(r.Dependencies);\n        Assert.Equal(0, r.Result);\n        \n        r = Calculate(\"max(1+1,0*1)\");\n        Assert.Empty(r.Dependencies);\n        Assert.Equal(2, r.Result);\n        \n        r = Calculate(\"max(1+1,2*2^2)\");\n        Assert.Empty(r.Dependencies);\n        Assert.Equal(8, r.Result);\n        \n        r = Calculate(\"min(2,5-1)\");\n        Assert.Empty(r.Dependencies);\n        Assert.Equal(2, r.Result);\n        \n        r = Calculate(\"min(33,2*2^2)\");\n        Assert.Empty(r.Dependencies);\n        Assert.Equal(8, r.Result);\n        \n        r = Calculate(\"max(min(33,16),min(32,12))\");\n        Assert.Empty(r.Dependencies);\n        Assert.Equal(16, r.Result);\n    }\n\n    [Fact]\n    public void Brackets()\n    {\n        FormulaResultPackage r;\n        \n        r = Calculate(\"3-(1-1)\");\n        Assert.Empty(r.Dependencies);\n        Assert.NotEqual(Calculate(\"3-1-1\").Result, r.Result);\n\n        r = Calculate(\"3^min(5,3+1)\");\n        Assert.Equal(81, r.Result);\n\n        r = Calculate(\"(18+6/3-11^2+12^2)\");\n        Assert.Equal(43, r.Result);\n    }\n\n    [Fact]\n    public void IgnoreWhitespaces()\n    {\n        FormulaResultPackage r;\n        \n        r = Calculate(\"(18\\t\\t +  6/3- 11  ^2+  12^ 2)  \");\n        Assert.Equal(43, r.Result);\n        \n        r = Calculate(\"max( min(  33 ,  16),min(32,12   ) )\");\n        Assert.Equal(16, r.Result);\n        \n        \n        r = Calculate(\" 2 *3\\t+2\\t\\t^2 -3 +12/\\t4\");\n        Assert.Equal(2*3+2^2-3+12/4, r.Result);\n    }\n\n    [Fact]\n    public void WholeNumbers()\n    {\n        FormulaResultPackage r;\n\n        r = Calculate(\"012345\");\n        Assert.Empty(r.Dependencies);\n        Assert.Equal(12345, r.Result);\n        \n        r = Calculate(\"100\");\n        Assert.Empty(r.Dependencies);\n        Assert.Equal(100, r.Result);\n        \n        r = Calculate(\"1-00001\");\n        Assert.Empty(r.Dependencies);\n        Assert.Equal(0, r.Result);\n\n        try\n        {\n            r = Calculate(\"0x1111\");\n            Assert.Fail($\"0x1111 calculated with value of {r.Result}.\");\n        }\n        catch (Exception)\n        {\n            // ignored\n        }\n        \n        try\n        {\n            r = Calculate(\"a10b2\");\n            Assert.Fail($\"a10b2 calculated with value of {r.Result}.\");\n        }\n        catch (Exception)\n        {\n            // ignored\n        }\n    }\n\n    [Fact]\n    public void FloatingPointNumbers()\n    {\n        FormulaResultPackage r;\n        \n        r = Calculate(\"0.01\");\n        Assert.Empty(r.Dependencies);\n        Assert.Equal(0.01, r.Result);\n        \n        r = Calculate(\".01\");\n        Assert.Empty(r.Dependencies);\n        Assert.Equal(0.01, r.Result);\n        \n        r = Calculate(\"12.33\");\n        Assert.Empty(r.Dependencies);\n        Assert.Equal(12.33, r.Result);\n\n        try\n        {\n            r = Calculate(\"12.-33\");\n            Assert.Fail($\"12.-33 calculated with value of {r.Result}.\");\n        }\n        catch (Exception)\n        {\n            // ignored\n        }\n        \n        try\n        {\n            r = Calculate(\"1.1.1\");\n            Assert.Fail($\"1.1.1 calculated with value of {r.Result}.\");\n        }\n        catch (Exception)\n        {\n            // ignored\n        }\n        \n        try\n        {\n            r = Calculate(\"1...1\");\n            Assert.Fail($\"1...1 calculated with value of {r.Result}.\");\n        }\n        catch (Exception)\n        {\n            // ignored\n        }\n    }\n    \n    [Fact]\n    public void ExceptionsOnGrammarMistakes()\n    {\n        FormulaResultPackage r;\n\n        // incorrect cell address\n        Table.CreateBlank();\n        r = Calculate(\"A1\");\n        \n        try\n        {\n            r = Calculate(\"A0\");\n            Assert.Fail(\"Cell A0 had been accessed.\");\n        }\n        catch (Exception)\n        {\n            // ignored\n        }\n        \n        try\n        {\n            r = Calculate(\"AAA0\");\n            Assert.Fail(\"Cell AAA0 had been accessed.\");\n        }\n        catch (Exception)\n        {\n            // ignored\n        }\n        \n        try\n        {\n            r = Calculate(\"A0.0\");\n            Assert.Fail(\"Cell A0.0 had been accessed.\");\n        }\n        catch (Exception)\n        {\n            // ignored\n        }\n        \n        try\n        {\n            r = Calculate(\"A0B0\");\n            Assert.Fail(\"Cell A0B0 had been accessed.\");\n        }\n        catch (Exception)\n        {\n            // ignored\n        }\n        \n        try\n        {\n            r = Calculate(\"A\");\n            Assert.Fail(\"Cell A had been accessed.\");\n        }\n        catch (Exception)\n        {\n            // ignored\n        }\n\n        // incorrect operations\n        \n        try\n        {\n            var s = \"2 /// 2\";\n            r = Calculate(s);\n            Assert.Fail($\"{s} had been processed with result {r.Result}\");\n        }\n        catch (Exception)\n        {\n            // ignored\n        }\n        \n        try\n        {\n            var s = \"2 /* 2\";\n            r = Calculate(s);\n            Assert.Fail($\"{s} had been processed with result {r.Result}\");\n        }\n        catch (Exception)\n        {\n            // ignored\n        }\n        \n        try\n        {\n            var s = \"2++-2\";\n            r = Calculate(s);\n            Assert.Fail($\"{s} had been processed with result {r.Result}\");\n        }\n        catch (Exception)\n        {\n            // ignored\n        }\n        \n        try\n        {\n            var s = \"2 ^^^ 2\";\n            r = Calculate(s);\n            Assert.Fail($\"{s} had been processed with result {r.Result}\");\n        }\n        catch (Exception)\n        {\n            // ignored\n        }\n        \n        try\n        {\n            var s = \"2 . 2\";\n            r = Calculate(s);\n            Assert.Fail($\"{s} had been processed with result {r.Result}\");\n        }\n        catch (Exception)\n        {\n            // ignored\n        }\n        \n        try\n        {\n            var s = \"2 times 2\";\n            r = Calculate(s);\n            Assert.Fail($\"{s} had been processed with result {r.Result}\");\n        }\n        catch (Exception)\n        {\n            // ignored\n        }\n        \n        // incorrect functions\n        try\n        {\n            var s = \"maax(24, 33)\";\n            r = Calculate(s);\n            Assert.Fail($\"{s} had been processed with result {r.Result}\");\n        }\n        catch (Exception)\n        {\n            // ignored\n        }\n        \n        try\n        {\n            var s = \"iinc(21)\";\n            r = Calculate(s);\n            Assert.Fail($\"{s} had been processed with result {r.Result}\");\n        }\n        catch (Exception)\n        {\n            // ignored\n        }\n\n        r = Calculate(\"max((2), 13)\");\n        Assert.Equal(r.Result, 13);\n        try\n        {\n            var s = \"max(2,3\";\n            r = Calculate(s);\n            Assert.Fail($\"{s} had been processed with result {r.Result}\");\n        }\n        catch (Exception)\n        {\n            // ignored\n        }\n        \n        try\n        {\n            var s = \"min((21, 18))\";\n            r = Calculate(s);\n            Assert.Fail($\"{s} had been processed with result {r.Result}\");\n        }\n        catch (Exception)\n        {\n            // ignored\n        }\n        \n        // plain text\n        try\n        {\n            var s = \"Hello, Dolly!\";\n            r = Calculate(s);\n            Assert.Fail($\"{s} had been processed with result {r.Result}\");\n        }\n        catch (Exception)\n        {\n            // ignored\n        }\n        \n        try\n        {\n            var s = \".\";\n            r = Calculate(s);\n            Assert.Fail($\"{s} had been processed with result {r.Result}\");\n        }\n        catch (Exception)\n        {\n            // ignored\n        }\n        \n        try\n        {\n            var s = \"/\";\n            r = Calculate(s);\n            Assert.Fail($\"{s} had been processed with result {r.Result}\");\n        }\n        catch (Exception)\n        {\n            // ignored\n        }\n\n        r = Calculate(\"\\t\\t\\t\");\n        if (r is not null)\n            Assert.Equal(r.Result, 0);\n        try\n        {\n            var s = \"1\\t\\t1\";\n            r = Calculate(s);\n            Assert.Fail($\"{s} had been processed with result {r.Result}\");\n        }\n        catch (Exception)\n        {\n            // ignored\n        }\n        \n        // skipping brackets\n        r = Calculate(\"(((1.1)))\");\n        Assert.Equal(r.Result, 1.1);\n        try\n        {\n            var s = \"(((1.1))\";\n            r = Calculate(s);\n            Assert.Fail($\"{s} had been processed with result {r.Result}\");\n        }\n        catch (Exception)\n        {\n            // ignored\n        }\n        \n        // skipping brackets\n        r = Calculate(\"(((1.1)))\");\n        Assert.Equal(r.Result, 1.1);\n        try\n        {\n            var s = \"(max(3,3)))\";\n            r = Calculate(s);\n            Assert.Fail($\"{s} had been processed with result {r.Result}\");\n        }\n        catch (Exception)\n        {\n            // ignored\n        }\n        \n        try\n        {\n            var s = \"(1(\";\n            r = Calculate(s);\n            Assert.Fail($\"{s} had been processed with result {r.Result}\");\n        }\n        catch (Exception)\n        {\n            // ignored\n        }\n        \n        try\n        {\n            var s = \")max(min(2,2),1)(\";\n            r = Calculate(s);\n            Assert.Fail($\"{s} had been processed with result {r.Result}\");\n        }\n        catch (Exception)\n        {\n            // ignored\n        }\n    }\n\n    [Fact]\n    public void SpecificArithmeticOperations()\n    {\n        FormulaResultPackage r;\n        \n        // division by zero\n        r = Calculate(\"1/0\");\n        Assert.Equal(double.PositiveInfinity, r.Result);\n        \n        r = Calculate(\"-1/0\");\n        Assert.Equal(double.NegativeInfinity, r.Result);\n        \n        r = Calculate(\"0/0\");\n        Assert.Equal(double.NaN, r.Result);\n        \n        // powers\n        r = Calculate(\"0^0\");\n        Assert.Equal(1, r.Result);\n        \n        r = Calculate(\"0^(0-1)\");\n        Assert.Equal(double.PositiveInfinity, r.Result);\n        \n        r = Calculate(\"4^.5\");\n        Assert.Equal(2, r.Result);\n        \n        r = Calculate(\"(0-4)^.5\");\n        Assert.Equal(double.NaN, r.Result);\n    }\n\n    [Fact]\n    public void NonExistingCellAccess()\n    {\n        Table.CreateBlank();\n        FormulaResultPackage r;\n\n        try\n        {\n            r = Calculate(\"A0\");\n            Assert.Fail(\"Cell A0 had been accessed!\");\n        }\n        catch\n        {\n            // ignored\n        }\n        \n        r = Calculate($\"A{Table.Columns}\");\n        Assert.Equal(0, r.Result);\n        try\n        {\n            var s = $\"=A{Table.Rows + 1}\";\n            r = Calculate(s);\n            Assert.Fail($\"Cell {s} had been accessed!\");\n        }\n        catch\n        {\n            // ignored\n        }\n        \n        Table.SetCellFormula(Table.Rows-1, Table.Columns - 1, \"=3\");\n        r = Calculate($\"{Table.NumberToAlphabeticSystem(Table.Columns - 1)}{Table.Rows}\");\n        Assert.Equal(3, r.Result);\n        try\n        {\n            var s = $\"{Table.NumberToAlphabeticSystem(Table.Columns)}{Table.Rows}\";\n            r = Calculate(s);\n            Assert.Fail($\"Cell {s} had been accessed!\");\n        }\n        catch\n        {\n            // ignored\n        }\n    }\n\n    [Fact]\n    public void CellAccess()\n    {\n        Table.CreateBlank();\n        FormulaResultPackage r;\n        \n        r = Calculate(\"A1\");\n        Assert.Equal(0, r.Result);\n        Assert.NotEmpty(r.Dependencies);\n        Assert.Equal(Table.GetCell(r.Dependencies[0]), Table.GetCell(0, 0));\n        \n        Table.SetCellFormula(0,0,\"=12\");\n        r = Calculate(\"A1\");\n        Assert.Equal(12, r.Result);\n        \n        Table.SetCellFormula(0, 0, \"=5\");\n        Table.SetCellFormula(0, 1, \"=3\");\n        Table.SetCellFormula(0, 2, \"=1\");\n        Table.SetCellFormula(0, 3, \"=99\");\n        \n        r = Calculate(\"max(A1 - B1, C1+D1)\");\n        Assert.Equal(100, r.Result);\n        Assert.Equal(4, r.Dependencies.Count);\n    }\n\n\n    private FormulaResultPackage Calculate(string formula)\n    {\n        var lexer = new SomeGrammarLexer(new AntlrInputStream(formula));\n        var commonTokenStream = new CommonTokenStream(lexer);\n        var parser = new SomeGrammarParser(commonTokenStream);\n        var visitor = new SomeGrammarVisitor();\n\n        // removing default listeners and setting custom ones\n        lexer.RemoveErrorListeners();\n        lexer.AddErrorListener(new ThrowExceptionErrorListener());\n        parser.RemoveErrorListeners();\n        parser.AddErrorListener(new ThrowExceptionErrorListener());\n\n        IParseTree context = parser.line();\n        var result = visitor.Visit(context);\n        \n        return result;\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/MSNumbersTests/GrammarTest.cs b/MSNumbersTests/GrammarTest.cs
+--- a/MSNumbersTests/GrammarTest.cs	(revision 5d9100be89f179f941f901d97e334d65cb32b958)
++++ b/MSNumbersTests/GrammarTest.cs	(date 1667429871872)
+@@ -255,7 +255,7 @@
+         try
+         {
+             r = Calculate("A0");
+-            Assert.Fail("Cell A0 had been accessed.");
++            Assert.Fail("Cell A0 has been accessed.");
+         }
+         catch (Exception)
+         {
+@@ -265,7 +265,7 @@
+         try
+         {
+             r = Calculate("AAA0");
+-            Assert.Fail("Cell AAA0 had been accessed.");
++            Assert.Fail("Cell AAA0 has been accessed.");
+         }
+         catch (Exception)
+         {
+@@ -275,7 +275,7 @@
+         try
+         {
+             r = Calculate("A0.0");
+-            Assert.Fail("Cell A0.0 had been accessed.");
++            Assert.Fail("Cell A0.0 has been accessed.");
+         }
+         catch (Exception)
+         {
+@@ -285,7 +285,7 @@
+         try
+         {
+             r = Calculate("A0B0");
+-            Assert.Fail("Cell A0B0 had been accessed.");
++            Assert.Fail("Cell A0B0 has been accessed.");
+         }
+         catch (Exception)
+         {
+@@ -295,7 +295,7 @@
+         try
+         {
+             r = Calculate("A");
+-            Assert.Fail("Cell A had been accessed.");
++            Assert.Fail("Cell A has been accessed.");
+         }
+         catch (Exception)
+         {
+@@ -308,7 +308,7 @@
+         {
+             var s = "2 /// 2";
+             r = Calculate(s);
+-            Assert.Fail($"{s} had been processed with result {r.Result}");
++            Assert.Fail($"{s} has been processed with result {r.Result}");
+         }
+         catch (Exception)
+         {
+@@ -319,7 +319,7 @@
+         {
+             var s = "2 /* 2";
+             r = Calculate(s);
+-            Assert.Fail($"{s} had been processed with result {r.Result}");
++            Assert.Fail($"{s} has been processed with result {r.Result}");
+         }
+         catch (Exception)
+         {
+@@ -330,7 +330,7 @@
+         {
+             var s = "2++-2";
+             r = Calculate(s);
+-            Assert.Fail($"{s} had been processed with result {r.Result}");
++            Assert.Fail($"{s} has been processed with result {r.Result}");
+         }
+         catch (Exception)
+         {
+@@ -341,7 +341,7 @@
+         {
+             var s = "2 ^^^ 2";
+             r = Calculate(s);
+-            Assert.Fail($"{s} had been processed with result {r.Result}");
++            Assert.Fail($"{s} has been processed with result {r.Result}");
+         }
+         catch (Exception)
+         {
+@@ -352,7 +352,7 @@
+         {
+             var s = "2 . 2";
+             r = Calculate(s);
+-            Assert.Fail($"{s} had been processed with result {r.Result}");
++            Assert.Fail($"{s} has been processed with result {r.Result}");
+         }
+         catch (Exception)
+         {
+@@ -363,7 +363,7 @@
+         {
+             var s = "2 times 2";
+             r = Calculate(s);
+-            Assert.Fail($"{s} had been processed with result {r.Result}");
++            Assert.Fail($"{s} has been processed with result {r.Result}");
+         }
+         catch (Exception)
+         {
+@@ -375,7 +375,7 @@
+         {
+             var s = "maax(24, 33)";
+             r = Calculate(s);
+-            Assert.Fail($"{s} had been processed with result {r.Result}");
++            Assert.Fail($"{s} has been processed with result {r.Result}");
+         }
+         catch (Exception)
+         {
+@@ -386,7 +386,7 @@
+         {
+             var s = "iinc(21)";
+             r = Calculate(s);
+-            Assert.Fail($"{s} had been processed with result {r.Result}");
++            Assert.Fail($"{s} has been processed with result {r.Result}");
+         }
+         catch (Exception)
+         {
+@@ -399,7 +399,7 @@
+         {
+             var s = "max(2,3";
+             r = Calculate(s);
+-            Assert.Fail($"{s} had been processed with result {r.Result}");
++            Assert.Fail($"{s} has been processed with result {r.Result}");
+         }
+         catch (Exception)
+         {
+@@ -410,7 +410,7 @@
+         {
+             var s = "min((21, 18))";
+             r = Calculate(s);
+-            Assert.Fail($"{s} had been processed with result {r.Result}");
++            Assert.Fail($"{s} has been processed with result {r.Result}");
+         }
+         catch (Exception)
+         {
+@@ -422,7 +422,7 @@
+         {
+             var s = "Hello, Dolly!";
+             r = Calculate(s);
+-            Assert.Fail($"{s} had been processed with result {r.Result}");
++            Assert.Fail($"{s} has been processed with result {r.Result}");
+         }
+         catch (Exception)
+         {
+@@ -433,7 +433,7 @@
+         {
+             var s = ".";
+             r = Calculate(s);
+-            Assert.Fail($"{s} had been processed with result {r.Result}");
++            Assert.Fail($"{s} has been processed with result {r.Result}");
+         }
+         catch (Exception)
+         {
+@@ -444,7 +444,7 @@
+         {
+             var s = "/";
+             r = Calculate(s);
+-            Assert.Fail($"{s} had been processed with result {r.Result}");
++            Assert.Fail($"{s} has been processed with result {r.Result}");
+         }
+         catch (Exception)
+         {
+@@ -458,7 +458,7 @@
+         {
+             var s = "1\t\t1";
+             r = Calculate(s);
+-            Assert.Fail($"{s} had been processed with result {r.Result}");
++            Assert.Fail($"{s} has been processed with result {r.Result}");
+         }
+         catch (Exception)
+         {
+@@ -472,7 +472,7 @@
+         {
+             var s = "(((1.1))";
+             r = Calculate(s);
+-            Assert.Fail($"{s} had been processed with result {r.Result}");
++            Assert.Fail($"{s} has been processed with result {r.Result}");
+         }
+         catch (Exception)
+         {
+@@ -486,7 +486,7 @@
+         {
+             var s = "(max(3,3)))";
+             r = Calculate(s);
+-            Assert.Fail($"{s} had been processed with result {r.Result}");
++            Assert.Fail($"{s} has been processed with result {r.Result}");
+         }
+         catch (Exception)
+         {
+@@ -497,7 +497,7 @@
+         {
+             var s = "(1(";
+             r = Calculate(s);
+-            Assert.Fail($"{s} had been processed with result {r.Result}");
++            Assert.Fail($"{s} has been processed with result {r.Result}");
+         }
+         catch (Exception)
+         {
+@@ -508,7 +508,7 @@
+         {
+             var s = ")max(min(2,2),1)(";
+             r = Calculate(s);
+-            Assert.Fail($"{s} had been processed with result {r.Result}");
++            Assert.Fail($"{s} has been processed with result {r.Result}");
+         }
+         catch (Exception)
+         {
+@@ -554,7 +554,7 @@
+         try
+         {
+             r = Calculate("A0");
+-            Assert.Fail("Cell A0 had been accessed!");
++            Assert.Fail("Cell A0 has been accessed!");
+         }
+         catch
+         {
+@@ -567,7 +567,7 @@
+         {
+             var s = $"=A{Table.Rows + 1}";
+             r = Calculate(s);
+-            Assert.Fail($"Cell {s} had been accessed!");
++            Assert.Fail($"Cell {s} has been accessed!");
+         }
+         catch
+         {
+@@ -581,7 +581,7 @@
+         {
+             var s = $"{Table.NumberToAlphabeticSystem(Table.Columns)}{Table.Rows}";
+             r = Calculate(s);
+-            Assert.Fail($"Cell {s} had been accessed!");
++            Assert.Fail($"Cell {s} has been accessed!");
+         }
+         catch
+         {
+Index: MSNumbersTests/lib/Models/Cell.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>using System.ComponentModel;\nusing System.Runtime.CompilerServices;\nusing Antlr4.Runtime;\nusing Antlr4.Runtime.Tree;\nusing MSNumbers.Models.Exceptions;\nusing MSNumbers.Utils.Grammar;\nusing MSNumbers.Utils.Packing;\nusing Exception = System.Exception;\nusing Math = System.Math;\n\nnamespace MSNumbers.Models;\n\npublic class Cell : INotifyPropertyChanged\n{\n    public event PropertyChangedEventHandler PropertyChanged;\n\n    private const int FloatingPointDisplayPrecision = 5;\n    \n    private string _formula = \"\";\n    // Extra field for data binding\n    private string _stringValue;\n    private FormulaResultPackage _value;\n    \n    // List of dependent cells (after current cell is updated, those must be visited too)\n    private List<Cell> _children = new();\n    \n    // Anti-looping variable\n    private bool _involved;\n\n    public string StringValue\n    {\n        get => _stringValue;\n        set\n        {\n            _stringValue = value;\n            RaisePropertyChanged();\n        }\n    }\n\n    public double NumericalValue => Value.Result;\n\n    private FormulaResultPackage Value\n    {\n        get => _value;\n        set\n        {\n            // remove old parents.\n            // Explanation:\n            // We actually say \"Hey you, my old parents. I no longer\n            // need your updates, so don't bother me if something is\n            // changed!\"\n            // RemoveParents();\n            RemoveParents();\n            \n            _value = value;\n            \n            // setting connections or, informally, subscribing for \n            // parents' updates.\n            SetParents();\n        }\n    }\n\n    public Cell()\n    {\n        Value = new FormulaResultPackage();\n    }\n\n    ~Cell()\n    {\n        RemoveParents();\n    }\n    \n    private void RaisePropertyChanged([CallerMemberName] string propertyName = null)\n    {\n        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));\n    }\n    \n    public void SetFormula(string formula)\n    {\n        var temp = _formula;\n        try\n        {\n            _formula = formula.Trim();\n            \n            // calculating result\n            CalculateResult();\n\n            // and update dependent cells or cells that are\n            // subscribed to this\n            UpdateChildren();\n        }\n        catch (Exception)\n        {\n            _formula = temp;\n            throw;\n        }\n    }\n\n    private void RemoveParents()\n    {\n        if (Value == null) return;\n        try\n        {\n            foreach (var parent in Value.Dependencies)\n            {\n                Table.GetCell(parent).RemoveChild(this);\n            }\n        }\n        catch (Exception) // Parent might already be deleted\n        {\n            //throw;\n        }\n    }\n    \n    \n    private void CalculateResult()\n    {\n        if (_formula.Contains(Serializer.ColumnDelimiter) || _formula.Contains(Serializer.RowDelimiter))\n            throw new Exception($\"Формула не може містити '{Serializer.ColumnDelimiter}' !\");\n        \n        if (_formula.Length > 0 && _formula[0] == '=')\n        {\n            try\n            {\n                // basic ANTLR tools initialization\n                var lexer = new SomeGrammarLexer(new AntlrInputStream(_formula[1..]));\n                var commonTokenStream = new CommonTokenStream(lexer);\n                var parser = new SomeGrammarParser(commonTokenStream);\n                var visitor = new SomeGrammarVisitor();\n\n                // removing default listeners and setting custom ones\n                lexer.RemoveErrorListeners();\n                lexer.AddErrorListener(new ThrowExceptionErrorListener());\n                parser.RemoveErrorListeners();\n                parser.AddErrorListener(new ThrowExceptionErrorListener());\n\n                IParseTree context = parser.line();\n                var result = visitor.Visit(context);\n\n                CheckForRecursion(result);\n                \n                Value = result;\n\n                // setting string value needed for data binding\n                StringValue = Math.Round(Value.Result, FloatingPointDisplayPrecision).ToString();\n            }\n            catch (FormulaSyntaxException e)\n            {\n                throw new Exception($\"Синтаксична помилка на позиції {e.Position} \" +\n                                    $\"(після '{_formula[e.Position]}')\");\n            }\n            catch (CellException e)\n            {\n                throw new Exception(e.Message);\n            }\n            catch (Exception)\n            {\n                throw new Exception(\"Не вдається застосувати формулу, перевірте її правильність.\");\n            }\n        }\n        else\n        {\n            // DANGER: do not set to an empty string: maui doesn't get on with it:\n            // ghost values appeared in cells that were previously emptied.\n            StringValue = _formula.Length > 0? _formula : \" \";\n            Value = new FormulaResultPackage();\n        }\n    }\n\n    private void SetParents()\n    {\n        foreach (var cellId in Value.Dependencies)\n        {\n            Table.GetCell(cellId).AddChild(this);\n        }\n    }\n    \n    private void UpdateChildren()\n    {\n        foreach (var child in _children)\n        {\n            \n            child.CalculateResult();\n            child.UpdateChildren();\n        }\n    }\n\n    private void CheckForRecursion(FormulaResultPackage  package = null)\n    {\n        package ??= Value;\n\n        if (_involved)\n            throw new CellLoopException(\"Виявлено рекурсивне задання формули\");\n\n        try\n        {\n            _involved = true;\n            foreach (var dependency in package.Dependencies)\n            {\n                Table.GetCell(dependency).CheckForRecursion();\n            }\n        }\n        finally\n        {\n            _involved = false;\n        }\n    }\n\n    public string GetFormula()\n    {\n        return _formula;\n    }\n\n    private void AddChild(Cell cell)\n    {\n        if (!_children.Contains(cell))\n            _children.Add(cell);\n    }\n\n    private void RemoveChild(Cell cell)\n    {\n        _children = _children.Where(child => child != cell).ToList();\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/MSNumbersTests/lib/Models/Cell.cs b/MSNumbersTests/lib/Models/Cell.cs
+--- a/MSNumbersTests/lib/Models/Cell.cs	(revision 5d9100be89f179f941f901d97e334d65cb32b958)
++++ b/MSNumbersTests/lib/Models/Cell.cs	(date 1667427595634)
+@@ -18,11 +18,12 @@
+     
+     private string _formula = "";
+     // Extra field for data binding
+-    private string _stringValue;
++    private string _stringValue = "";
+     private FormulaResultPackage _value;
+     
+     // List of dependent cells (after current cell is updated, those must be visited too)
+-    private List<Cell> _children = new();
++    // TODO: set private after testing
++    public List<Cell> _children = new();
+     
+     // Anti-looping variable
+     private bool _involved;

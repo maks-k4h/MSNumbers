@@ -1,0 +1,17 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/Highlighting/HighlightingSourceSnapshotLocation/@EntryValue">/Users/makskonevych/Library/Caches/JetBrains/Rider2022.2/resharper-host/temp/Rider/vAny/CoverageData/_MSNumbersTests.-595096168/Snapshot/snapshot.utdcvr</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=5b1283b1_002D07af_002D42df_002D8c68_002D3c69a4a20ae1/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="All tests from &amp;lt;MSNumbersTests&amp;gt; #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;Project Location="/Users/makskonevych/Documents/C#/Labs/MSNumbersTests/MSNumbersTests" Presentation="&amp;lt;MSNumbersTests&amp;gt;" /&gt;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=5b14dcc0_002D51b3_002D4179_002Dbca9_002D85c881b71d19/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="1" Name="BinaryOperations" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;And&gt;
+    &lt;TestAncestor&gt;
+      &lt;TestId&gt;xUnit::14204A70-4F6B-4F58-A31B-D03F6579963E::net7.0::MSNumbersTests.GrammarTest&lt;/TestId&gt;
+    &lt;/TestAncestor&gt;
+    &lt;Project Location="/Users/makskonevych/Documents/C#/Labs/MSNumbersTests/MSNumbersTests" Presentation="&amp;lt;MSNumbersTests&amp;gt;" /&gt;
+    &lt;Namespace&gt;MSNumbersTests&lt;/Namespace&gt;
+  &lt;/And&gt;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=fbec6a09_002Db04a_002D4544_002D9768_002Dadd022df1197/@EntryIndexedValue">&lt;SessionState ContinuousTestingIsOn="True" ContinuousTestingMode="3" IsActive="True" Name="All tests from &amp;lt;MSNumbersTests&amp;gt;" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;Project Location="/Users/makskonevych/Documents/C#/Labs/MSNumbersTests/MSNumbersTests" Presentation="&amp;lt;MSNumbersTests&amp;gt;" /&gt;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

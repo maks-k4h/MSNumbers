@@ -18,11 +18,12 @@ public class Cell : INotifyPropertyChanged
     
     private string _formula = "";
     // Extra field for data binding
-    private string _stringValue;
+    private string _stringValue = "";
     private FormulaResultPackage _value;
     
     // List of dependent cells (after current cell is updated, those must be visited too)
-    private List<Cell> _children = new();
+    // TODO: set private after testing
+    public List<Cell> _children = new();
     
     // Anti-looping variable
     private bool _involved;

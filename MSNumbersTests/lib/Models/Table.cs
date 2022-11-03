@@ -6,8 +6,8 @@ namespace MSNumbers.Models;
 
 public static class Table
 {
-    private const int MaxColumns = 1024;
-    private const int MaxRows    = 1024;
+    public const int MaxColumns = 1024;
+    public const int MaxRows    = 1024;
     
     public static string Name { get; private set; }
     public static int Rows { get; private set; }

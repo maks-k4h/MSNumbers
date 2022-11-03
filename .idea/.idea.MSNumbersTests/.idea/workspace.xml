@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="fee14a09-fe2e-403e-b6a2-591273fa668a" name="Changes" comment="Unit tests for grammar processor.">
+      <change beforePath="$PROJECT_DIR$/MSNumbersTests/CellTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbersTests/CellTest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbersTests/GrammarTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbersTests/GrammarTest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbersTests/TableTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbersTests/TableTest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbersTests/lib/Models/Cell.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbersTests/lib/Models/Cell.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbersTests/lib/Models/Table.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbersTests/lib/Models/Table.cs" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Users/makskonevych/Documents/C#/Labs/MSNumbersTests/MSNumbersTests/lib/Utils/Packing/DamagedFileException.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2ca5552f1b3e40dbbed761f0a0a0e629c3e200/4a/703c923b/DefaultInterpolatedStringHandler.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2ca5552f1b3e40dbbed761f0a0a0e629c3e200/d1/6576959c/NullReferenceException.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2e362b08e1a2421ca35ba4723d73984f2ea00/57/7d737320/AbstractParseTreeVisitor`1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2e362b08e1a2421ca35ba4723d73984f2ea00/ef/83586588/ParserRuleContext.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/33e4f1f0be259af03821f7c856158fd8b060a121f82d1cb472a4ba41363b28/RuntimeHelpers.CoreCLR.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2GzSzjjWmNjZQzBsGaqIHe3SRJA" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "settings.editor.selected.configurable": "RiderDotCoverContinuousTestingPageId",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager" selected="fbec6a09-b04a-4544-9768-add022df1197" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fee14a09-fe2e-403e-b6a2-591273fa668a" name="Changes" comment="" />
+      <created>1667390184551</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1667390184551</updated>
+      <workItem from="1667390185972" duration="1648000" />
+      <workItem from="1667398281956" duration="348000" />
+      <workItem from="1667398638476" duration="423000" />
+      <workItem from="1667399067279" duration="3950000" />
+      <workItem from="1667403635924" duration="744000" />
+      <workItem from="1667405706634" duration="2308000" />
+      <workItem from="1667422814502" duration="1805000" />
+      <workItem from="1667424644636" duration="14000" />
+      <workItem from="1667424684308" duration="9789000" />
+    </task>
+    <task id="LOCAL-00001" summary="InitialCommit. Test backbones added.">
+      <created>1667401245930</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1667401245930</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Unit tests for grammar processor.">
+      <created>1667426392242</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1667426392242</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnitTestsCoverage.Settings">
+    <option name="coveragePercentColumnWidth" value="150" />
+    <option name="sortOrder" value="DESCENDING" />
+    <option name="sortedColumn" value="1" />
+    <option name="symbolColumnWidth" value="162" />
+    <coverage-tree-state>
+      <expand>
+        <path>
+          <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
+          <item name="Total 25% 457/607" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+        </path>
+        <path>
+          <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
+          <item name="Total 25% 457/607" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="MSNumbersTests 25% 457/607" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+        </path>
+      </expand>
+      <select />
+    </coverage-tree-state>
+  </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="InitialCommit. Test backbones added." />
+    <MESSAGE value="Unit tests for grammar processor." />
+    <option name="LAST_COMMIT_MESSAGE" value="Unit tests for grammar processor." />
+  </component>
+</project>

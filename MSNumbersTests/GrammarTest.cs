@@ -255,7 +255,7 @@ public class GrammarTest
         try
         {
             r = Calculate("A0");
-            Assert.Fail("Cell A0 had been accessed.");
+            Assert.Fail("Cell A0 has been accessed.");
         }
         catch (Exception)
         {
@@ -265,7 +265,7 @@ public class GrammarTest
         try
         {
             r = Calculate("AAA0");
-            Assert.Fail("Cell AAA0 had been accessed.");
+            Assert.Fail("Cell AAA0 has been accessed.");
         }
         catch (Exception)
         {
@@ -275,7 +275,7 @@ public class GrammarTest
         try
         {
             r = Calculate("A0.0");
-            Assert.Fail("Cell A0.0 had been accessed.");
+            Assert.Fail("Cell A0.0 has been accessed.");
         }
         catch (Exception)
         {
@@ -285,7 +285,7 @@ public class GrammarTest
         try
         {
             r = Calculate("A0B0");
-            Assert.Fail("Cell A0B0 had been accessed.");
+            Assert.Fail("Cell A0B0 has been accessed.");
         }
         catch (Exception)
         {
@@ -295,7 +295,7 @@ public class GrammarTest
         try
         {
             r = Calculate("A");
-            Assert.Fail("Cell A had been accessed.");
+            Assert.Fail("Cell A has been accessed.");
         }
         catch (Exception)
         {
@@ -308,7 +308,7 @@ public class GrammarTest
         {
             var s = "2 /// 2";
             r = Calculate(s);
-            Assert.Fail($"{s} had been processed with result {r.Result}");
+            Assert.Fail($"{s} has been processed with result {r.Result}");
         }
         catch (Exception)
         {
@@ -319,7 +319,7 @@ public class GrammarTest
         {
             var s = "2 /* 2";
             r = Calculate(s);
-            Assert.Fail($"{s} had been processed with result {r.Result}");
+            Assert.Fail($"{s} has been processed with result {r.Result}");
         }
         catch (Exception)
         {
@@ -330,7 +330,7 @@ public class GrammarTest
         {
             var s = "2++-2";
             r = Calculate(s);
-            Assert.Fail($"{s} had been processed with result {r.Result}");
+            Assert.Fail($"{s} has been processed with result {r.Result}");
         }
         catch (Exception)
         {
@@ -341,7 +341,7 @@ public class GrammarTest
         {
             var s = "2 ^^^ 2";
             r = Calculate(s);
-            Assert.Fail($"{s} had been processed with result {r.Result}");
+            Assert.Fail($"{s} has been processed with result {r.Result}");
         }
         catch (Exception)
         {
@@ -352,7 +352,7 @@ public class GrammarTest
         {
             var s = "2 . 2";
             r = Calculate(s);
-            Assert.Fail($"{s} had been processed with result {r.Result}");
+            Assert.Fail($"{s} has been processed with result {r.Result}");
         }
         catch (Exception)
         {
@@ -363,7 +363,7 @@ public class GrammarTest
         {
             var s = "2 times 2";
             r = Calculate(s);
-            Assert.Fail($"{s} had been processed with result {r.Result}");
+            Assert.Fail($"{s} has been processed with result {r.Result}");
         }
         catch (Exception)
         {
@@ -375,7 +375,7 @@ public class GrammarTest
         {
             var s = "maax(24, 33)";
             r = Calculate(s);
-            Assert.Fail($"{s} had been processed with result {r.Result}");
+            Assert.Fail($"{s} has been processed with result {r.Result}");
         }
         catch (Exception)
         {
@@ -386,7 +386,7 @@ public class GrammarTest
         {
             var s = "iinc(21)";
             r = Calculate(s);
-            Assert.Fail($"{s} had been processed with result {r.Result}");
+            Assert.Fail($"{s} has been processed with result {r.Result}");
         }
         catch (Exception)
         {
@@ -399,7 +399,7 @@ public class GrammarTest
         {
             var s = "max(2,3";
             r = Calculate(s);
-            Assert.Fail($"{s} had been processed with result {r.Result}");
+            Assert.Fail($"{s} has been processed with result {r.Result}");
         }
         catch (Exception)
         {
@@ -410,7 +410,7 @@ public class GrammarTest
         {
             var s = "min((21, 18))";
             r = Calculate(s);
-            Assert.Fail($"{s} had been processed with result {r.Result}");
+            Assert.Fail($"{s} has been processed with result {r.Result}");
         }
         catch (Exception)
         {
@@ -422,7 +422,7 @@ public class GrammarTest
         {
             var s = "Hello, Dolly!";
             r = Calculate(s);
-            Assert.Fail($"{s} had been processed with result {r.Result}");
+            Assert.Fail($"{s} has been processed with result {r.Result}");
         }
         catch (Exception)
         {
@@ -433,7 +433,7 @@ public class GrammarTest
         {
             var s = ".";
             r = Calculate(s);
-            Assert.Fail($"{s} had been processed with result {r.Result}");
+            Assert.Fail($"{s} has been processed with result {r.Result}");
         }
         catch (Exception)
         {
@@ -444,7 +444,7 @@ public class GrammarTest
         {
             var s = "/";
             r = Calculate(s);
-            Assert.Fail($"{s} had been processed with result {r.Result}");
+            Assert.Fail($"{s} has been processed with result {r.Result}");
         }
         catch (Exception)
         {
@@ -458,7 +458,7 @@ public class GrammarTest
         {
             var s = "1\t\t1";
             r = Calculate(s);
-            Assert.Fail($"{s} had been processed with result {r.Result}");
+            Assert.Fail($"{s} has been processed with result {r.Result}");
         }
         catch (Exception)
         {
@@ -472,7 +472,7 @@ public class GrammarTest
         {
             var s = "(((1.1))";
             r = Calculate(s);
-            Assert.Fail($"{s} had been processed with result {r.Result}");
+            Assert.Fail($"{s} has been processed with result {r.Result}");
         }
         catch (Exception)
         {
@@ -486,7 +486,7 @@ public class GrammarTest
         {
             var s = "(max(3,3)))";
             r = Calculate(s);
-            Assert.Fail($"{s} had been processed with result {r.Result}");
+            Assert.Fail($"{s} has been processed with result {r.Result}");
         }
         catch (Exception)
         {
@@ -497,7 +497,7 @@ public class GrammarTest
         {
             var s = "(1(";
             r = Calculate(s);
-            Assert.Fail($"{s} had been processed with result {r.Result}");
+            Assert.Fail($"{s} has been processed with result {r.Result}");
         }
         catch (Exception)
         {
@@ -508,7 +508,7 @@ public class GrammarTest
         {
             var s = ")max(min(2,2),1)(";
             r = Calculate(s);
-            Assert.Fail($"{s} had been processed with result {r.Result}");
+            Assert.Fail($"{s} has been processed with result {r.Result}");
         }
         catch (Exception)
         {
@@ -554,7 +554,7 @@ public class GrammarTest
         try
         {
             r = Calculate("A0");
-            Assert.Fail("Cell A0 had been accessed!");
+            Assert.Fail("Cell A0 has been accessed!");
         }
         catch
         {
@@ -567,7 +567,7 @@ public class GrammarTest
         {
             var s = $"=A{Table.Rows + 1}";
             r = Calculate(s);
-            Assert.Fail($"Cell {s} had been accessed!");
+            Assert.Fail($"Cell {s} has been accessed!");
         }
         catch
         {
@@ -581,7 +581,7 @@ public class GrammarTest
         {
             var s = $"{Table.NumberToAlphabeticSystem(Table.Columns)}{Table.Rows}";
             r = Calculate(s);
-            Assert.Fail($"Cell {s} had been accessed!");
+            Assert.Fail($"Cell {s} has been accessed!");
         }
         catch
         {
