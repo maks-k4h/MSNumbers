@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from /Users/makskonevych/Documents/C#/test/ConsoleApp1/ConsoleApp1/Grammar/SomeGrammar.g4 by ANTLR 4.10.1
+// Generated from /Users/makskonevych/Documents/C#/Labs/MSNumbers/MSNumbers/Utils/Grammar/SomeGrammar.g4 by ANTLR 4.10.1
 
 // Unreachable code detected
 #pragma warning disable 0162

@@ -10,11 +10,11 @@
 		</data>
 		<key>Resources/Assets.car</key>
 		<data>
-		tbbhQm/b7dGxwvbpmyvanqBv7vA=
+		Ads516f9ImCR/m1bT6T2OHUJO9E=
 		</data>
 		<key>Resources/MauiInfo.plist</key>
 		<data>
-		keAf4g1EpTxfA90nvczfcHgsYzY=
+		iEtuUGCV6JM3gxS/pO33swhmpp8=
 		</data>
 		<key>Resources/MonoTouchDebugConfiguration.txt</key>
 		<data>
@@ -27,6 +27,10 @@
 		<key>Resources/OpenSans-Semibold.ttf</key>
 		<data>
 		ZeYhz35IzF5SbicH7+T074t7RN0=
+		</data>
+		<key>Resources/Utils/.DS_Store</key>
+		<data>
+		BiyEc6yALyZE3JY5izGQIzZAsJU=
 		</data>
 		<key>Resources/appicon.icns</key>
 		<data>
@@ -62,14 +66,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			A1chPO8Ckkl2GXdT0/eeTSn0kwdqAmthYzHr18rTtcc=
+			k/RWASyc5h9F12zCWOgT/iM2g5GzyP/nGzSQeuzkNXc=
 			</data>
 		</dict>
 		<key>MonoBundle/MSNumbers.pdb</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			kGUfguSgPGkVjr4XwsGYddK1G9xv6kfFByaL8eGFQxw=
+			hlqhvUaihkkWPK+3W5ol9AJg7NMR5MhU3iBJiLASOrQ=
 			</data>
 		</dict>
 		<key>MonoBundle/Microsoft.CSharp.dll</key>
@@ -1434,14 +1438,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			5ztnHHgnX/gjK5u8JAVTx6zEZBJfjcdJrTMlfeyonUg=
+			SQEmo3SEIqRWqciOhOIlsYu8tKnQmA4cC+q38QFVrwk=
 			</data>
 		</dict>
 		<key>Resources/MauiInfo.plist</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Tb/3x7baGCAU6ljR4f2xRbkz5iymNz8wOMo17AXbyLE=
+			tx0KXqEC+DvcCGyogQTEQWHcCWJYYqH24NtPwhpQEjo=
 			</data>
 		</dict>
 		<key>Resources/MonoTouchDebugConfiguration.txt</key>

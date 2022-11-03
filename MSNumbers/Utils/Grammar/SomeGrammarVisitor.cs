@@ -11,83 +11,65 @@ public class SomeGrammarVisitor : SomeGrammarBaseVisitor<FormulaResultPackage>
 
     public override FormulaResultPackage VisitSum(SomeGrammarParser.SumContext context)
     {
-        switch (context.ChildCount)
+        var res = VisitAddend(context.addend()[0]);
+        for (int i = 1; i < context.addend().Length; ++i)
         {
-            case 1:
-                return VisitAddend(context.addend());
-            case 3:
-            {
-                // TODO: implement operation overload instead of this mess
-                var a = Visit(context.addend());
-                var b = Visit(context.sum());
-                var res = new FormulaResultPackage();
-                res.AddDependencies(a);
-                res.AddDependencies(b);
+            var a = VisitAddend(context.addend()[i]);
             
-                if (context.children[1].ToString() == "+")
-                {
-                    res.Result = a.Result + b.Result;
-                }
-                else if (context.children[1].ToString() == "-")
-                {
-                    res.Result = a.Result - b.Result;
-                }
-
-                return res;
-            }
+            res.AddDependencies(a);
+            
+            if (context.children[2 * i - 1].ToString() == "+")
+                res.Result += a.Result;
+            else if (context.children[2 * i - 1].ToString() == "-")
+                res.Result -= a.Result;
+            else
+                throw new SyntaxErrorException();
         }
-        
-        throw new SyntaxErrorException();
+
+        return res;
     }
 
     public override FormulaResultPackage VisitAddend(SomeGrammarParser.AddendContext context)
     {
-        switch (context.ChildCount)
+        var res = VisitMultiplier(context.multiplier()[0]);
+        for (int i = 1; i < context.multiplier().Length; ++i)
         {
-            case 1:
-                return VisitMultiplier(context.multiplier());
-            case 3:
-            {
-                var a = Visit(context.multiplier());
-                var b = Visit(context.addend());
-                var res = new FormulaResultPackage();
-                res.AddDependencies(a);
-                res.AddDependencies(b);
+            var a = VisitMultiplier(context.multiplier()[i]);
             
-                if (context.children[1].ToString() == "*")
-                    res.Result = a.Result * b.Result;
-                else if (context.children[1].ToString() == "/")
-                    res.Result = a.Result / b.Result;
+            res.AddDependencies(a);
             
-                return res;
-            }
+            if (context.children[2 * i - 1].ToString() == "*")
+                res.Result *= a.Result;
+            else if (context.children[2 * i - 1].ToString() == "/")
+                res.Result /= a.Result;
+            else
+                throw new SyntaxErrorException();
         }
-        
-        throw new SyntaxErrorException();
+
+        return res;
     }
 
     public override FormulaResultPackage VisitMultiplier(SomeGrammarParser.MultiplierContext context)
     {
-        switch (context.ChildCount)
+        var res = VisitAtomic(context.atomic()[0]);
+        for (int i = 1; i < context.atomic().Length; ++i)
         {
-            case 1:
-                return VisitAtomic(context.atomic()[0]);
-            case 3:
-            {
-                var a = Visit(context.atomic()[0]);
-                var b = Visit(context.atomic()[1]);
-                var res = new FormulaResultPackage { Result = Math.Pow(a.Result, b.Result) };
-                res.AddDependencies(a);
-                res.AddDependencies(b);
-                return res;
-            }
+            var a = VisitAtomic(context.atomic()[i]);
+            
+            res.AddDependencies(a);
+            
+            if (context.children[2 * i - 1].ToString() == "^")
+                res.Result = Double.Pow(res.Result, a.Result);
+            else
+                throw new SyntaxErrorException();
         }
-        throw new SyntaxErrorException();
+
+        return res;
     }
 
     public override FormulaResultPackage VisitAtomic(SomeGrammarParser.AtomicContext context)
     {
-        return VisitChildren(context);
+        return VisitChildren(context) ?? new FormulaResultPackage();
     }
 
     public override FormulaResultPackage VisitEnclosed_sum(SomeGrammarParser.Enclosed_sumContext context)
@@ -149,7 +131,27 @@ public class SomeGrammarVisitor : SomeGrammarBaseVisitor<FormulaResultPackage>
         }
         catch (Exception)
         {
-            throw new Exception($"Error while parsing double from {s}");
+           // ignored 
         }
+        
+        try
+        {
+            return new FormulaResultPackage { Result = double.Parse(s.Replace('.', ',')) };
+        }
+        catch
+        {
+            // ignored
+        }
+        
+        try
+        {
+            return new FormulaResultPackage { Result = double.Parse(s.Replace(',', '.')) };
+        }
+        catch
+        {
+            // ignored
+        }
+        
+        throw new Exception($"Error while parsing double from {s}");
     }
 }

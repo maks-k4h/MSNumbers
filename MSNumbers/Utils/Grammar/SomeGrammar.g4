@@ -4,8 +4,8 @@ WS : [ \t\r\n]+ -> skip;
 
 
 line:           sum EOF;
-sum:            addend (('+'|'-') sum)?;
-addend:         multiplier (('*'|'/') addend)?;
+sum:            addend (('+'|'-') addend)*;
+addend:         multiplier (('*'|'/') multiplier)*;
 multiplier:     atomic ('^' atomic)?;
 atomic:         float           | 
                 cell            |

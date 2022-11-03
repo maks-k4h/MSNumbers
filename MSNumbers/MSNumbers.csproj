@@ -53,4 +53,8 @@
         <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0-rc.2.22430.11" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Content Include="Utils\.DS_Store" />
+    </ItemGroup>
+
 </Project>

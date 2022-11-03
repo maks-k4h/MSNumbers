@@ -5,7 +5,137 @@
     <projectFile kind="XamarinMacOS">MSNumbers/MSNumbers.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b9427881-e625-4539-8306-85d09fe11ec9" name="Changes" comment="Backup" />
+    <list default="true" id="b9427881-e625-4539-8306-85d09fe11ec9" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.MSNumbers/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MSNumbers/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/MSNumbers.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/MSNumbers.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/Utils/Grammar/SomeGrammar.g4" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/Utils/Grammar/SomeGrammar.g4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/Utils/Grammar/SomeGrammarVisitor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/Utils/Grammar/SomeGrammarVisitor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/Utils/Grammar/gen/SomeGrammar.interp" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/Utils/Grammar/gen/SomeGrammar.interp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/Utils/Grammar/gen/SomeGrammarBaseListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/Utils/Grammar/gen/SomeGrammarBaseListener.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/Utils/Grammar/gen/SomeGrammarBaseVisitor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/Utils/Grammar/gen/SomeGrammarBaseVisitor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/Utils/Grammar/gen/SomeGrammarLexer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/Utils/Grammar/gen/SomeGrammarLexer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/Utils/Grammar/gen/SomeGrammarListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/Utils/Grammar/gen/SomeGrammarListener.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/Utils/Grammar/gen/SomeGrammarParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/Utils/Grammar/gen/SomeGrammarParser.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/Utils/Grammar/gen/SomeGrammarVisitor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/Utils/Grammar/gen/SomeGrammarVisitor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/bin/Debug/net7.0-android/MSNumbers.dll" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/bin/Debug/net7.0-android/MSNumbers.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/bin/Debug/net7.0-android/MSNumbers.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/bin/Debug/net7.0-android/MSNumbers.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/bin/Debug/net7.0-android/com.companyname.msnumbers-Signed.apk" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/bin/Debug/net7.0-android/com.companyname.msnumbers-Signed.apk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/bin/Debug/net7.0-android/com.companyname.msnumbers.apk" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/bin/Debug/net7.0-android/com.companyname.msnumbers.apk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/bin/Debug/net7.0-ios/iossimulator-x64/MSNumbers.app/Assets.car" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/bin/Debug/net7.0-ios/iossimulator-x64/MSNumbers.app/Assets.car" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/bin/Debug/net7.0-ios/iossimulator-x64/MSNumbers.app/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/bin/Debug/net7.0-ios/iossimulator-x64/MSNumbers.app/Info.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/bin/Debug/net7.0-ios/iossimulator-x64/MSNumbers.app/MSNumbers" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/bin/Debug/net7.0-ios/iossimulator-x64/MSNumbers.app/MSNumbers" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/bin/Debug/net7.0-ios/iossimulator-x64/MSNumbers.app/MSNumbers.dll" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/bin/Debug/net7.0-ios/iossimulator-x64/MSNumbers.app/MSNumbers.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/bin/Debug/net7.0-ios/iossimulator-x64/MSNumbers.app/MSNumbers.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/bin/Debug/net7.0-ios/iossimulator-x64/MSNumbers.app/MSNumbers.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/bin/Debug/net7.0-ios/iossimulator-x64/MSNumbers.app/MauiInfo.plist" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/bin/Debug/net7.0-ios/iossimulator-x64/MSNumbers.app/MauiInfo.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/bin/Debug/net7.0-ios/iossimulator-x64/MSNumbers.dll" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/bin/Debug/net7.0-ios/iossimulator-x64/MSNumbers.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/bin/Debug/net7.0-ios/iossimulator-x64/MSNumbers.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/bin/Debug/net7.0-ios/iossimulator-x64/MSNumbers.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/bin/Debug/net7.0-maccatalyst/maccatalyst-x64/MSNumbers.app/Contents/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/bin/Debug/net7.0-maccatalyst/maccatalyst-x64/MSNumbers.app/Contents/Info.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/bin/Debug/net7.0-maccatalyst/maccatalyst-x64/MSNumbers.app/Contents/MacOS/MSNumbers" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/bin/Debug/net7.0-maccatalyst/maccatalyst-x64/MSNumbers.app/Contents/MacOS/MSNumbers" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/bin/Debug/net7.0-maccatalyst/maccatalyst-x64/MSNumbers.app/Contents/MonoBundle/MSNumbers.dll" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/bin/Debug/net7.0-maccatalyst/maccatalyst-x64/MSNumbers.app/Contents/MonoBundle/MSNumbers.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/bin/Debug/net7.0-maccatalyst/maccatalyst-x64/MSNumbers.app/Contents/MonoBundle/MSNumbers.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/bin/Debug/net7.0-maccatalyst/maccatalyst-x64/MSNumbers.app/Contents/MonoBundle/MSNumbers.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/bin/Debug/net7.0-maccatalyst/maccatalyst-x64/MSNumbers.app/Contents/Resources/Assets.car" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/bin/Debug/net7.0-maccatalyst/maccatalyst-x64/MSNumbers.app/Contents/Resources/Assets.car" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/bin/Debug/net7.0-maccatalyst/maccatalyst-x64/MSNumbers.app/Contents/Resources/MauiInfo.plist" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/bin/Debug/net7.0-maccatalyst/maccatalyst-x64/MSNumbers.app/Contents/Resources/MauiInfo.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/bin/Debug/net7.0-maccatalyst/maccatalyst-x64/MSNumbers.app/Contents/_CodeSignature/CodeResources" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/bin/Debug/net7.0-maccatalyst/maccatalyst-x64/MSNumbers.app/Contents/_CodeSignature/CodeResources" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/bin/Debug/net7.0-maccatalyst/maccatalyst-x64/MSNumbers.dll" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/bin/Debug/net7.0-maccatalyst/maccatalyst-x64/MSNumbers.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/bin/Debug/net7.0-maccatalyst/maccatalyst-x64/MSNumbers.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/bin/Debug/net7.0-maccatalyst/maccatalyst-x64/MSNumbers.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/MSNumbers.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/MSNumbers.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/MSNumbers.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/MSNumbers.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/MSNumbers.dll" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/MSNumbers.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/MSNumbers.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/MSNumbers.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/android/assets/MSNumbers.dll" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/android/assets/MSNumbers.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/android/assets/MSNumbers.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/android/assets/MSNumbers.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/android/bin/classes.zip" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/android/bin/classes.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/android/bin/com.companyname.msnumbers.apk" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/android/bin/com.companyname.msnumbers.apk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/android/environment.arm64-v8a.ll" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/android/environment.arm64-v8a.ll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/android/environment.arm64-v8a.o" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/android/environment.arm64-v8a.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/android/environment.armeabi-v7a.ll" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/android/environment.armeabi-v7a.ll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/android/environment.armeabi-v7a.o" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/android/environment.armeabi-v7a.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/android/environment.x86.ll" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/android/environment.x86.ll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/android/environment.x86.o" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/android/environment.x86.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/android/environment.x86_64.ll" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/android/environment.x86_64.ll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/android/environment.x86_64.o" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/android/environment.x86_64.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/app_shared_libraries/arm64-v8a/libxamarin-app.so" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/app_shared_libraries/arm64-v8a/libxamarin-app.so" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/app_shared_libraries/armeabi-v7a/libxamarin-app.so" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/app_shared_libraries/armeabi-v7a/libxamarin-app.so" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/app_shared_libraries/x86/libxamarin-app.so" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/app_shared_libraries/x86/libxamarin-app.so" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/app_shared_libraries/x86_64/libxamarin-app.so" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/app_shared_libraries/x86_64/libxamarin-app.so" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/buildid.txt" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/buildid.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/101/jl/res.zip" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/101/jl/res.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/102/jl/res.zip" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/102/jl/res.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/103/jl/res.zip" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/103/jl/res.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/104/jl/res.zip" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/104/jl/res.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/105/jl/res.zip" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/105/jl/res.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/109/jl/res.zip" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/109/jl/res.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/110/jl/res.zip" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/110/jl/res.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/112/jl/res.zip" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/112/jl/res.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/113/jl/res.zip" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/113/jl/res.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/116/jl/res.zip" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/116/jl/res.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/117/jl/res.zip" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/117/jl/res.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/119/jl/res.zip" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/119/jl/res.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/121/jl/res.zip" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/121/jl/res.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/122/jl/res.zip" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/122/jl/res.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/123/jl/res.zip" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/123/jl/res.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/124/jl/res.zip" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/124/jl/res.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/125/jl/res.zip" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/125/jl/res.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/126/jl/res.zip" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/126/jl/res.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/127/jl/res.zip" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/127/jl/res.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/128/jl/res.zip" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/128/jl/res.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/129/jl/res.zip" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/129/jl/res.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/131/jl/res.zip" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/131/jl/res.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/132/jl/res.zip" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/132/jl/res.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/133/jl/res.zip" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/133/jl/res.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/134/jl/res.zip" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/134/jl/res.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/135/jl/res.zip" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/135/jl/res.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/136/jl/res.zip" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/136/jl/res.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/137/jl/res.zip" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/137/jl/res.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/138/jl/res.zip" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/138/jl/res.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/139/jl/res.zip" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/139/jl/res.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/140/jl/res.zip" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/140/jl/res.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/141/jl/res.zip" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/141/jl/res.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/142/jl/res.zip" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/142/jl/res.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/147/jl/res.zip" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/147/jl/res.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/149/jl/res.zip" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/149/jl/res.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/151/jl/res.zip" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/151/jl/res.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/152/jl/res.zip" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/152/jl/res.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/153/jl/res.zip" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/153/jl/res.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/154/jl/res.zip" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/154/jl/res.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/155/jl/res.zip" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/155/jl/res.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/90/jl/res.zip" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/90/jl/res.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/91/jl/res.zip" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/91/jl/res.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/92/jl/res.zip" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/92/jl/res.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/95/jl/res.zip" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/95/jl/res.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/96/jl/res.zip" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/96/jl/res.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/97/jl/res.zip" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/97/jl/res.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/98/jl/res.zip" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/98/jl/res.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/99/jl/res.zip" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-android/lp/99/jl/res.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-ios/iossimulator-x64/AppManifest.plist" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-ios/iossimulator-x64/AppManifest.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-ios/iossimulator-x64/MSNumbers.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-ios/iossimulator-x64/MSNumbers.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-ios/iossimulator-x64/MSNumbers.dll" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-ios/iossimulator-x64/MSNumbers.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-ios/iossimulator-x64/MSNumbers.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-ios/iossimulator-x64/MSNumbers.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-ios/iossimulator-x64/actool/bundle/Assets.car" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-ios/iossimulator-x64/actool/bundle/Assets.car" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-ios/iossimulator-x64/custom-linker-options.txt" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-ios/iossimulator-x64/custom-linker-options.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-ios/iossimulator-x64/linked/MSNumbers.dll" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-ios/iossimulator-x64/linked/MSNumbers.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-ios/iossimulator-x64/linked/MSNumbers.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-ios/iossimulator-x64/linked/MSNumbers.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-ios/iossimulator-x64/nativelibraries/MSNumbers" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-ios/iossimulator-x64/nativelibraries/MSNumbers" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-ios/iossimulator-x64/nativelibraries/aot-output/x86_64/System.Private.CoreLib.dll.o" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-ios/iossimulator-x64/nativelibraries/aot-output/x86_64/System.Private.CoreLib.dll.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-ios/iossimulator-x64/nativelibraries/aot-output/x86_64/System.Private.CoreLib.dll.s" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-ios/iossimulator-x64/nativelibraries/aot-output/x86_64/System.Private.CoreLib.dll.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-ios/iossimulator-x64/ref/MSNumbers.dll" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-ios/iossimulator-x64/ref/MSNumbers.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-ios/iossimulator-x64/refint/MSNumbers.dll" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-ios/iossimulator-x64/refint/MSNumbers.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-ios/iossimulator-x64/resizetizer/f/MauiInfo.plist" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-ios/iossimulator-x64/resizetizer/f/MauiInfo.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-maccatalyst/maccatalyst-x64/AppManifest.plist" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-maccatalyst/maccatalyst-x64/AppManifest.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-maccatalyst/maccatalyst-x64/MSNumbers.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-maccatalyst/maccatalyst-x64/MSNumbers.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-maccatalyst/maccatalyst-x64/MSNumbers.dll" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-maccatalyst/maccatalyst-x64/MSNumbers.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-maccatalyst/maccatalyst-x64/MSNumbers.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-maccatalyst/maccatalyst-x64/MSNumbers.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-maccatalyst/maccatalyst-x64/actool/bundle/Assets.car" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-maccatalyst/maccatalyst-x64/actool/bundle/Assets.car" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-maccatalyst/maccatalyst-x64/custom-linker-options.txt" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-maccatalyst/maccatalyst-x64/custom-linker-options.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-maccatalyst/maccatalyst-x64/linked/MSNumbers.dll" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-maccatalyst/maccatalyst-x64/linked/MSNumbers.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-maccatalyst/maccatalyst-x64/linked/MSNumbers.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-maccatalyst/maccatalyst-x64/linked/MSNumbers.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-maccatalyst/maccatalyst-x64/nativelibraries/MSNumbers" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-maccatalyst/maccatalyst-x64/nativelibraries/MSNumbers" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-maccatalyst/maccatalyst-x64/nativelibraries/aot-output/x86_64/System.Private.CoreLib.dll.o" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-maccatalyst/maccatalyst-x64/nativelibraries/aot-output/x86_64/System.Private.CoreLib.dll.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-maccatalyst/maccatalyst-x64/nativelibraries/aot-output/x86_64/System.Private.CoreLib.dll.s" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-maccatalyst/maccatalyst-x64/nativelibraries/aot-output/x86_64/System.Private.CoreLib.dll.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-maccatalyst/maccatalyst-x64/ref/MSNumbers.dll" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-maccatalyst/maccatalyst-x64/ref/MSNumbers.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-maccatalyst/maccatalyst-x64/refint/MSNumbers.dll" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-maccatalyst/maccatalyst-x64/refint/MSNumbers.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-maccatalyst/maccatalyst-x64/resizetizer/f/MauiInfo.plist" beforeDir="false" afterPath="$PROJECT_DIR$/MSNumbers/obj/Debug/net7.0-maccatalyst/maccatalyst-x64/resizetizer/f/MauiInfo.plist" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -59,7 +189,21 @@
       <updated>1667387580415</updated>
       <workItem from="1667387586472" duration="691000" />
       <workItem from="1667388307351" duration="1566000" />
+      <workItem from="1667389898026" duration="272000" />
+      <workItem from="1667390625095" duration="1812000" />
+      <workItem from="1667404392327" duration="2705000" />
+      <workItem from="1667424635955" duration="6000" />
+      <workItem from="1667424666725" duration="1000" />
+      <workItem from="1667424740293" duration="38000" />
     </task>
+    <task id="LOCAL-00001" summary="Backup">
+      <created>1667390055056</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1667390055056</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -80,5 +224,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="Backup" />
+    <option name="LAST_COMMIT_MESSAGE" value="Backup" />
   </component>
 </project>

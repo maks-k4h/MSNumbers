@@ -29,6 +29,7 @@
 /Users/makskonevych/Documents/C#/Labs/MSNumbers/MSNumbers/obj/Debug/net7.0-android/resizetizer/r/drawable-xxhdpi/splash.png
 /Users/makskonevych/Documents/C#/Labs/MSNumbers/MSNumbers/obj/Debug/net7.0-android/resizetizer/r/drawable-xxxhdpi/dotnet_bot.png
 /Users/makskonevych/Documents/C#/Labs/MSNumbers/MSNumbers/obj/Debug/net7.0-android/resizetizer/r/drawable-xxxhdpi/splash.png
+/Users/makskonevych/Documents/C#/Labs/MSNumbers/MSNumbers/obj/Debug/net7.0-android/resizetizer/r/drawable/main_texture.jpg
 /Users/makskonevych/Documents/C#/Labs/MSNumbers/MSNumbers/obj/Debug/net7.0-android/resizetizer/r/mipmap-anydpi-v26/appicon.xml
 /Users/makskonevych/Documents/C#/Labs/MSNumbers/MSNumbers/obj/Debug/net7.0-android/resizetizer/r/mipmap-anydpi-v26/appicon_round.xml
 /Users/makskonevych/Documents/C#/Labs/MSNumbers/MSNumbers/obj/Debug/net7.0-android/resizetizer/r/mipmap-hdpi/appicon.png
@@ -1052,4 +1053,3 @@
 /Users/makskonevych/Documents/C#/Labs/MSNumbers/MSNumbers/obj/Debug/net7.0-android/stamp/_GenerateJavaStubs.stamp
 /Users/makskonevych/Documents/C#/Labs/MSNumbers/MSNumbers/obj/Debug/net7.0-android/stamp/_GeneratePackageManagerJava.stamp
 /Users/makskonevych/Documents/C#/Labs/MSNumbers/MSNumbers/obj/Debug/net7.0-android/stamp/_ResolveLibraryProjectImports.stamp
-/Users/makskonevych/Documents/C#/Labs/MSNumbers/MSNumbers/obj/Debug/net7.0-android/resizetizer/r/drawable/main_texture.jpg

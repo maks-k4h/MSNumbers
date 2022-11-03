@@ -18,7 +18,7 @@ public class Cell : INotifyPropertyChanged
     
     private string _formula = "";
     // Extra field for data binding
-    private string _stringValue;
+    private string _stringValue = "";
     private FormulaResultPackage _value;
     
     // List of dependent cells (after current cell is updated, those must be visited too)

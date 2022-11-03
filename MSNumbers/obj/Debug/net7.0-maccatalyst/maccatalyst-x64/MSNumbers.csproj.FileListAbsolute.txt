@@ -233,6 +233,7 @@
 /Users/makskonevych/Documents/C#/Labs/MSNumbers/MSNumbers/obj/Debug/net7.0-maccatalyst/maccatalyst-x64/resizetizer/r/dotnet_bot.png
 /Users/makskonevych/Documents/C#/Labs/MSNumbers/MSNumbers/obj/Debug/net7.0-maccatalyst/maccatalyst-x64/resizetizer/r/dotnet_bot@2x.png
 /Users/makskonevych/Documents/C#/Labs/MSNumbers/MSNumbers/obj/Debug/net7.0-maccatalyst/maccatalyst-x64/resizetizer/r/dotnet_bot@3x.png
+/Users/makskonevych/Documents/C#/Labs/MSNumbers/MSNumbers/obj/Debug/net7.0-maccatalyst/maccatalyst-x64/resizetizer/r/Resources/main_texture.jpg
 /Users/makskonevych/Documents/C#/Labs/MSNumbers/MSNumbers/obj/Debug/net7.0-maccatalyst/maccatalyst-x64/mauiimage.stamp
 /Users/makskonevych/Documents/C#/Labs/MSNumbers/MSNumbers/obj/Debug/net7.0-maccatalyst/maccatalyst-x64/resizetizer/f/MauiInfo.plist
 /Users/makskonevych/Documents/C#/Labs/MSNumbers/MSNumbers/obj/Debug/net7.0-maccatalyst/maccatalyst-x64/mauifont.stamp
@@ -258,4 +259,3 @@
 /Users/makskonevych/Documents/C#/Labs/MSNumbers/MSNumbers/obj/Debug/net7.0-maccatalyst/maccatalyst-x64/MSNumbers.pdb
 /Users/makskonevych/Documents/C#/Labs/MSNumbers/MSNumbers/obj/Debug/net7.0-maccatalyst/maccatalyst-x64/MSNumbers.genruntimeconfig.cache
 /Users/makskonevych/Documents/C#/Labs/MSNumbers/MSNumbers/obj/Debug/net7.0-maccatalyst/maccatalyst-x64/ref/MSNumbers.dll
-/Users/makskonevych/Documents/C#/Labs/MSNumbers/MSNumbers/obj/Debug/net7.0-maccatalyst/maccatalyst-x64/resizetizer/r/Resources/main_texture.jpg

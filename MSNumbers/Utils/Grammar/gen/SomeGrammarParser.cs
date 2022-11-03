@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from /Users/makskonevych/Documents/C#/test/ConsoleApp1/ConsoleApp1/Grammar/SomeGrammar.g4 by ANTLR 4.10.1
+// Generated from /Users/makskonevych/Documents/C#/Labs/MSNumbers/MSNumbers/Utils/Grammar/SomeGrammar.g4 by ANTLR 4.10.1
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -140,11 +140,11 @@ public partial class SomeGrammarParser : Parser {
 	}
 
 	public partial class SumContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public AddendContext addend() {
-			return GetRuleContext<AddendContext>(0);
+		[System.Diagnostics.DebuggerNonUserCode] public AddendContext[] addend() {
+			return GetRuleContexts<AddendContext>();
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public SumContext sum() {
-			return GetRuleContext<SumContext>(0);
+		[System.Diagnostics.DebuggerNonUserCode] public AddendContext addend(int i) {
+			return GetRuleContext<AddendContext>(i);
 		}
 		public SumContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
@@ -179,10 +179,11 @@ public partial class SomeGrammarParser : Parser {
 			{
 			State = 27;
 			addend();
-			State = 30;
+			State = 32;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==T__0 || _la==T__1) {
+			while (_la==T__0 || _la==T__1) {
+				{
 				{
 				State = 28;
 				_la = TokenStream.LA(1);
@@ -194,10 +195,13 @@ public partial class SomeGrammarParser : Parser {
 				    Consume();
 				}
 				State = 29;
-				sum();
+				addend();
 				}
+				}
+				State = 34;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
 			}
-
 			}
 		}
 		catch (RecognitionException re) {
@@ -212,11 +216,11 @@ public partial class SomeGrammarParser : Parser {
 	}
 
 	public partial class AddendContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public MultiplierContext multiplier() {
-			return GetRuleContext<MultiplierContext>(0);
+		[System.Diagnostics.DebuggerNonUserCode] public MultiplierContext[] multiplier() {
+			return GetRuleContexts<MultiplierContext>();
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public AddendContext addend() {
-			return GetRuleContext<AddendContext>(0);
+		[System.Diagnostics.DebuggerNonUserCode] public MultiplierContext multiplier(int i) {
+			return GetRuleContext<MultiplierContext>(i);
 		}
 		public AddendContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
@@ -249,14 +253,15 @@ public partial class SomeGrammarParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 32;
-			multiplier();
 			State = 35;
+			multiplier();
+			State = 40;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==T__2 || _la==T__3) {
+			while (_la==T__2 || _la==T__3) {
 				{
-				State = 33;
+				{
+				State = 36;
 				_la = TokenStream.LA(1);
 				if ( !(_la==T__2 || _la==T__3) ) {
 				ErrorHandler.RecoverInline(this);
@@ -265,11 +270,14 @@ public partial class SomeGrammarParser : Parser {
 					ErrorHandler.ReportMatch(this);
 				    Consume();
 				}
-				State = 34;
-				addend();
+				State = 37;
+				multiplier();
 				}
+				}
+				State = 42;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
 			}
-
 			}
 		}
 		catch (RecognitionException re) {
@@ -321,16 +329,16 @@ public partial class SomeGrammarParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 37;
+			State = 43;
 			atomic();
-			State = 40;
+			State = 46;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			if (_la==T__4) {
 				{
-				State = 38;
+				State = 44;
 				Match(T__4);
-				State = 39;
+				State = 45;
 				atomic();
 				}
 			}
@@ -398,56 +406,56 @@ public partial class SomeGrammarParser : Parser {
 		AtomicContext _localctx = new AtomicContext(Context, State);
 		EnterRule(_localctx, 8, RULE_atomic);
 		try {
-			State = 50;
+			State = 56;
 			ErrorHandler.Sync(this);
 			switch (TokenStream.LA(1)) {
 			case T__12:
 			case INT:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 42;
+				State = 48;
 				@float();
 				}
 				break;
 			case LETTER:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 43;
+				State = 49;
 				cell();
 				}
 				break;
 			case T__5:
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 44;
+				State = 50;
 				enclosed_sum();
 				}
 				break;
 			case T__7:
 				EnterOuterAlt(_localctx, 4);
 				{
-				State = 45;
+				State = 51;
 				inc();
 				}
 				break;
 			case T__8:
 				EnterOuterAlt(_localctx, 5);
 				{
-				State = 46;
+				State = 52;
 				dec();
 				}
 				break;
 			case T__9:
 				EnterOuterAlt(_localctx, 6);
 				{
-				State = 47;
+				State = 53;
 				max();
 				}
 				break;
 			case T__11:
 				EnterOuterAlt(_localctx, 7);
 				{
-				State = 48;
+				State = 54;
 				min();
 				}
 				break;
@@ -512,11 +520,11 @@ public partial class SomeGrammarParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 52;
+			State = 58;
 			Match(T__5);
-			State = 53;
+			State = 59;
 			sum();
-			State = 54;
+			State = 60;
 			Match(T__6);
 			}
 		}
@@ -565,11 +573,11 @@ public partial class SomeGrammarParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 56;
+			State = 62;
 			Match(T__7);
-			State = 57;
+			State = 63;
 			sum();
-			State = 58;
+			State = 64;
 			Match(T__6);
 			}
 		}
@@ -618,11 +626,11 @@ public partial class SomeGrammarParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 60;
+			State = 66;
 			Match(T__8);
-			State = 61;
+			State = 67;
 			sum();
-			State = 62;
+			State = 68;
 			Match(T__6);
 			}
 		}
@@ -674,15 +682,15 @@ public partial class SomeGrammarParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 64;
+			State = 70;
 			Match(T__9);
-			State = 65;
+			State = 71;
 			sum();
-			State = 66;
+			State = 72;
 			Match(T__10);
-			State = 67;
+			State = 73;
 			sum();
-			State = 68;
+			State = 74;
 			Match(T__6);
 			}
 		}
@@ -734,15 +742,15 @@ public partial class SomeGrammarParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 70;
+			State = 76;
 			Match(T__11);
-			State = 71;
+			State = 77;
 			sum();
-			State = 72;
+			State = 78;
 			Match(T__10);
-			State = 73;
+			State = 79;
 			sum();
-			State = 74;
+			State = 80;
 			Match(T__6);
 			}
 		}
@@ -794,21 +802,21 @@ public partial class SomeGrammarParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 77;
+			State = 83;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			do {
 				{
 				{
-				State = 76;
+				State = 82;
 				Match(LETTER);
 				}
 				}
-				State = 79;
+				State = 85;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			} while ( _la==LETTER );
-			State = 81;
+			State = 87;
 			Match(INT);
 			}
 		}
@@ -856,33 +864,33 @@ public partial class SomeGrammarParser : Parser {
 		FloatContext _localctx = new FloatContext(Context, State);
 		EnterRule(_localctx, 22, RULE_float);
 		try {
-			State = 89;
+			State = 95;
 			ErrorHandler.Sync(this);
 			switch ( Interpreter.AdaptivePredict(TokenStream,5,Context) ) {
 			case 1:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 83;
+				State = 89;
 				Match(INT);
 				}
 				break;
 			case 2:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 84;
+				State = 90;
 				Match(T__12);
-				State = 85;
+				State = 91;
 				Match(INT);
 				}
 				break;
 			case 3:
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 86;
+				State = 92;
 				Match(INT);
-				State = 87;
+				State = 93;
 				Match(T__12);
-				State = 88;
+				State = 94;
 				Match(INT);
 				}
 				break;
@@ -900,32 +908,34 @@ public partial class SomeGrammarParser : Parser {
 	}
 
 	private static int[] _serializedATN = {
-		4,1,16,92,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,6,2,7,
-		7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,1,0,1,0,1,0,1,1,1,1,1,1,3,1,31,
-		8,1,1,2,1,2,1,2,3,2,36,8,2,1,3,1,3,1,3,3,3,41,8,3,1,4,1,4,1,4,1,4,1,4,
-		1,4,1,4,1,4,3,4,51,8,4,1,5,1,5,1,5,1,5,1,6,1,6,1,6,1,6,1,7,1,7,1,7,1,7,
-		1,8,1,8,1,8,1,8,1,8,1,8,1,9,1,9,1,9,1,9,1,9,1,9,1,10,4,10,78,8,10,11,10,
-		12,10,79,1,10,1,10,1,11,1,11,1,11,1,11,1,11,1,11,3,11,90,8,11,1,11,0,0,
-		12,0,2,4,6,8,10,12,14,16,18,20,22,0,2,1,0,1,2,1,0,3,4,92,0,24,1,0,0,0,
-		2,27,1,0,0,0,4,32,1,0,0,0,6,37,1,0,0,0,8,50,1,0,0,0,10,52,1,0,0,0,12,56,
-		1,0,0,0,14,60,1,0,0,0,16,64,1,0,0,0,18,70,1,0,0,0,20,77,1,0,0,0,22,89,
-		1,0,0,0,24,25,3,2,1,0,25,26,5,0,0,1,26,1,1,0,0,0,27,30,3,4,2,0,28,29,7,
-		0,0,0,29,31,3,2,1,0,30,28,1,0,0,0,30,31,1,0,0,0,31,3,1,0,0,0,32,35,3,6,
-		3,0,33,34,7,1,0,0,34,36,3,4,2,0,35,33,1,0,0,0,35,36,1,0,0,0,36,5,1,0,0,
-		0,37,40,3,8,4,0,38,39,5,5,0,0,39,41,3,8,4,0,40,38,1,0,0,0,40,41,1,0,0,
-		0,41,7,1,0,0,0,42,51,3,22,11,0,43,51,3,20,10,0,44,51,3,10,5,0,45,51,3,
-		12,6,0,46,51,3,14,7,0,47,51,3,16,8,0,48,51,3,18,9,0,49,51,1,0,0,0,50,42,
-		1,0,0,0,50,43,1,0,0,0,50,44,1,0,0,0,50,45,1,0,0,0,50,46,1,0,0,0,50,47,
-		1,0,0,0,50,48,1,0,0,0,50,49,1,0,0,0,51,9,1,0,0,0,52,53,5,6,0,0,53,54,3,
-		2,1,0,54,55,5,7,0,0,55,11,1,0,0,0,56,57,5,8,0,0,57,58,3,2,1,0,58,59,5,
-		7,0,0,59,13,1,0,0,0,60,61,5,9,0,0,61,62,3,2,1,0,62,63,5,7,0,0,63,15,1,
-		0,0,0,64,65,5,10,0,0,65,66,3,2,1,0,66,67,5,11,0,0,67,68,3,2,1,0,68,69,
-		5,7,0,0,69,17,1,0,0,0,70,71,5,12,0,0,71,72,3,2,1,0,72,73,5,11,0,0,73,74,
-		3,2,1,0,74,75,5,7,0,0,75,19,1,0,0,0,76,78,5,15,0,0,77,76,1,0,0,0,78,79,
-		1,0,0,0,79,77,1,0,0,0,79,80,1,0,0,0,80,81,1,0,0,0,81,82,5,16,0,0,82,21,
-		1,0,0,0,83,90,5,16,0,0,84,85,5,13,0,0,85,90,5,16,0,0,86,87,5,16,0,0,87,
-		88,5,13,0,0,88,90,5,16,0,0,89,83,1,0,0,0,89,84,1,0,0,0,89,86,1,0,0,0,90,
-		23,1,0,0,0,6,30,35,40,50,79,89
+		4,1,16,98,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,6,2,7,
+		7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,1,0,1,0,1,0,1,1,1,1,1,1,5,1,31,
+		8,1,10,1,12,1,34,9,1,1,2,1,2,1,2,5,2,39,8,2,10,2,12,2,42,9,2,1,3,1,3,1,
+		3,3,3,47,8,3,1,4,1,4,1,4,1,4,1,4,1,4,1,4,1,4,3,4,57,8,4,1,5,1,5,1,5,1,
+		5,1,6,1,6,1,6,1,6,1,7,1,7,1,7,1,7,1,8,1,8,1,8,1,8,1,8,1,8,1,9,1,9,1,9,
+		1,9,1,9,1,9,1,10,4,10,84,8,10,11,10,12,10,85,1,10,1,10,1,11,1,11,1,11,
+		1,11,1,11,1,11,3,11,96,8,11,1,11,0,0,12,0,2,4,6,8,10,12,14,16,18,20,22,
+		0,2,1,0,1,2,1,0,3,4,98,0,24,1,0,0,0,2,27,1,0,0,0,4,35,1,0,0,0,6,43,1,0,
+		0,0,8,56,1,0,0,0,10,58,1,0,0,0,12,62,1,0,0,0,14,66,1,0,0,0,16,70,1,0,0,
+		0,18,76,1,0,0,0,20,83,1,0,0,0,22,95,1,0,0,0,24,25,3,2,1,0,25,26,5,0,0,
+		1,26,1,1,0,0,0,27,32,3,4,2,0,28,29,7,0,0,0,29,31,3,4,2,0,30,28,1,0,0,0,
+		31,34,1,0,0,0,32,30,1,0,0,0,32,33,1,0,0,0,33,3,1,0,0,0,34,32,1,0,0,0,35,
+		40,3,6,3,0,36,37,7,1,0,0,37,39,3,6,3,0,38,36,1,0,0,0,39,42,1,0,0,0,40,
+		38,1,0,0,0,40,41,1,0,0,0,41,5,1,0,0,0,42,40,1,0,0,0,43,46,3,8,4,0,44,45,
+		5,5,0,0,45,47,3,8,4,0,46,44,1,0,0,0,46,47,1,0,0,0,47,7,1,0,0,0,48,57,3,
+		22,11,0,49,57,3,20,10,0,50,57,3,10,5,0,51,57,3,12,6,0,52,57,3,14,7,0,53,
+		57,3,16,8,0,54,57,3,18,9,0,55,57,1,0,0,0,56,48,1,0,0,0,56,49,1,0,0,0,56,
+		50,1,0,0,0,56,51,1,0,0,0,56,52,1,0,0,0,56,53,1,0,0,0,56,54,1,0,0,0,56,
+		55,1,0,0,0,57,9,1,0,0,0,58,59,5,6,0,0,59,60,3,2,1,0,60,61,5,7,0,0,61,11,
+		1,0,0,0,62,63,5,8,0,0,63,64,3,2,1,0,64,65,5,7,0,0,65,13,1,0,0,0,66,67,
+		5,9,0,0,67,68,3,2,1,0,68,69,5,7,0,0,69,15,1,0,0,0,70,71,5,10,0,0,71,72,
+		3,2,1,0,72,73,5,11,0,0,73,74,3,2,1,0,74,75,5,7,0,0,75,17,1,0,0,0,76,77,
+		5,12,0,0,77,78,3,2,1,0,78,79,5,11,0,0,79,80,3,2,1,0,80,81,5,7,0,0,81,19,
+		1,0,0,0,82,84,5,15,0,0,83,82,1,0,0,0,84,85,1,0,0,0,85,83,1,0,0,0,85,86,
+		1,0,0,0,86,87,1,0,0,0,87,88,5,16,0,0,88,21,1,0,0,0,89,96,5,16,0,0,90,91,
+		5,13,0,0,91,96,5,16,0,0,92,93,5,16,0,0,93,94,5,13,0,0,94,96,5,16,0,0,95,
+		89,1,0,0,0,95,90,1,0,0,0,95,92,1,0,0,0,96,23,1,0,0,0,6,32,40,46,56,85,
+		95
 	};
 
 	public static readonly ATN _ATN =
